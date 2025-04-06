@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Google Авторизація (Firebase)</title>
+</head>
+<body>
+  <h2>Авторизація через Google</h2>
+  <button id="googleSignInBtn">Увійти через Google</button>
+  <p id="message"></p>
+
+  <script type="module">
+    // Імпорт необхідних функцій із Firebase SDK
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+
+    // Firebase конфіг
+    const firebaseConfig = {
+      apiKey: "AIzaSyBJj2RrE1dcvQzCrk-Kgxq6vo-rqf7nCSo",
+      authDomain: "starting-afd61.firebaseapp.com",
+      projectId: "starting-afd61",
+      storageBucket: "starting-afd61.firebasestorage.app",
+      messagingSenderId: "397305334150",
+      appId: "1:397305334150:web:3bb68c76c229963d538407",
+      measurementId: "G-3J4EJ6M630"
+    };
+
+    // Ініціалізація Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    // Обробник події на кнопку
+    document.getElementById('googleSignInBtn').addEventListener('click', () => {
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const user = result.user;
+          document.getElementById('message').textContent = `Привіт, ${user.displayName}`;
+          console.log("Успішний вхід!", user);
+        })
+        .catch((error) => {
+          console.error("Помилка входу:", error);
+          document.getElementById('message').textContent = `Помилка: ${error.message}`;
+        });
+    });
+  </script>
+</body>
+</html>
