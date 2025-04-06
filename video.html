@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Відео - MyTube</title>
+    <title>Топ 5 котиків - MyTube</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>MyTube</h1>
+        <div class="logo">
+            <h1>MyTube</h1>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Пошук...">
+            <button class="search-btn">🔍</button>
+        </div>
         <nav>
             <a href="index.html">Головна</a>
             <a href="video.html">Відео</a>
@@ -19,21 +25,37 @@
     <main>
         <section class="video-player">
             <div class="player"></div>
-            <h2>Топ 5 котиків</h2>
-            <p>Котик TV • 100 переглядів • 2 дні тому</p>
+            <h2>Топ 5 котиків, які здивують вас</h2>
+            <div class="video-meta">
+                <p>Котик TV • 120K переглядів • 3 дні тому</p>
+                <div class="video-actions">
+                    <button class="like-btn">👍 5K</button>
+                    <button class="dislike-btn">👎 200</button>
+                    <button class="share-btn">Поділитися</button>
+                </div>
+            </div>
+            <div class="video-description">
+                <h3>Опис</h3>
+                <p>У цьому відео ми зібрали п’ять наймиліших котиків, які точно піднімуть вам настрій! Підписуйтесь на канал, щоб не пропустити нові відео.</p>
+            </div>
         </section>
         <section class="comments">
-            <h3>Коментарі</h3>
-            <p>Класне відео! Обожнюю котиків!</p>
-            <form>
-                <textarea placeholder="Додати коментар" rows="3"></textarea>
+            <h3>Коментарі (150)</h3>
+            <div class="comment">
+                <p><strong>Користувач1:</strong> Обожнюю котиків! Дякую за відео!</p>
+            </div>
+            <div class="comment">
+                <p><strong>Користувач2:</strong> Найкращий канал про тварин!</p>
+            </div>
+            <form class="comment-form">
+                <textarea placeholder="Додати коментар..." rows="3"></textarea>
                 <button type="submit">Надіслати</button>
             </form>
         </section>
     </main>
 
     <footer>
-        <p>© 2025 MyTube</p>
+        <p>© 2025 MyTube • <a href="#">Про нас</a> • <a href="#">Умови</a></p>
     </footer>
 </body>
 </html>
