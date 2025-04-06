@@ -8,15 +8,15 @@
 /* Основний стиль */
 body {
     font-family: 'Roboto', Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #0f0f0f;
+    background-color: #0f0f0f;
+    color: #fff;
 }
 
 /* Шапка */
 header {
     width: 100%;
     height: 56px;
-    background-color: #fff;
+    background-color: #212121;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -25,7 +25,6 @@ header {
     top: 0;
     left: 0;
     z-index: 10;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .header-left {
@@ -36,6 +35,7 @@ header {
 .menu-icon {
     font-size: 24px;
     margin-right: 24px;
+    color: #fff;
     cursor: pointer;
 }
 
@@ -53,17 +53,20 @@ header {
 .search-bar input {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
+    background-color: #121212;
+    border: 1px solid #303030;
     border-right: none;
     border-radius: 2px 0 0 2px;
+    color: #fff;
 }
 
 .search-btn {
     padding: 8px 16px;
-    background-color: #f8f8f8;
-    border: 1px solid #ccc;
+    background-color: #303030;
+    border: 1px solid #303030;
     border-radius: 0 2px 2px 0;
     cursor: pointer;
+    color: #fff;
 }
 
 .header-right {
@@ -74,13 +77,14 @@ header {
 .icon {
     font-size: 24px;
     margin-left: 24px;
+    color: #fff;
     cursor: pointer;
 }
 
 .user-icon {
     width: 32px;
     height: 32px;
-    background-color: #ccc;
+    background-color: #aaa;
     border-radius: 50%;
     margin-left: 24px;
     display: flex;
@@ -88,10 +92,73 @@ header {
     justify-content: center;
 }
 
+/* Бічна панель */
+.sidebar {
+    width: 240px;
+    background-color: #212121;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    bottom: 0;
+    padding: 12px;
+    overflow-y: auto;
+}
+
+.sidebar-item {
+    padding: 12px 16px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+}
+
+.sidebar-item.active {
+    background-color: #383838;
+}
+
+.sidebar-item:hover {
+    background-color: #303030;
+}
+
+.sidebar-item::before {
+    content: '';
+    margin-right: 24px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #303030;
+    margin: 8px 0;
+}
+
 /* Основний контент */
 main {
+    margin-left: 240px;
     margin-top: 56px;
     padding: 24px;
+}
+
+/* Навігаційна панель */
+.nav-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.nav-item {
+    padding: 8px 16px;
+    background-color: #303030;
+    border-radius: 16px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.nav-item.active {
+    background-color: #fff;
+    color: #0f0f0f;
 }
 
 /* Сітка відео */
@@ -99,11 +166,11 @@ main {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
+    margin-bottom: 24px;
 }
 
 .video-card {
     width: calc(25% - 12px);
-    background-color: #fff;
 }
 
 .thumbnail {
@@ -111,11 +178,11 @@ main {
     height: 0;
     padding-bottom: 56.25%; /* Співвідношення 16:9 */
     background-color: #ccc;
+    margin-bottom: 8px;
 }
 
 .video-info {
     display: flex;
-    padding: 12px;
 }
 
 .channel-icon {
@@ -134,7 +201,53 @@ main {
 
 .video-details p {
     font-size: 12px;
-    color: #606060;
+    color: #aaa;
+}
+
+/* Секція Shorts */
+.shorts-section {
+    margin-top: 24px;
+}
+
+.shorts-section h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.shorts-section h2::before {
+    content: '🎥';
+    margin-right: 8px;
+}
+
+.shorts-grid {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+}
+
+.shorts-card {
+    width: 150px;
+}
+
+.shorts-thumbnail {
+    width: 100%;
+    height: 0;
+    padding-bottom: 177.78%; /* Співвідношення 9:16 */
+    background-color: #ccc;
+    margin-bottom: 8px;
+}
+
+.shorts-card h3 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.shorts-card p {
+    font-size: 12px;
+    color: #aaa;
 }
 
 /* Сторінка відео */
@@ -166,23 +279,24 @@ main {
 
 .meta-left p {
     font-size: 14px;
-    color: #606060;
+    color: #aaa;
 }
 
 .meta-right .action-btn {
     padding: 8px 16px;
-    background-color: #f0f0f0;
+    background-color: #303030;
     border: none;
-    border-radius: 2px;
+    border-radius: 16px;
     margin-left: 8px;
     cursor: pointer;
     font-size: 14px;
+    color: #fff;
 }
 
 .video-info {
     padding: 16px;
-    background-color: #fff;
-    border-top: 1px solid #e0e0e0;
+    background-color: #212121;
+    border-top: 1px solid #303030;
 }
 
 .channel-info {
@@ -198,7 +312,7 @@ main {
 
 .channel-info p {
     font-size: 12px;
-    color: #606060;
+    color: #aaa;
 }
 
 .subscribe-btn {
@@ -233,10 +347,12 @@ main {
 .comment-form textarea {
     width: 100%;
     padding: 8px;
+    background-color: #121212;
     border: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #303030;
     margin-bottom: 16px;
     resize: none;
+    color: #fff;
 }
 
 .comment-form button {
@@ -267,7 +383,7 @@ main {
 }
 
 .comment p:first-child {
-    color: #606060;
+    color: #aaa;
 }
 
 /* Сторінка профілю */
@@ -277,65 +393,4 @@ main {
     background-color: #ddd;
 }
 
-.profile-header {
-    display: flex;
-    align-items: center;
-    padding: 24px;
-    max-width: 1280px;
-    margin: 0 auto;
-}
-
-.channel-icon-large {
-    width: 128px;
-    height: 128px;
-    background-color: #aaa;
-    border-radius: 50%;
-    margin-right: 24px;
-}
-
-.profile-info h1 {
-    font-size: 24px;
-    font-weight: 500;
-    margin-bottom: 8px;
-}
-
-.profile-info p {
-    font-size: 14px;
-    color: #606060;
-}
-
-.profile-content {
-    max-width: 1280px;
-    margin: 24px auto;
-}
-
-.profile-content h2 {
-    font-size: 18px;
-    margin-bottom: 16px;
-}
-
-/* Підвал */
-footer {
-    width: 100%;
-    padding: 16px;
-    text-align: center;
-    font-size: 12px;
-    color: #606060;
-    background-color: #f9f9f9;
-}
-
-/* Адаптивність */
-@media (max-width: 1024px) {
-    .video-card {
-        width: calc(33.33% - 12px);
-    }
-}
-
-@media (max-width: 768px) {
-    .video-card {
-        width: calc(50% - 12px);
-    }
-
-    .header-left, .header-right {
-        flex-shrink: 0;
-    }
+.profile
