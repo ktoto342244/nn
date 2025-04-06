@@ -3,59 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Топ 5 котиків - MyTube</title>
+    <title>Топ 5 котиків - YouTube</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="logo">
-            <h1>MyTube</h1>
+        <div class="header-left">
+            <div class="menu-icon">☰</div>
+            <div class="logo">
+                <img src="https://www.youtube.com/img/desktop/yt_120x120.png" alt="YouTube Logo">
+            </div>
         </div>
         <div class="search-bar">
-            <input type="text" placeholder="Пошук...">
+            <input type="text" placeholder="Пошук">
             <button class="search-btn">🔍</button>
         </div>
-        <nav>
-            <a href="index.html">Головна</a>
-            <a href="video.html">Відео</a>
-            <a href="profile.html">Профіль</a>
-        </nav>
+        <div class="header-right">
+            <div class="icon">📹</div>
+            <div class="icon">🔔</div>
+            <div class="user-icon">👤</div>
+        </div>
     </header>
 
     <main>
         <section class="video-player">
             <div class="player"></div>
-            <h2>Топ 5 котиків, які здивують вас</h2>
+            <h1>Топ 5 котиків, які здивують вас</h1>
             <div class="video-meta">
-                <p>Котик TV • 120K переглядів • 3 дні тому</p>
-                <div class="video-actions">
-                    <button class="like-btn">👍 5K</button>
-                    <button class="dislike-btn">👎 200</button>
-                    <button class="share-btn">Поділитися</button>
+                <div class="meta-left">
+                    <p>120K переглядів • 3 дні тому</p>
+                </div>
+                <div class="meta-right">
+                    <button class="action-btn">👍 5K</button>
+                    <button class="action-btn">👎 200</button>
+                    <button class="action-btn">Поділитися</button>
+                    <button class="action-btn">Зберегти</button>
                 </div>
             </div>
-            <div class="video-description">
-                <h3>Опис</h3>
-                <p>У цьому відео ми зібрали п’ять наймиліших котиків, які точно піднімуть вам настрій! Підписуйтесь на канал, щоб не пропустити нові відео.</p>
+            <div class="video-info">
+                <div class="channel-info">
+                    <div class="channel-icon"></div>
+                    <div>
+                        <h2>Котик TV</h2>
+                        <p>750K підписників</p>
+                    </div>
+                    <button class="subscribe-btn">Підписатися</button>
+                </div>
+                <p class="description">У цьому відео ми зібрали п’ять наймиліших котиків, які точно піднімуть вам настрій!</p>
             </div>
         </section>
         <section class="comments">
-            <h3>Коментарі (150)</h3>
-            <div class="comment">
-                <p><strong>Користувач1:</strong> Обожнюю котиків! Дякую за відео!</p>
-            </div>
-            <div class="comment">
-                <p><strong>Користувач2:</strong> Найкращий канал про тварин!</p>
-            </div>
+            <h3>Коментарі • 150</h3>
             <form class="comment-form">
-                <textarea placeholder="Додати коментар..." rows="3"></textarea>
-                <button type="submit">Надіслати</button>
+                <textarea placeholder="Додати коментар..." rows="2"></textarea>
+                <button type="submit">Коментувати</button>
             </form>
+            <div class="comment">
+                <div class="comment-icon"></div>
+                <div>
+                    <p><strong>Користувач1</strong> • 2 дні тому</p>
+                    <p>Обожнюю котиків! Дякую за відео!</p>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>© 2025 MyTube • <a href="#">Про нас</a> • <a href="#">Умови</a></p>
+        <p>© 2025 YouTube, LLC</p>
     </footer>
 </body>
 </html>
