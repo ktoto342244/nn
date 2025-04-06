@@ -8,7 +8,13 @@
 </head>
 <body>
     <header>
-        <h1>MyTube</h1>
+        <div class="logo">
+            <h1>MyTube</h1>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Пошук...">
+            <button class="search-btn">🔍</button>
+        </div>
         <nav>
             <a href="index.html">Головна</a>
             <a href="video.html">Відео</a>
@@ -20,24 +26,33 @@
         <section class="video-grid">
             <div class="video-card">
                 <div class="thumbnail"></div>
-                <h3>Топ 5 котиків</h3>
-                <p>Котик TV • 100 переглядів</p>
+                <div class="video-info">
+                    <h3>Топ 5 котиків, які здивують вас</h3>
+                    <p>Котик TV • 120K переглядів • 3 дні тому</p>
+                    <p class="description">Наймиліші котики у світі!</p>
+                </div>
             </div>
             <div class="video-card">
                 <div class="thumbnail"></div>
-                <h3>Як намалювати дерево</h3>
-                <p>Митець • 50 переглядів</p>
+                <div class="video-info">
+                    <h3>Як намалювати дерево за 5 хвилин</h3>
+                    <p>Митець • 85K переглядів • 1 тиждень тому</p>
+                    <p class="description">Простий урок для початківців.</p>
+                </div>
             </div>
             <div class="video-card">
                 <div class="thumbnail"></div>
-                <h3>Смішні моменти</h3>
-                <p>FunTime • 200 переглядів</p>
+                <div class="video-info">
+                    <h3>Смішні моменти з тваринами</h3>
+                    <p>FunTime • 250K переглядів • 2 дні тому</p>
+                    <p class="description">Сміх до сліз гарантовано!</p>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>© 2025 MyTube</p>
+        <p>© 2025 MyTube • <a href="#">Про нас</a> • <a href="#">Умови</a></p>
     </footer>
 </body>
 </html>
