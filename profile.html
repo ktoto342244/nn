@@ -3,9 +3,302 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Машенька - MyTube</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Профіль - MyTube</title>
+    <style>
+        /* Скидання стандартних відступів */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Основний стиль */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #0f0f0f;
+            color: #fff;
+        }
+
+        /* Шапка */
+        header {
+            width: 100%;
+            height: 56px;
+            background-color: #212121;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            margin-right: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .logo img {
+            height: 24px;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            max-width: 600px;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 8px;
+            background-color: #121212;
+            border: 1px solid #303030;
+            border-right: none;
+            border-radius: 2px 0 0 2px;
+            color: #fff;
+        }
+
+        .search-btn {
+            padding: 8px 16px;
+            background-color: #303030;
+            border: 1px solid #303030;
+            border-radius: 0 2px 2px 0;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            font-size: 24px;
+            margin-left: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .login-btn {
+            padding: 8px 16px;
+            background-color: #065fd4;
+            color: #fff;
+            border: none;
+            border-radius: 2px;
+            margin-left: 24px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .user-name {
+            margin-left: 24px;
+            font-size: 14px;
+        }
+
+        /* Бічна панель */
+        .sidebar {
+            width: 240px;
+            background-color: #212121;
+            position: fixed;
+            top: 56px;
+            left: 0;
+            bottom: 0;
+            padding: 12px;
+            overflow-y: auto;
+        }
+
+        .sidebar-item {
+            padding: 12px 16px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .sidebar-item.active {
+            background-color: #383838;
+        }
+
+        .sidebar-item:hover {
+            background-color: #303030;
+        }
+
+        .sidebar-item::before {
+            content: '';
+            margin-right: 24px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #303030;
+            margin: 8px 0;
+        }
+
+        /* Основний контент */
+        main {
+            margin-left: 240px;
+            margin-top: 56px;
+            padding: 24px;
+        }
+
+        /* Сітка відео */
+        .video-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .video-card {
+            width: calc(25% - 12px);
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            background-color: #ccc;
+            margin-bottom: 8px;
+        }
+
+        .video-info {
+            display: flex;
+        }
+
+        .channel-icon {
+            width: 36px;
+            height: 36px;
+            background-color: #aaa;
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+
+        .video-details h3 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .video-details p {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        /* Сторінка профілю */
+        .cover-image {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            padding: 24px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .channel-icon-large {
+            width: 128px;
+            height: 128px;
+            background-color: #aaa;
+            border-radius: 50%;
+            margin-right: 24px;
+        }
+
+        .profile-info h1 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .profile-info p {
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .profile-content {
+            max-width: 1280px;
+            margin: 24px auto;
+        }
+
+        .profile-content h2 {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        /* Адаптивність */
+        @media (max-width: 1024px) {
+            .video-card {
+                width: calc(33.33% - 12px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .video-card {
+                width: calc(50% - 12px);
+            }
+
+            .sidebar {
+                width: 72px;
+            }
+
+            .sidebar-item {
+                justify-content: center;
+                font-size: 0;
+            }
+
+            .sidebar-item::before {
+                margin-right: 0;
+            }
+
+            main {
+                margin-left: 72px;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .channel-icon-large {
+                margin-right: 0;
+                margin-bottom: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-card {
+                width: 100%;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            main {
+                margin-left: 0;
+            }
+
+            .channel-icon-large {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/128/1384/1384060.png">
 </head>
 <body>
     <header>
@@ -22,12 +315,13 @@
         <div class="header-right">
             <div class="icon">📹</div>
             <div class="icon">🔔</div>
-            <div class="user-icon">👤</div>
+            <a href="login.html" class="login-btn" id="login-btn">Увійти</a>
+            <span class="user-name" id="user-name" style="display: none;"></span>
         </div>
     </header>
 
     <div class="sidebar">
-        <div class="sidebar-item active">🏠 Головна</div>
+        <div class="sidebar-item">🏠 Головна</div>
         <div class="sidebar-item">🎥 Shorts</div>
         <div class="sidebar-item">📺 Підписки</div>
         <div class="sidebar-item">📚 Бібліотека</div>
@@ -44,11 +338,10 @@
         <section class="profile">
             <div class="cover-image"></div>
             <div class="profile-header">
-                <div class="channel-icon-large"></div>
+                <div class="channel-icon-large" id="user-avatar"></div>
                 <div class="profile-info">
-                    <h1>Машенька [ Lia's bar + Функцыя]</h1>
-                    <p>@Mashenka • 50K підписників • 20 відео</p>
-                    <button class="subscribe-btn">Підписатися</button>
+                    <h1 id="user-display-name">Користувач</h1>
+                    <p id="user-email">@користувач • 0 підписників • 2 відео</p>
                 </div>
             </div>
             <div class="profile-content">
@@ -57,20 +350,63 @@
                     <div class="video-card">
                         <div class="thumbnail"></div>
                         <div class="video-info">
-                            <h3>СМЕРТЕЛЬНАЯ КАПЕЛЬ в Майнкрафт!</h3>
-                            <p>125 тис. переглядів • 11 годин тому</p>
+                            <h3>Моє перше відео</h3>
+                            <p>1 тис. переглядів • 1 місяць тому</p>
                         </div>
                     </div>
                     <div class="video-card">
                         <div class="thumbnail"></div>
                         <div class="video-info">
-                            <h3>Нова карта в Майнкрафт!</h3>
-                            <p>80 тис. переглядів • 1 місяць тому</p>
+                            <h3>Друге відео</h3>
+                            <p>500 переглядів • 2 тижні тому</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBJj2RrE1dcvQzCrk-Kgxq6vo-rqf7nCSo",
+            authDomain: "starting-afd61.firebaseapp.com",
+            projectId: "starting-afd61",
+            storageBucket: "starting-afd61.firebasestorage.app",
+            messagingSenderId: "397305334150",
+            appId: "1:397305334150:web:3bb68c76c229963d538407",
+            measurementId: "G-3J4EJ6M630"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const loginBtn = document.getElementById("login-btn");
+        const userName = document.getElementById("user-name");
+        const userDisplayName = document.getElementById("user-display-name");
+        const userEmail = document.getElementById("user-email");
+        const userAvatar = document.getElementById("user-avatar");
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                loginBtn.style.display = "none";
+                userName.style.display = "block";
+                userName.textContent = user.displayName;
+                userDisplayName.textContent = user.displayName;
+                userEmail.textContent = `@${user.email.split('@')[0]} • 0 підписників • 2 відео`;
+                if (user.photoURL) {
+                    userAvatar.style.backgroundImage = `url(${user.photoURL})`;
+                    userAvatar.style.backgroundSize = "cover";
+                }
+            } else {
+                loginBtn.style.display = "block";
+                userName.style.display = "none";
+                window.location.href = "login.html";
+            }
+        });
+    </script>
 </body>
 </html>
