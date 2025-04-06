@@ -3,49 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Котик TV - MyTube</title>
+    <title>Котик TV - YouTube</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="logo">
-            <h1>MyTube</h1>
+        <div class="header-left">
+            <div class="menu-icon">☰</div>
+            <div class="logo">
+                <img src="https://www.youtube.com/img/desktop/yt_120x120.png" alt="YouTube Logo">
+            </div>
         </div>
         <div class="search-bar">
-            <input type="text" placeholder="Пошук...">
+            <input type="text" placeholder="Пошук">
             <button class="search-btn">🔍</button>
         </div>
-        <nav>
-            <a href="index.html">Головна</a>
-            <a href="video.html">Відео</a>
-            <a href="profile.html">Профіль</a>
-        </nav>
+        <div class="header-right">
+            <div class="icon">📹</div>
+            <div class="icon">🔔</div>
+            <div class="user-icon">👤</div>
+        </div>
     </header>
 
     <main>
         <section class="profile">
+            <div class="cover-image"></div>
             <div class="profile-header">
-                <div class="avatar"></div>
+                <div class="channel-icon-large"></div>
                 <div class="profile-info">
-                    <h2>Котик TV</h2>
-                    <p>750K підписників • 15 відео</p>
+                    <h1>Котик TV</h1>
+                    <p>@KotikTV • 750K підписників • 15 відео</p>
                     <button class="subscribe-btn">Підписатися</button>
                 </div>
             </div>
-            <div class="profile-videos">
-                <h3>Відео</h3>
-                <div class="video-list">
-                    <div class="video-item">
-                        <div class="thumbnail-small"></div>
-                        <p>Топ 5 котиків • 120K переглядів</p>
+            <div class="profile-content">
+                <h2>Відео</h2>
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="thumbnail"></div>
+                        <div class="video-info">
+                            <h3>Топ 5 котиків</h3>
+                            <p>120K переглядів • 3 дні тому</p>
+                        </div>
                     </div>
-                    <div class="video-item">
-                        <div class="thumbnail-small"></div>
-                        <p>Котики співають • 80K переглядів</p>
-                    </div>
-                    <div class="video-item">
-                        <div class="thumbnail-small"></div>
-                        <p>Котики ганяють м’ячик • 150K переглядів</p>
+                    <div class="video-card">
+                        <div class="thumbnail"></div>
+                        <div class="video-info">
+                            <h3>Котики співають</h3>
+                            <p>80K переглядів • 1 місяць тому</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -53,7 +60,7 @@
     </main>
 
     <footer>
-        <p>© 2025 MyTube • <a href="#">Про нас</a> • <a href="#">Умови</a></p>
+        <p>© 2025 YouTube, LLC</p>
     </footer>
 </body>
 </html>
