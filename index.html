@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Головна - MyTube</title>
+    <title>YouTube</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="logo">
-            <h1>MyTube</h1>
+        <div class="header-left">
+            <div class="menu-icon">☰</div>
+            <div class="logo">
+                <img src="https://www.youtube.com/img/desktop/yt_120x120.png" alt="YouTube Logo">
+            </div>
         </div>
         <div class="search-bar">
-            <input type="text" placeholder="Пошук...">
+            <input type="text" placeholder="Пошук">
             <button class="search-btn">🔍</button>
         </div>
-        <nav>
-            <a href="index.html">Головна</a>
-            <a href="video.html">Відео</a>
-            <a href="profile.html">Профіль</a>
-        </nav>
+        <div class="header-right">
+            <div class="icon">📹</div>
+            <div class="icon">🔔</div>
+            <div class="user-icon">👤</div>
+        </div>
     </header>
 
     <main>
@@ -27,32 +31,38 @@
             <div class="video-card">
                 <div class="thumbnail"></div>
                 <div class="video-info">
-                    <h3>Топ 5 котиків, які здивують вас</h3>
-                    <p>Котик TV • 120K переглядів • 3 дні тому</p>
-                    <p class="description">Наймиліші котики у світі!</p>
+                    <div class="channel-icon"></div>
+                    <div class="video-details">
+                        <h3>Топ 5 котиків, які здивують вас</h3>
+                        <p>Котик TV • 120K переглядів • 3 дні тому</p>
+                    </div>
                 </div>
             </div>
             <div class="video-card">
                 <div class="thumbnail"></div>
                 <div class="video-info">
-                    <h3>Як намалювати дерево за 5 хвилин</h3>
-                    <p>Митець • 85K переглядів • 1 тиждень тому</p>
-                    <p class="description">Простий урок для початківців.</p>
+                    <div class="channel-icon"></div>
+                    <div class="video-details">
+                        <h3>Як намалювати дерево за 5 хвилин</h3>
+                        <p>Митець • 85K переглядів • 1 тиждень тому</p>
+                    </div>
                 </div>
             </div>
             <div class="video-card">
                 <div class="thumbnail"></div>
                 <div class="video-info">
-                    <h3>Смішні моменти з тваринами</h3>
-                    <p>FunTime • 250K переглядів • 2 дні тому</p>
-                    <p class="description">Сміх до сліз гарантовано!</p>
+                    <div class="channel-icon"></div>
+                    <div class="video-details">
+                        <h3>Смішні моменти з тваринами</h3>
+                        <p>FunTime • 250K переглядів • 2 дні тому</p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>© 2025 MyTube • <a href="#">Про нас</a> • <a href="#">Умови</a></p>
+        <p>© 2025 YouTube, LLC</p>
     </footer>
 </body>
 </html>
