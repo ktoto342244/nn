@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Профіль - MyTube</title>
+    <title>Котик TV - MyTube</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>MyTube</h1>
+        <div class="logo">
+            <h1>MyTube</h1>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Пошук...">
+            <button class="search-btn">🔍</button>
+        </div>
         <nav>
             <a href="index.html">Головна</a>
             <a href="video.html">Відео</a>
@@ -18,19 +24,36 @@
 
     <main>
         <section class="profile">
-            <div class="avatar"></div>
-            <h2>Котик TV</h2>
-            <p>500 підписників • 3 відео</p>
+            <div class="profile-header">
+                <div class="avatar"></div>
+                <div class="profile-info">
+                    <h2>Котик TV</h2>
+                    <p>750K підписників • 15 відео</p>
+                    <button class="subscribe-btn">Підписатися</button>
+                </div>
+            </div>
             <div class="profile-videos">
-                <p>Топ 5 котиків</p>
-                <p>Котики співають</p>
-                <p>Котики ганяють м’ячик</p>
+                <h3>Відео</h3>
+                <div class="video-list">
+                    <div class="video-item">
+                        <div class="thumbnail-small"></div>
+                        <p>Топ 5 котиків • 120K переглядів</p>
+                    </div>
+                    <div class="video-item">
+                        <div class="thumbnail-small"></div>
+                        <p>Котики співають • 80K переглядів</p>
+                    </div>
+                    <div class="video-item">
+                        <div class="thumbnail-small"></div>
+                        <p>Котики ганяють м’ячик • 150K переглядів</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>© 2025 MyTube</p>
+        <p>© 2025 MyTube • <a href="#">Про нас</a> • <a href="#">Умови</a></p>
     </footer>
 </body>
 </html>
