@@ -10,6 +10,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f5e6ff; /* Світло-фіолетовий фон */
     color: #4b0082; /* Темно-фіолетовий текст */
+    line-height: 1.6;
 }
 
 /* Шапка */
@@ -21,13 +22,41 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 5%;
+    padding: 0 2rem;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+}
+
+.search-bar {
+    flex-grow: 1;
+    max-width: 40%;
+    margin: 0 2rem;
+    display: flex;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ff69b4;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-btn {
+    padding: 0.5rem 1rem;
+    background-color: #ff69b4;
+    color: #4b0082;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
 }
 
 nav a {
     color: #ff69b4;
     text-decoration: none;
     margin-left: 2rem;
+    font-size: 1rem;
 }
 
 /* Основний контент */
@@ -46,101 +75,145 @@ main {
 .video-card {
     width: 30%;
     background-color: white;
-    padding: 1rem;
-    border: 1px solid #ff69b4; /* Рожева рамка */
+    border: 1px solid #ff69b4;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .thumbnail {
     width: 100%;
     height: 15vh;
-    background-color: #ff69b4; /* Рожевий прямокутник замість відео */
+    background-color: #ff69b4;
+}
+
+.video-info {
+    padding: 1rem;
+}
+
+.video-info h3 {
+    font-size: 1.1rem;
     margin-bottom: 0.5rem;
 }
 
+.description {
+    font-size: 0.9rem;
+    color: #666;
+}
+
 /* Сторінка відео */
-.video-player .player {
+.video-player {
+    max-width: 100%;
+}
+
+.player {
     width: 100%;
-    height: 40vh;
-    background-color: #4b0082; /* Темно-фіолетовий плеєр */
+    height: 50vh;
+    background-color: #4b0082;
     margin-bottom: 1rem;
+}
+
+.video-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.video-actions button {
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #ff69b4;
+    color: #4b0082;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.video-description {
+    background-color: white;
+    padding: 1rem;
+    border: 1px solid #ff69b4;
+    border-radius: 5px;
 }
 
 .comments {
     margin-top: 2rem;
 }
 
-textarea {
+.comment {
+    background-color: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ff69b4;
+    border-radius: 5px;
+}
+
+.comment-form textarea {
     width: 100%;
     padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid #ff69b4;
+    border-radius: 5px;
 }
 
-button {
+.comment-form button {
     padding: 0.5rem 1rem;
-    background-color: #ff69b4; /* Рожева кнопка */
-    color: #4b0082; /* Темно-фіолетовий текст */
+    background-color: #ff69b4;
+    color: #4b0082;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 /* Профіль */
-.profile {
-    text-align: center;
+.profile-header {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 2rem;
+    border: 1px solid #ff69b4;
+    border-radius: 5px;
+    margin-bottom: 2rem;
 }
 
 .avatar {
     width: 10rem;
     height: 10rem;
-    background-color: #ff69b4; /* Рожевий аватар */
+    background-color: #ff69b4;
     border-radius: 50%;
-    margin: 0 auto 1rem;
+    margin-right: 2rem;
 }
 
-.profile-videos {
+.profile-info h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.subscribe-btn {
+    padding: 0.5rem 1rem;
+    background-color: #ff69b4;
+    color: #4b0082;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     margin-top: 1rem;
 }
 
-/* Підвал */
-footer {
-    width: 100%;
-    height: 10vh;
-    background-color: #4b0082; /* Темно-фіолетовий підвал */
-    color: #ff69b4; /* Рожевий текст */
+.profile-videos {
+    background-color: white;
+    padding: 1rem;
+    border: 1px solid #ff69b4;
+    border-radius: 5px;
+}
+
+.video-list {
+    margin-top: 1rem;
+}
+
+.video-item {
     display: flex;
     align-items: center;
-    justify-content: center;
+    margin-bottom: 1rem;
 }
 
-/* Адаптивність */
-@media (max-width: 768px) {
-    .video-card {
-        width: 45%;
-    }
-
-    header {
-        flex-direction: column;
-        height: auto;
-        padding: 1rem;
-    }
-
-    nav {
-        margin-top: 1rem;
-    }
-
-    nav a {
-        margin-left: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .video-card {
-        width: 100%;
-    }
-
-    .avatar {
-        width: 5rem;
-        height: 5rem;
-    }
-}
+.thumbnail-small
