@@ -114,6 +114,8 @@
             height: 32px;
             border-radius: 50%;
             background-color: #aaa;
+            background-size: cover;
+            background-position: center;
         }
 
         .user-name {
@@ -469,7 +471,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
         import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
-        // Firebase конфігурація (заміни на ту, яка використовується на https://ktoto342244.github.io/nn/)
+        // Firebase конфігурація
         const firebaseConfig = {
             apiKey: "AIzaSyBJj2RrE1dcvQzCrk-Kgxq6vo-rqf7nCSo",
             authDomain: "starting-afd61.firebaseapp.com",
@@ -498,10 +500,7 @@
                 loginBtn.style.display = "none";
                 userProfile.style.display = "flex";
                 userName.textContent = user.displayName || "Користувач";
-                if (user.photoURL) {
-                    userAvatar.style.backgroundImage = `url(${user.photoURL})`;
-                    userAvatar.style.backgroundSize = "cover";
-                }
+                userAvatar.style.backgroundImage = user.photoURL ? `url(${user.photoURL})` : `url('https://cdn-icons-png.flaticon.com/128/149/149071.png')`;
             } else {
                 // Користувач не увійшов
                 loginBtn.style.display = "block";
@@ -514,7 +513,6 @@
         loginBtn.addEventListener("click", () => {
             signInWithPopup(auth, provider)
                 .then((result) => {
-                    // Користувач увійшов
                     console.log("Успішний вхід:", result.user);
                 })
                 .catch((error) => {
@@ -524,7 +522,8 @@
         });
 
         // Показати/сховати випадаюче меню при натисканні на профіль
-        userProfile.addEventListener("click", () => {
+        userProfile.addEventListener("click", (e) => {
+            e.stopPropagation(); // Запобігаємо закриттю меню при кліку на профіль
             dropdownMenu.style.display = dropdownMenu.style.display === "flex" ? "none" : "flex";
         });
 
@@ -533,7 +532,6 @@
             e.preventDefault();
             signOut(auth)
                 .then(() => {
-                    // Користувач вийшов
                     alert("Ви успішно вийшли з облікового запису.");
                     dropdownMenu.style.display = "none";
                 })
