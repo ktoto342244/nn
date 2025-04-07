@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Увійти - MyTube</title>
+    <title>MyTube</title>
     <style>
         /* Скидання стандартних відступів */
         * {
@@ -88,6 +88,17 @@
             cursor: pointer;
         }
 
+        .user-icon {
+            width: 32px;
+            height: 32px;
+            background-color: #aaa;
+            border-radius: 50%;
+            margin-left: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .login-btn {
             padding: 8px 16px;
             background-color: #065fd4;
@@ -96,6 +107,11 @@
             border-radius: 2px;
             margin-left: 24px;
             text-decoration: none;
+            font-size: 14px;
+        }
+
+        .user-name {
+            margin-left: 24px;
             font-size: 14px;
         }
 
@@ -146,59 +162,133 @@
             padding: 24px;
         }
 
-        /* Сторінка входу */
-        .login-section {
-            max-width: 400px;
-            margin: 0 auto;
-            text-align: center;
-            background-color: #212121;
-            padding: 32px;
-            border-radius: 8px;
+        /* Навігаційна панель */
+        .nav-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            white-space: nowrap;
         }
 
-        .login-section h2 {
-            font-size: 24px;
+        .nav-item {
+            padding: 8px 16px;
+            background-color: #303030;
+            border-radius: 16px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .nav-item.active {
+            background-color: #fff;
+            color: #0f0f0f;
+        }
+
+        /* Сітка відео */
+        .video-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
             margin-bottom: 24px;
         }
 
-        .google-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 24px;
-            background-color: #fff;
-            color: #0f0f0f;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
+        .video-card {
+            width: calc(25% - 12px);
         }
 
-        .google-btn img {
-            width: 24px;
-            height: 24px;
+        .thumbnail {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            background-color: #ccc;
+            margin-bottom: 8px;
+        }
+
+        .video-info {
+            display: flex;
+        }
+
+        .channel-icon {
+            width: 36px;
+            height: 36px;
+            background-color: #aaa;
+            border-radius: 50%;
             margin-right: 12px;
         }
 
-        .signout-btn {
-            padding: 12px 24px;
-            background-color: #c00;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 16px;
+        .video-details h3 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 4px;
         }
 
-        #user-info {
-            margin-top: 16px;
-            font-size: 16px;
+        .video-details p {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        /* Секція Shorts */
+        .shorts-section {
+            margin-top: 24px;
+        }
+
+        .shorts-section h2 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .shorts-section h2::before {
+            content: '🎥';
+            margin-right: 8px;
+        }
+
+        .shorts-grid {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+        }
+
+        .shorts-card {
+            width: 150px;
+        }
+
+        .shorts-thumbnail {
+            width: 100%;
+            height: 0;
+            padding-bottom: 177.78%;
+            background-color: #ccc;
+            margin-bottom: 8px;
+        }
+
+        .shorts-card h3 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .shorts-card p {
+            font-size: 12px;
+            color: #aaa;
         }
 
         /* Адаптивність */
         @media (max-width: 1024px) {
+            .video-card {
+                width: calc(33.33% - 12px);
+            }
+
+            .shorts-card {
+                width: 120px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .video-card {
+                width: calc(50% - 12px);
+            }
+
             .sidebar {
                 width: 72px;
             }
@@ -218,6 +308,10 @@
         }
 
         @media (max-width: 480px) {
+            .video-card {
+                width: 100%;
+            }
+
             .sidebar {
                 display: none;
             }
@@ -245,12 +339,13 @@
         <div class="header-right">
             <div class="icon">📹</div>
             <div class="icon">🔔</div>
-            <a href="index.html" class="login-btn">На головну</a>
+            <a href="login.html" class="login-btn" id="login-btn">Увійти</a>
+            <span class="user-name" id="user-name" style="display: none;"></span>
         </div>
     </header>
 
     <div class="sidebar">
-        <div class="sidebar-item">🏠 Головна</div>
+        <div class="sidebar-item active">🏠 Головна</div>
         <div class="sidebar-item">🎥 Shorts</div>
         <div class="sidebar-item">📺 Підписки</div>
         <div class="sidebar-item">📚 Бібліотека</div>
@@ -264,21 +359,77 @@
     </div>
 
     <main>
-        <section class="login-section">
-            <h2>Увійти в MyTube</h2>
-            <button id="google-signin-btn" class="google-btn">
-                <img src="https://www.google.com/favicon.ico" alt="Google Icon">
-                Увійти через Google
-            </button>
-            <p id="user-info" style="display: none;"></p>
-            <button id="signout-btn" style="display: none;" class="signout-btn">Вийти</button>
+        <div class="nav-bar">
+            <div class="nav-item active">Усе</div>
+            <div class="nav-item">Відео</div>
+            <div class="nav-item">Музика</div>
+            <div class="nav-item">Новини</div>
+            <div class="nav-item">Сейви в шортах</div>
+            <div class="nav-item">Живі трансляції</div>
+        </div>
+
+        <section class="video-grid">
+            <div class="video-card">
+                <div class="thumbnail"></div>
+                <div class="video-info">
+                    <div class="channel-icon"></div>
+                    <div class="video-details">
+                        <h3>СМЕРТЕЛЬНАЯ КАПЕЛЬ в Майнкрафт!</h3>
+                        <p>Машенька [ Lia's bar + Функцыя]</p>
+                        <p>125 тис. переглядів • 11 годин тому</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="thumbnail"></div>
+                <div class="video-info">
+                    <div class="channel-icon"></div>
+                    <div class="video-details">
+                        <h3>ДОКУМЕНТЫ: Кольцевые инструкции...</h3>
+                        <p>SuperCrastan</p>
+                        <p>164 тис. переглядів • 7 годин тому</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="thumbnail"></div>
+                <div class="video-info">
+                    <div class="channel-icon"></div>
+                    <div class="video-details">
+                        <h3>Зарядил ли 1000 человек взрыв...</h3>
+                        <p>эксченджимонстр</p>
+                        <p>1,6 млн переглядів • 4 тижні тому</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="shorts-section">
+            <h2>🎥 Shorts</h2>
+            <div class="shorts-grid">
+                <div class="shorts-card">
+                    <div class="shorts-thumbnail"></div>
+                    <h3>Wang Ling using 0.1% power...</h3>
+                    <p>2 млн переглядів</p>
+                </div>
+                <div class="shorts-card">
+                    <div class="shorts-thumbnail"></div>
+                    <h3>НЕНОРМАЛЬНЫЕ ВЕЩИ В...</h3>
+                    <p>1,1 млн переглядів</p>
+                </div>
+                <div class="shorts-card">
+                    <div class="shorts-thumbnail"></div>
+                    <h3>Дафна достигла Джокера...</h3>
+                    <p>3,1 млн переглядів</p>
+                </div>
+            </div>
         </section>
     </main>
 
     <!-- Firebase SDK -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBJj2RrE1dcvQzCrk-Kgxq6vo-rqf7nCSo",
@@ -292,52 +443,18 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-        const provider = new GoogleAuthProvider();
 
-        const signInButton = document.getElementById("google-signin-btn");
-        const signOutButton = document.getElementById("signout-btn");
-        const userInfo = document.getElementById("user-info");
-
-        signInButton.addEventListener("click", () => {
-            signInWithPopup(auth, provider)
-                .then((result) => {
-                    const user = result.user;
-                    userInfo.style.display = "block";
-                    userInfo.textContent = `Вітаємо, ${user.displayName}!`;
-                    signInButton.style.display = "none";
-                    signOutButton.style.display = "block";
-                    window.location.href = "index.html";
-                })
-                .catch((error) => {
-                    console.error("Помилка входу:", error);
-                    userInfo.style.display = "block";
-                    userInfo.textContent = "Помилка входу. Спробуйте ще раз.";
-                });
-        });
-
-        signOutButton.addEventListener("click", () => {
-            signOut(auth)
-                .then(() => {
-                    userInfo.style.display = "none";
-                    signInButton.style.display = "block";
-                    signOutButton.style.display = "none";
-                    window.location.href = "index.html";
-                })
-                .catch((error) => {
-                    console.error("Помилка виходу:", error);
-                });
-        });
+        const loginBtn = document.getElementById("login-btn");
+        const userName = document.getElementById("user-name");
 
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                userInfo.style.display = "block";
-                userInfo.textContent = `Вітаємо, ${user.displayName}!`;
-                signInButton.style.display = "none";
-                signOutButton.style.display = "block";
+                loginBtn.style.display = "none";
+                userName.style.display = "block";
+                userName.textContent = user.displayName;
             } else {
-                userInfo.style.display = "none";
-                signInButton.style.display = "block";
-                signOutButton.style.display = "none";
+                loginBtn.style.display = "block";
+                userName.style.display = "none";
             }
         });
     </script>
