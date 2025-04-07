@@ -88,16 +88,24 @@
             cursor: pointer;
         }
 
-        .login-btn {
+        .login-btn, .logout-btn {
             padding: 8px 16px;
-            background-color: #065fd4;
-            color: #fff;
             border: none;
             border-radius: 2px;
             margin-left: 24px;
             text-decoration: none;
             font-size: 14px;
             cursor: pointer;
+        }
+
+        .login-btn {
+            background-color: #065fd4;
+            color: #fff;
+        }
+
+        .logout-btn {
+            background-color: #d32f2f;
+            color: #fff;
         }
 
         /* Бічна панель */
@@ -325,6 +333,7 @@
             <div class="icon">📹</div>
             <div class="icon">🔔</div>
             <button class="login-btn" id="login-btn">Увійти</button>
+            <button class="logout-btn" id="logout-btn" style="display: none;">Вийти</button>
         </div>
     </header>
 
@@ -413,7 +422,7 @@
     <!-- Firebase SDK -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
         // Firebase конфігурація (заміни на ту, яка використовується на https://ktoto342244.github.io/nn/)
         const firebaseConfig = {
@@ -431,11 +440,20 @@
         const provider = new GoogleAuthProvider();
 
         const loginBtn = document.getElementById("login-btn");
+        const logoutBtn = document.getElementById("logout-btn");
 
-        // Якщо користувач уже увійшов, перенаправляємо на profile.html
+        // Перевірка стану автентифікації
         onAuthStateChanged(auth, (user) => {
             if (user) {
+                // Користувач увійшов
+                loginBtn.style.display = "none";
+                logoutBtn.style.display = "block";
+                // Перенаправлення на profile.html
                 window.location.href = "https://ktoto342244.github.io/nn/profile.html";
+            } else {
+                // Користувач не увійшов
+                loginBtn.style.display = "block";
+                logoutBtn.style.display = "none";
             }
         });
 
@@ -449,6 +467,19 @@
                 .catch((error) => {
                     console.error("Помилка входу:", error);
                     alert("Помилка входу. Спробуйте ще раз.");
+                });
+        });
+
+        // Обробка натискання на кнопку "Вийти"
+        logoutBtn.addEventListener("click", () => {
+            signOut(auth)
+                .then(() => {
+                    // Користувач вийшов
+                    alert("Ви успішно вийшли з облікового запису.");
+                })
+                .catch((error) => {
+                    console.error("Помилка виходу:", error);
+                    alert("Помилка виходу. Спробуйте ще раз.");
                 });
         });
     </script>
