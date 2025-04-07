@@ -88,17 +88,6 @@
             cursor: pointer;
         }
 
-        .user-icon {
-            width: 32px;
-            height: 32px;
-            background-color: #aaa;
-            border-radius: 50%;
-            margin-left: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
         .login-btn {
             padding: 8px 16px;
             background-color: #065fd4;
@@ -108,14 +97,6 @@
             margin-left: 24px;
             text-decoration: none;
             font-size: 14px;
-        }
-
-        .user-name {
-            margin-left: 24px;
-            font-size: 14px;
-            cursor: pointer;
-            text-decoration: none;
-            color: #fff;
         }
 
         /* Бічна панель */
@@ -342,8 +323,7 @@
         <div class="header-right">
             <div class="icon">📹</div>
             <div class="icon">🔔</div>
-            <a href="https://ktoto342244.github.io/nn/profile.html" class="login-btn" id="login-btn">Увійти</a>
-            <a href="profile.html" class="user-name" id="user-name" style="display: none;"></a>
+            <a href="https://ktoto342244.github.io/nn/profile.html" class="login-btn">Увійти</a>
         </div>
     </header>
 
@@ -428,38 +408,5 @@
             </div>
         </section>
     </main>
-
-    <!-- Firebase SDK -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyBJj2RrE1dcvQzCrk-Kgxq6vo-rqf7nCSo",
-            authDomain: "starting-afd61.firebaseapp.com",
-            projectId: "starting-afd61",
-            storageBucket: "starting-afd61.firebasestorage.app",
-            messagingSenderId: "397305334150",
-            appId: "1:397305334150:web:3bb68c76c229963d538407",
-            measurementId: "G-3J4EJ6M630"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
-        const loginBtn = document.getElementById("login-btn");
-        const userName = document.getElementById("user-name");
-
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                loginBtn.style.display = "none";
-                userName.style.display = "block";
-                userName.textContent = user.displayName;
-            } else {
-                loginBtn.style.display = "block";
-                userName.style.display = "none";
-            }
-        });
-    </script>
 </body>
 </html>
