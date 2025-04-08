@@ -146,6 +146,24 @@
             font-size: 16px;
         }
 
+        .menu-channel-name, .menu-account-name {
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-channel-name {
+            font-weight: 500;
+        }
+
+        .menu-account-name {
+            color: #aaa;
+            border-bottom: 1px solid #303030;
+            margin-bottom: 8px;
+        }
+
         /* Бічна панель */
         .sidebar {
             width: 240px;
@@ -361,6 +379,8 @@
             <div class="user-container">
                 <div class="user-avatar" id="header-avatar" style="display: none;"></div>
                 <div class="user-menu" id="user-menu" style="display: none;">
+                    <div class="menu-channel-name" id="menu-channel-name">Вы ещё не создали канал</div>
+                    <div class="menu-account-name" id="menu-account-name"></div>
                     <div class="menu-item">
                         <span class="menu-icon">👤</span> Ваші дані на YouTube
                     </div>
@@ -467,6 +487,8 @@
         const headerAvatar = document.getElementById("header-avatar");
         const userMenu = document.getElementById("user-menu");
         const logoutBtn = document.getElementById("logout-btn");
+        const menuChannelName = document.getElementById("menu-channel-name");
+        const menuAccountName = document.getElementById("menu-account-name");
 
         // Показ/приховування меню при кліку на аватар
         const toggleMenu = () => {
@@ -501,6 +523,12 @@
                 headerAvatar.style.display = "block";
                 userDisplayName.textContent = user.displayName;
                 userEmail.textContent = `@${user.email.split('@')[0]} • 0 підписників • 2 відео`;
+
+                // Назва канала в меню (якщо displayName є, використовуємо його, інакше "Вы ещё не создали канал")
+                menuChannelName.textContent = user.displayName || "Вы ещё не создали канал";
+                // Ім'я акаунта в меню (email)
+                menuAccountName.textContent = user.email;
+
                 if (user.photoURL) {
                     headerAvatar.style.backgroundImage = `url(${user.photoURL})`;
                     userAvatar.style.backgroundImage = `url(${user.photoURL})`;
