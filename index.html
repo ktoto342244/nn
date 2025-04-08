@@ -399,9 +399,35 @@
                 <div class="user-menu" id="user-menu">
                     <div class="menu-channel-name" id="menu-channel-name">Вы ещё не создали канал</div>
                     <div class="menu-account-name" id="menu-account-name"></div>
-                    <a href="https://ktoto342244.github.io/nn/profile.html" class="menu-item">Налаштування профілю</a>
+                    <a href="https://ktoto342244.github.io/nn/profile.html" class="menu-item">
+                        <span class="menu-icon">👤</span> Ваші дані на YouTube
+                    </a>
+                    <div class="menu-item">
+                        <span class="menu-icon">🔍</span> Пошуки і платне підключення
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-icon">📺</span> Ваші дані на YouTube
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-icon">🌙</span> Тема: як на пристрої
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-icon">🌐</span> Мова: Русский
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-icon">🛡️</span> Безопасный режим: откл.
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-icon">🌍</span> Страна: Украина
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-icon">⚙️</span> Настройки
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-icon">❓</span> Справка
+                    </div>
                     <div class="menu-item" id="logout-link">
-                        <span class="menu-icon">🚪</span> Вийти з акаунта
+                        <span class="menu-icon">🚪</span> Выйти
                     </div>
                 </div>
             </div>
@@ -532,7 +558,7 @@
             }
         });
 
-        // Обробка натискання на "Вийти з акаунта"
+        // Обробка натискання на "Выйти"
         logoutLink.addEventListener("click", (e) => {
             e.preventDefault();
             signOut(auth)
