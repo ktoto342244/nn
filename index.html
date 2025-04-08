@@ -123,84 +123,83 @@
             position: absolute;
             top: 40px;
             right: 0;
-            background-color: #282828;
-            border-radius: 10px;
             width: 300px;
-            padding: 15px;
+            background-color: #212121;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             z-index: 20;
             display: none;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
-        .user-info {
-            margin-bottom: 15px;
-            border-bottom: 1px solid #3a3a3a;
-            padding-bottom: 10px;
-            display: flex;
-            align-items: center;
+        .profile {
+            padding: 16px;
+            border-bottom: 1px solid #333;
         }
 
-        .user-info .avatar {
+        .profile .avatar {
+            background: #555;
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: #555;
             display: inline-block;
             vertical-align: middle;
-            text-align: center;
-            line-height: 40px;
-            font-weight: bold;
-            margin-right: 10px;
             background-size: cover;
             background-position: center;
         }
 
-        .user-info div {
+        .profile .info {
             display: inline-block;
             vertical-align: middle;
+            margin-left: 10px;
         }
 
-        .user-info .channel-name {
-            font-weight: 500;
-            font-size: 16px;
+        .profile .info .name {
+            font-weight: bold;
         }
 
-        .user-info .account-name {
-            font-size: 14px;
+        .profile .info .handle {
             color: #aaa;
+            font-size: 14px;
         }
 
-        .user-info a {
-            color: #3ea6ff;
-            font-size: 14px;
+        .profile .info a {
             display: block;
-            margin-top: 5px;
+            font-size: 13px;
+            color: #3ea6ff;
+            margin-top: 4px;
             text-decoration: none;
         }
 
         .menu-item {
             display: flex;
             align-items: center;
-            padding: 10px;
-            border-bottom: 1px solid #3a3a3a;
+            padding: 12px 16px;
+            border-bottom: 1px solid #333;
             cursor: pointer;
-            transition: background 0.2s;
             color: #fff;
             text-decoration: none;
-            font-size: 14px;
         }
 
         .menu-item:hover {
             background-color: #383838;
         }
 
-        .menu-item:last-child {
-            border-bottom: none;
+        .menu-item span {
+            margin-left: 12px;
         }
 
-        .menu-item img {
+        .section {
+            border-top: 1px solid #333;
+        }
+
+        .menu-footer {
+            border-top: 1px solid #333;
+        }
+
+        .icon {
             width: 20px;
-            margin-right: 15px;
+            text-align: center;
         }
 
         /* Бічна панель */
@@ -435,30 +434,36 @@
             <div class="user-container" id="user-container">
                 <div class="user-avatar" id="user-avatar"></div>
                 <div class="user-menu" id="user-menu">
-                    <div class="user-info">
+                    <div class="profile">
                         <div class="avatar" id="menu-avatar"></div>
-                        <div>
-                            <div class="channel-name" id="menu-channel-name">Вы ещё не создали канал</div>
-                            <div class="account-name" id="menu-account-name"></div>
-                            <a href="https://ktoto342244.github.io/nn/profile.html" id="view-channel">Переглянути канал</a>
+                        <div class="info">
+                            <div class="name" id="menu-channel-name">Вы ещё не создали канал</div>
+                            <div class="handle" id="menu-account-name"></div>
+                            <a href="https://ktoto342244.github.io/nn/profile.html">Переглянути канал</a>
                         </div>
                     </div>
-                    <a href="https://myaccount.google.com" target="_blank" class="menu-item">
-                        <img src="https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png" alt="Google"> Аккаунт Google
-                    </a>
-                    <div class="menu-item">Змінити акаунт</div>
-                    <div class="menu-item" id="logout-link">Вийти</div>
-                    <a href="https://studio.youtube.com" target="_blank" class="menu-item">Творча студія YouTube</a>
-                    <div class="menu-item">Покупки і платні підписки</div>
-                    <a href="https://ktoto342244.github.io/nn/profile.html" class="menu-item">Ваші дані на YouTube</a>
-                    <div class="menu-item">Тема: як на пристрої</div>
-                    <div class="menu-item">Мова: Русский</div>
-                    <div class="menu-item">Безпечний режим: вимк.</div>
-                    <div class="menu-item">Країна: Україна</div>
-                    <div class="menu-item">Швидкі клавіші</div>
-                    <div class="menu-item">Налаштування</div>
-                    <div class="menu-item">Довідка</div>
-                    <div class="menu-item">Надіслати відгук</div>
+
+                    <a href="https://myaccount.google.com" target="_blank" class="menu-item"><div class="icon">🔤</div><span>Аккаунт Google</span></a>
+                    <div class="menu-item"><div class="icon">🔁</div><span>Змінити акаунт</span></div>
+                    <div class="menu-item" id="logout-link"><div class="icon">🚪</div><span>Вийти</span></div>
+
+                    <a href="https://studio.youtube.com" target="_blank" class="menu-item"><div class="icon">🎬</div><span>Творча студія YouTube</span></a>
+                    <div class="menu-item"><div class="icon">💳</div><span>Покупки і платні підписки</span></div>
+
+                    <div class="section">
+                        <a href="https://ktoto342244.github.io/nn/profile.html" class="menu-item"><div class="icon">🔍</div><span>Ваші дані на YouTube</span></a>
+                        <div class="menu-item"><div class="icon">🎨</div><span>Тема: як на пристрої</span></div>
+                        <div class="menu-item"><div class="icon">🌐</div><span>Мова: Русский</span></div>
+                        <div class="menu-item"><div class="icon">🔒</div><span>Безпечний режим: вимк.</span></div>
+                        <div class="menu-item"><div class="icon">🌍</div><span>Країна: Україна</span></div>
+                        <div class="menu-item"><div class="icon">⌨</div><span>Швидкі клавіші</span></div>
+                    </div>
+
+                    <div class="menu-footer">
+                        <div class="menu-item"><div class="icon">⚙</div><span>Налаштування</span></div>
+                        <div class="menu-item"><div class="icon">❓</div><span>Довідка</span></div>
+                        <div class="menu-item"><div class="icon">💬</div><span>Надіслати відгук</span></div>
+                    </div>
                 </div>
             </div>
         </div>
