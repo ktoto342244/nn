@@ -101,10 +101,23 @@
 
         .user-container {
             position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            background-color: #aaa;
+            border-radius: 50%;
+            margin-left: 24px;
+            cursor: pointer;
+            background-size: cover;
+            background-position: center;
         }
 
         .user-name {
-            margin-left: 24px;
+            margin-left: 8px;
             font-size: 14px;
             cursor: pointer;
         }
@@ -352,6 +365,7 @@
             <div class="icon">🔔</div>
             <a href="login.html" class="login-btn" id="login-btn">Увійти</a>
             <div class="user-container">
+                <div class="user-avatar" id="header-avatar" style="display: none;"></div>
                 <span class="user-name" id="user-name" style="display: none;"></span>
                 <div class="user-menu" id="user-menu" style="display: none;">
                     <div class="menu-item">
@@ -458,17 +472,21 @@
         const userDisplayName = document.getElementById("user-display-name");
         const userEmail = document.getElementById("user-email");
         const userAvatar = document.getElementById("user-avatar");
+        const headerAvatar = document.getElementById("header-avatar");
         const userMenu = document.getElementById("user-menu");
         const logoutBtn = document.getElementById("logout-btn");
 
-        // Показ/приховування меню при кліку на ім'я користувача
-        userName.addEventListener("click", () => {
+        // Показ/приховування меню при кліку на аватар або ім'я користувача
+        const toggleMenu = () => {
             userMenu.style.display = userMenu.style.display === "block" ? "none" : "block";
-        });
+        };
+
+        headerAvatar.addEventListener("click", toggleMenu);
+        userName.addEventListener("click", toggleMenu);
 
         // Приховувати меню при кліку поза ним
         document.addEventListener("click", (event) => {
-            if (!userName.contains(event.target) && !userMenu.contains(event.target)) {
+            if (!headerAvatar.contains(event.target) && !userName.contains(event.target) && !userMenu.contains(event.target)) {
                 userMenu.style.display = "none";
             }
         });
@@ -489,16 +507,19 @@
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 loginBtn.style.display = "none";
+                headerAvatar.style.display = "block";
                 userName.style.display = "block";
                 userName.textContent = user.displayName;
                 userDisplayName.textContent = user.displayName;
                 userEmail.textContent = `@${user.email.split('@')[0]} • 0 підписників • 2 відео`;
                 if (user.photoURL) {
+                    headerAvatar.style.backgroundImage = `url(${user.photoURL})`;
                     userAvatar.style.backgroundImage = `url(${user.photoURL})`;
                     userAvatar.style.backgroundSize = "cover";
                 }
             } else {
                 loginBtn.style.display = "block";
+                headerAvatar.style.display = "none";
                 userName.style.display = "none";
                 window.location.href = "login.html";
             }
