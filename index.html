@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="uk">
+<!DOCTYPE html><html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,427 +11,427 @@
             padding: 0;
             box-sizing: border-box;
         }
+    /* Основний стиль */
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        background-color: #0f0f0f;
+        color: #fff;
+    }
 
-        /* Основний стиль */
-        body {
-            font-family: 'Roboto', Arial, sans-serif;
-            background-color: #0f0f0f;
-            color: #fff;
-        }
+    /* Шапка */
+    header {
+        width: 100%;
+        height: 56px;
+        background-color: #212121;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 16px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+    }
 
-        /* Шапка */
-        header {
-            width: 100%;
-            height: 56px;
-            background-color: #212121;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 16px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 10;
-        }
+    .header-left {
+        display: flex;
+        align-items: center;
+    }
 
-        .header-left {
-            display: flex;
-            align-items: center;
-        }
+    .menu-icon {
+        font-size: 24px;
+        margin-right: 24px;
+        color: #fff;
+        cursor: pointer;
+    }
 
-        .menu-icon {
-            font-size: 24px;
-            margin-right: 24px;
-            color: #fff;
-            cursor: pointer;
-        }
+    .logo img {
+        height: 24px;
+    }
 
-        .logo img {
-            height: 24px;
-        }
+    .search-bar {
+        flex-grow: 1;
+        max-width: 600px;
+        display: flex;
+        align-items: center;
+    }
 
-        .search-bar {
-            flex-grow: 1;
-            max-width: 600px;
-            display: flex;
-            align-items: center;
-        }
+    .search-bar input {
+        width: 100%;
+        padding: 8px;
+        background-color: #121212;
+        border: 1px solid #303030;
+        border-right: none;
+        border-radius: 2px 0 0 2px;
+        color: #fff;
+    }
 
-        .search-bar input {
-            width: 100%;
-            padding: 8px;
-            background-color: #121212;
-            border: 1px solid #303030;
-            border-right: none;
-            border-radius: 2px 0 0 2px;
-            color: #fff;
-        }
+    .search-btn {
+        padding: 8px 16px;
+        background-color: #303030;
+        border: 1px solid #303030;
+        border-radius: 0 2px 2px 0;
+        cursor: pointer;
+        color: #fff;
+    }
 
-        .search-btn {
-            padding: 8px 16px;
-            background-color: #303030;
-            border: 1px solid #303030;
-            border-radius: 0 2px 2px 0;
-            cursor: pointer;
-            color: #fff;
-        }
+    .header-right {
+        display: flex;
+        align-items: center;
+    }
 
-        .header-right {
-            display: flex;
-            align-items: center;
-        }
+    .icon {
+        font-size: 24px;
+        margin-left: 24px;
+        color: #fff;
+        cursor: pointer;
+    }
 
-        .icon {
-            font-size: 24px;
-            margin-left: 24px;
-            color: #fff;
-            cursor: pointer;
-        }
+    .login-btn {
+        padding: 8px 16px;
+        background-color: #065fd4;
+        color: #fff;
+        border: none;
+        border-radius: 2px;
+        margin-left: 24px;
+        text-decoration: none;
+        font-size: 14px;
+        cursor: pointer;
+    }
 
-        .login-btn {
-            padding: 8px 16px;
-            background-color: #065fd4;
-            color: #fff;
-            border: none;
-            border-radius: 2px;
-            margin-left: 24px;
-            text-decoration: none;
-            font-size: 14px;
-            cursor: pointer;
-        }
+    /* Стилі для аватара та випадаючого меню */
+    .user-container {
+        position: relative;
+        margin-left: 24px;
+        display: none;
+        align-items: center;
+        cursor: pointer;
+    }
 
-        /* Стилі для аватара та випадаючого меню */
-        .user-container {
-            position: relative;
-            margin-left: 24px;
-            display: none;
-            align-items: center;
-            cursor: pointer;
-        }
+    .user-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: #aaa;
+        background-size: cover;
+        background-position: center;
+    }
 
-        .user-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background-color: #aaa;
-            background-size: cover;
-            background-position: center;
-        }
+    /* Нове випадаюче меню */
+    .user-menu {
+        position: absolute;
+        top: 40px;
+        right: 0;
+        width: 300px;
+        background-color: #212121;
+        border-radius: 10px;
+        overflow: hidden;
+        z-index: 20;
+        display: none;
+    }
 
-        /* Нове випадаюче меню */
-        .user-menu {
-            position: absolute;
-            top: 40px;
-            right: 0;
-            width: 300px;
-            background-color: #212121;
-            border-radius: 10px;
-            overflow: hidden;
-            z-index: 20;
-            display: none;
-        }
+    .section {
+        border-bottom: 1px solid #3c3c3c;
+        padding: 10px 0;
+    }
 
-        .section {
-            border-bottom: 1px solid #3c3c3c;
-            padding: 10px 0;
-        }
+    .section:last-child {
+        border-bottom: none;
+    }
 
-        .section:last-child {
-            border-bottom: none;
-        }
+    .user-info {
+        padding: 10px 16px;
+    }
 
-        .user-info {
-            padding: 10px 16px;
-        }
+    .user-info p {
+        margin: 2px 0;
+    }
 
-        .user-info p {
-            margin: 2px 0;
-        }
+    .user-info a {
+        color: #3ea6ff;
+        text-decoration: none;
+        font-size: 14px;
+    }
 
-        .user-info a {
-            color: #3ea6ff;
-            text-decoration: none;
-            font-size: 14px;
-        }
+    .item {
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        color: #fff;
+        text-decoration: none;
+    }
 
-        .item {
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            color: #fff;
-            text-decoration: none;
-        }
+    .item:hover {
+        background-color: #383838;
+    }
 
-        .item:hover {
-            background-color: #383838;
-        }
+    .icon {
+        width: 24px;
+        height: 24px;
+        background-color: #5f5f5f;
+        border-radius: 50%;
+        margin-right: 16px;
+    }
 
-        .icon {
-            width: 24px;
-            height: 24px;
-            background-color: #5f5f5f;
-            border-radius: 50%;
-            margin-right: 16px;
-        }
+    /* Бічна панель */
+    .sidebar {
+        width: 240px;
+        background-color: #212121;
+        position: fixed;
+        top: 56px;
+        left: 0;
+        bottom: 0;
+        padding: 12px;
+        overflow-y: auto;
+    }
 
-        /* Бічна панель */
-        .sidebar {
-            width: 240px;
-            background-color: #212121;
-            position: fixed;
-            top: 56px;
-            left: 0;
-            bottom: 0;
-            padding: 12px;
-            overflow-y: auto;
-        }
+    .sidebar-item {
+        padding: 12px 16px;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        cursor: pointer;
+    }
 
-        .sidebar-item {
-            padding: 12px 16px;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            color: #fff;
-            cursor: pointer;
-        }
+    .sidebar-item.active {
+        background-color: #383838;
+    }
 
-        .sidebar-item.active {
-            background-color: #383838;
-        }
+    .sidebar-item:hover {
+        background-color: #303030;
+    }
 
-        .sidebar-item:hover {
-            background-color: #303030;
-        }
+    .sidebar-item::before {
+        content: '';
+        margin-right: 24px;
+    }
 
-        .sidebar-item::before {
-            content: '';
-            margin-right: 24px;
-        }
+    hr {
+        border: none;
+        border-top: 1px solid #303030;
+        margin: 8px 0;
+    }
 
-        hr {
-            border: none;
-            border-top: 1px solid #303030;
-            margin: 8px 0;
-        }
+    /* Основний контент */
+    main {
+        margin-left: 240px;
+        margin-top: 56px;
+        padding: 24px;
+    }
 
-        /* Основний контент */
-        main {
-            margin-left: 240px;
-            margin-top: 56px;
-            padding: 24px;
-        }
+    /* Навігаційна панель */
+    .nav-bar {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 24px;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 
-        /* Навігаційна панель */
-        .nav-bar {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 24px;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
+    .nav-item {
+        padding: 8px 16px;
+        background-color: #303030;
+        border-radius: 16px;
+        font-size: 14px;
+        cursor: pointer;
+    }
 
-        .nav-item {
-            padding: 8px 16px;
-            background-color: #303030;
-            border-radius: 16px;
-            font-size: 14px;
-            cursor: pointer;
-        }
+    .nav-item.active {
+        background-color: #fff;
+        color: #0f0f0f;
+    }
 
-        .nav-item.active {
-            background-color: #fff;
-            color: #0f0f0f;
-        }
+    /* Сітка відео */
+    .video-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 24px;
+    }
 
-        /* Сітка відео */
-        .video-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
+    .video-card {
+        width: calc(25% - 12px);
+    }
 
+    .thumbnail {
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+        background-color: #ccc;
+        margin-bottom: 8px;
+    }
+
+    .video-info {
+        display: flex;
+    }
+
+    .channel-icon {
+        width: 36px;
+        height: 36px;
+        background-color: #aaa;
+        border-radius: 50%;
+        margin-right: 12px;
+    }
+
+    .video-details h3 {
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 4px;
+    }
+
+    .video-details p {
+        font-size: 12px;
+        color: #aaa;
+    }
+
+    /* Секція Shorts */
+    .shorts-section {
+        margin-top: 24px;
+    }
+
+    .shorts-section h2 {
+        font-size: 18px;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+    }
+
+    .shorts-section h2::before {
+        content: '🎥';
+        margin-right: 8px;
+    }
+
+    .shorts-grid {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+    }
+
+    .shorts-card {
+        width: 150px;
+    }
+
+    .shorts-thumbnail {
+        width: 100%;
+        height: 0;
+        padding-bottom: 177.78%;
+        background-color: #ccc;
+        margin-bottom: 8px;
+    }
+
+    .shorts-card h3 {
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 4px;
+    }
+
+    .shorts-card p {
+        font-size: 12px;
+        color: #aaa;
+    }
+
+    /* Адаптивність */
+    @media (max-width: 1024px) {
         .video-card {
-            width: calc(25% - 12px);
-        }
-
-        .thumbnail {
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%;
-            background-color: #ccc;
-            margin-bottom: 8px;
-        }
-
-        .video-info {
-            display: flex;
-        }
-
-        .channel-icon {
-            width: 36px;
-            height: 36px;
-            background-color: #aaa;
-            border-radius: 50%;
-            margin-right: 12px;
-        }
-
-        .video-details h3 {
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-
-        .video-details p {
-            font-size: 12px;
-            color: #aaa;
-        }
-
-        /* Секція Shorts */
-        .shorts-section {
-            margin-top: 24px;
-        }
-
-        .shorts-section h2 {
-            font-size: 18px;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-        }
-
-        .shorts-section h2::before {
-            content: '🎥';
-            margin-right: 8px;
-        }
-
-        .shorts-grid {
-            display: flex;
-            gap: 16px;
-            overflow-x: auto;
+            width: calc(33.33% - 12px);
         }
 
         .shorts-card {
-            width: 150px;
+            width: 120px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .video-card {
+            width: calc(50% - 12px);
         }
 
-        .shorts-thumbnail {
+        .sidebar {
+            width: 72px;
+        }
+
+        .sidebar-item {
+            justify-content: center;
+            font-size: 0;
+        }
+
+        .sidebar-item::before {
+            margin-right: 0;
+        }
+
+        main {
+            margin-left: 72px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .video-card {
             width: 100%;
-            height: 0;
-            padding-bottom: 177.78%;
-            background-color: #ccc;
-            margin-bottom: 8px;
         }
 
-        .shorts-card h3 {
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 4px;
+        .sidebar {
+            display: none;
         }
 
-        .shorts-card p {
-            font-size: 12px;
-            color: #aaa;
+        main {
+            margin-left: 0;
         }
 
-        /* Адаптивність */
-        @media (max-width: 1024px) {
-            .video-card {
-                width: calc(33.33% - 12px);
-            }
-
-            .shorts-card {
-                width: 120px;
-            }
+        .user-menu {
+            width: 250px;
         }
+    }
 
-        @media (max-width: 768px) {
-            .video-card {
-                width: calc(50% - 12px);
-            }
+    /*Менюшка */
+    body {
+        background-color: #181818;
+        color: white;
+        font-family: Arial, sans-serif;
+    }
 
-            .sidebar {
-                width: 72px;
-            }
+    .section {
+        margin: 20px 0;
+    }
 
-            .sidebar-item {
-                justify-content: center;
-                font-size: 0;
-            }
+    .item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
 
-            .sidebar-item::before {
-                margin-right: 0;
-            }
+    .item:hover {
+        background-color: #303030;
+    }
 
-            main {
-                margin-left: 72px;
-            }
-        }
+    .material-icons {
+        font-size: 20px;
+        color: #aaa;
+    }
 
-        @media (max-width: 480px) {
-            .video-card {
-                width: 100%;
-            }
+    a.item {
+        text-decoration: none;
+        color: inherit;
+    }
 
-            .sidebar {
-                display: none;
-            }
+    #menu-account-name {
+        padding: 15px;
+        font-weight: bold;
+    }
 
-            main {
-                margin-left: 0;
-            }
+    #menu-account-name span {
+        font-weight: normal;
+        color: #aaa;
+    }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/128/1384/1384060.png">
 
-            .user-menu {
-                width: 250px;
-            }
-        }
-
-        /* Менюшка */
-        body {
-            background-color: #181818;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
-
-        .section {
-            margin: 20px 0;
-        }
-
-        .item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 15px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .item:hover {
-            background-color: #303030;
-        }
-
-        .material-icons {
-            font-size: 20px;
-            color: #aaa;
-        }
-
-        a.item {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        #menu-account-name {
-            padding: 15px;
-            font-weight: bold;
-        }
-
-        #menu-account-name span {
-            font-weight: normal;
-            color: #aaa;
-        }
-    </style>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/128/1384/1384060.png">
 </head>
 <body>
     <header>
@@ -444,11 +443,11 @@
         </div>
         <div class="search-bar">
             <input type="text" placeholder="Пошук">
-            <button class="search-btn">🔍</button>
+            <button class="search-btn"></button>
         </div>
         <div class="header-right">
-            <div class="icon">📹</div>
-            <div class="icon">🔔</div>
+            <div class="icon"></div>
+            <div class="icon"></div>
             <button class="login-btn" id="login-btn">Увійти</button>
             <div class="user-container" id="user-container">
                 <div class="user-avatar" id="user-avatar"></div>
@@ -456,287 +455,208 @@
                     <div class="section user-info">
                         <p><strong id="menu-channel-name">Вы ещё не создали канал</strong></p>
                         <p id="menu-account-name"></p>
-                        <a href="https://ktoto342244.github.io/nn/profile.html" class="item">Переглянути канал</a>
+                        <a href="https://ktoto342244.github.io/nn/profile.html">Переглянути канал</a>
                     </div>
-                    <div class="section">
-                        <a href="https://myaccount.google.com" target="_blank" class="item">
-                            <span class="material-icons">account_circle</span>Аккаунт Google
-                        </a>
-                        <div class="item" id="switch-account"><span class="material-icons">switch_account</span>Змінити акаунт</div>
-                        <div class="item" id="logout-link"><span class="material-icons">logout</span>Вийти</div>
-                    </div>
+                        <div class="section">
+                            <a href="https://myaccount.google.com" target="_blank" class="item">
+                                <span class="material-icons">account_circle</span>Аккаунт Google
+                            </a>
+                            <div class="item"><span class="material-icons">switch_account</span>Змінити акаунт</div>
+                            <div class="item" id="logout-link"><span class="material-icons">logout</span>Вийти</div>
+                        </div>
                     <div class="section">
                         <a href="https://studio.youtube.com" target="_blank" class="item">
                             <span class="material-icons">video_settings</span>Творча студія YouTube
                         </a>
-                        <div class="item" id="purchases"><span class="material-icons">paid</span>Покупки і платні підписки</div>
+                        <div class="item"><span class="material-icons">paid</span>Покупки і платні підписки</div>
                     </div>
                     <div class="section">
                         <a href="https://ktoto342244.github.io/nn/profile.html" class="item">
                             <span class="material-icons">person</span>Ваші дані на YouTube
                         </a>
-                        <div class="item" id="theme"><span class="material-icons">brightness_6</span>Тема: як на пристрої</div>
-                        <div class="item" id="language"><span class="material-icons">language</span>Мова: Русский</div>
-                        <div class="item" id="safe-mode"><span class="material-icons">visibility_off</span>Безпечний режим: вимк.</div>
-                        <div class="item" id="country"><span class="material-icons">flag</span>Країна: Україна</div>
-                        <div class="item" id="shortcuts"><span class="material-icons">keyboard</span>Швидкі клавіші</div>
+                        <div class="item"><span class="material-icons">brightness_6</span>Тема: як на пристрої</div>
+                        <div class="item"><span class="material-icons">language</span>Мова: Русский</div>
+                        <div class="item"><span class="material-icons">visibility_off</span>Безпечний режим: вимк.</div>
+                        <div class="item"><span class="material-icons">flag</span>Країна: Україна</div>
+                        <div class="item"><span class="material-icons">keyboard</span>Швидкі клавіші</div>
                     </div>
                     <div class="section">
-                        <div class="item" id="settings"><span class="material-icons">settings</span>Налаштування</div>
-                        <div class="item" id="help"><span class="material-icons">help</span>Довідка</div>
-                        <div class="item" id="feedback"><span class="material-icons">feedback</span>Надіслати відгук</div>
+                        <div class="item"><span class="material-icons">settings</span>Налаштування</div>
+                        <div class="item"><span class="material-icons">help</span>Довідка</div>
+                        <div class="item"><span class="material-icons">feedback</span>Надіслати відгук</div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+<div class="sidebar">
+    <div class="sidebar-item active">🏠 Головна</div>
+    <div class="sidebar-item">🎥 Shorts</div>
+    <div class="sidebar-item">📺 Підписки</div>
+    <div class="sidebar-item">📚 Бібліотека</div>
+    <hr>
+    <div class="sidebar-item">📜 Історія</div>
+    <div class="sidebar-item">🎬 Ваші відео</div>
+    <div class="sidebar-item">⏰ Переглянути пізніше</div>
+    <hr>
+    <div class="sidebar-item">🎵 Музика</div>
+    <div class="sidebar-item">🎮 Ігри</div>
+</div>
 
-    <div class="sidebar">
-        <div class="sidebar-item active">🏠 Головна</div>
-        <div class="sidebar-item">🎥 Shorts</div>
-        <div class="sidebar-item">📺 Підписки</div>
-        <div class="sidebar-item">📚 Бібліотека</div>
-        <hr>
-        <div class="sidebar-item">📜 Історія</div>
-        <div class="sidebar-item">🎬 Ваші відео</div>
-        <div class="sidebar-item">⏰ Переглянути пізніше</div>
-        <hr>
-        <div class="sidebar-item">🎵 Музика</div>
-        <div class="sidebar-item">🎮 Ігри</div>
+<main>
+    <div class="nav-bar">
+        <div class="nav-item active">Усе</div>
+        <div class="nav-item">Відео</div>
+        <div class="nav-item">Музика</div>
+        <div class="nav-item">Новини</div>
+        <div class="nav-item">Сейви в шортах</div>
+        <div class="nav-item">Живі трансляції</div>
     </div>
 
-    <main>
-        <div class="nav-bar">
-            <div class="nav-item active">Усе</div>
-            <div class="nav-item">Відео</div>
-            <div class="nav-item">Музика</div>
-            <div class="nav-item">Новини</div>
-            <div class="nav-item">Сейви в шортах</div>
-            <div class="nav-item">Живі трансляції</div>
+    <section class="video-grid">
+        <div class="video-card">
+            <div class="thumbnail"></div>
+            <div class="video-info">
+                <div class="channel-icon"></div>
+                <div class="video-details">
+                    <h3>СМЕРТЕЛЬНАЯ КАПЕЛЬ в Майнкрафт!</h3>
+                    <p>Машенька [ Lia's bar + Функцыя]</p>
+                    <p>125 тис. переглядів • 11 годин тому</p>
+                </div>
+            </div>
         </div>
-
-        <section class="video-grid">
-            <div class="video-card">
-                <div class="thumbnail"></div>
-                <div class="video-info">
-                    <div class="channel-icon"></div>
-                    <div class="video-details">
-                        <h3>СМЕРТЕЛЬНАЯ КАПЕЛЬ в Майнкрафт!</h3>
-                        <p>Машенька [ Lia's bar + Функцыя]</p>
-                        <p>125 тис. переглядів • 11 годин тому</p>
-                    </div>
+        <div class="video-card">
+            <div class="thumbnail"></div>
+            <div class="video-info">
+                <div class="channel-icon"></div>
+                <div class="video-details">
+                    <h3>ДОКУМЕНТЫ: Кольцевые инструкции...</h3>
+                    <p>SuperCrastan</p>
+                    <p>164 тис. переглядів • 7 годин тому</p>
                 </div>
             </div>
-            <div class="video-card">
-                <div class="thumbnail"></div>
-                <div class="video-info">
-                    <div class="channel-icon"></div>
-                    <div class="video-details">
-                        <h3>ДОКУМЕНТЫ: Кольцевые инструкции...</h3>
-                        <p>SuperCrastan</p>
-                        <p>164 тис. переглядів • 7 годин тому</p>
-                    </div>
+        </div>
+        <div class="video-card">
+            <div class="thumbnail"></div>
+            <div class="video-info">
+                <div class="channel-icon"></div>
+                <div class="video-details">
+                    <h3>Зарядил ли 1000 человек взрыв...</h3>
+                    <p>эксченджимонстр</p>
+                    <p>1,6 млн переглядів • 4 тижні тому</p>
                 </div>
             </div>
-            <div class="video-card">
-                <div class="thumbnail"></div>
-                <div class="video-info">
-                    <div class="channel-icon"></div>
-                    <div class="video-details">
-                        <h3>Зарядил ли 1000 человек взрыв...</h3>
-                        <p>эксченджимонстр</p>
-                        <p>1,6 млн переглядів • 4 тижні тому</p>
-                    </div>
-                </div>
+        </div>
+    </section>
+
+    <section class="shorts-section">
+        <h2>🎥 Shorts</h2>
+        <div class="shorts-grid">
+            <div class="shorts-card">
+                <div class="shorts-thumbnail"></div>
+                <h3>Wang Ling using 0.1% power...</h3>
+                <p>2 млн переглядів</p>
             </div>
-        </section>
-
-        <section class="shorts-section">
-            <h2>🎥 Shorts</h2>
-            <div class="shorts-grid">
-                <div class="shorts-card">
-                    <div class="shorts-thumbnail"></div>
-                    <h3>Wang Ling using 0.1% power...</h3>
-                    <p>2 млн переглядів</p>
-                </div>
-                <div class="shorts-card">
-                    <div class="shorts-thumbnail"></div>
-                    <h3>НЕНОРМАЛЬНЫЕ ВЕЩИ В...</h3>
-                    <p>1,1 млн переглядів</p>
-                </div>
-                <div class="shorts-card">
-                    <div class="shorts-thumbnail"></div>
-                    <h3>Дафна достигла Джокера...</h3>
-                    <p>3,1 млн переглядів</p>
-                </div>
+            <div class="shorts-card">
+                <div class="shorts-thumbnail"></div>
+                <h3>НЕНОРМАЛЬНЫЕ ВЕЩИ В...</h3>
+                <p>1,1 млн переглядів</p>
             </div>
-        </section>
-    </main>
+            <div class="shorts-card">
+                <div class="shorts-thumbnail"></div>
+                <h3>Дафна достигла Джокера...</h3>
+                <p>3,1 млн переглядів</p>
+            </div>
+        </div>
+    </section>
+</main>
 
-    <!-- Firebase SDK -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+<!-- Firebase SDK -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
-        // Firebase конфігурація
-        const firebaseConfig = {
-            apiKey: "AIzaSyBJj2RrE1dcvQzCrk-Kgxq6vo-rqf7nCSo",
-            authDomain: "starting-afd61.firebaseapp.com",
-            projectId: "starting-afd61",
-            storageBucket: "starting-afd61.firebasestorage.app",
-            messagingSenderId: "397305334150",
-            appId: "1:397305334150:web:3bb68c76c229963d538407",
-            measurementId: "G-3J4EJ6M630"
-        };
+    // Firebase конфігурація
+    const firebaseConfig = {
+        apiKey: "AIzaSyBJj2RrE1dcvQzCrk-Kgxq6vo-rqf7nCSo",
+        authDomain: "starting-afd61.firebaseapp.com",
+        projectId: "starting-afd61",
+        storageBucket: "starting-afd61.firebasestorage.app",
+        messagingSenderId: "397305334150",
+        appId: "1:397305334150:web:3bb68c76c229963d538407",
+        measurementId: "G-3J4EJ6M630"
+    };
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const provider = new GoogleAuthProvider();
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
 
-        const loginBtn = document.getElementById("login-btn");
-        const userContainer = document.getElementById("user-container");
-        const userAvatar = document.getElementById("user-avatar");
-        const userMenu = document.getElementById("user-menu");
-        const logoutLink = document.getElementById("logout-link");
-        const menuChannelName = document.getElementById("menu-channel-name");
-        const menuAccountName = document.getElementById("menu-account-name");
+    const loginBtn = document.getElementById("login-btn");
+    const userContainer = document.getElementById("user-container");
+    const userAvatar = document.getElementById("user-avatar");
+    const userMenu = document.getElementById("user-menu");
+    const logoutLink = document.getElementById("logout-link");
+    const menuChannelName = document.getElementById("menu-channel-name");
+    const menuAccountName = document.getElementById("menu-account-name");
 
-        // Додаткові елементи меню
-        const switchAccount = document.getElementById("switch-account");
-        const purchases = document.getElementById("purchases");
-        const theme = document.getElementById("theme");
-        const language = document.getElementById("language");
-        const safeMode = document.getElementById("safe-mode");
-        const country = document.getElementById("country");
-        const shortcuts = document.getElementById("shortcuts");
-        const settings = document.getElementById("settings");
-        const help = document.getElementById("help");
-        const feedback = document.getElementById("feedback");
+    // Показ/приховування меню при кліку на аватар
+    const toggleMenu = () => {
+        userMenu.style.display = userMenu.style.display === "block" ? "none" : "block";
+    };
 
-        // Показ/приховування меню при кліку на аватар
-        const toggleMenu = () => {
-            userMenu.style.display = userMenu.style.display === "block" ? "none" : "block";
-        };
+    userAvatar.addEventListener("click", toggleMenu);
 
-        userAvatar.addEventListener("click", toggleMenu);
+    // Приховувати меню при кліку поза ним
+    document.addEventListener("click", (event) => {
+        if (!userAvatar.contains(event.target) && !userMenu.contains(event.target)) {
+            userMenu.style.display = "none";
+        }
+    });
 
-        // Приховувати меню при кліку поза ним
-        document.addEventListener("click", (event) => {
-            if (!userAvatar.contains(event.target) && !userMenu.contains(event.target)) {
+    // Обробка натискання на "Вийти"
+    logoutLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        signOut(auth)
+            .then(() => {
+                alert("Ви успішно вийшли з облікового запису.");
                 userMenu.style.display = "none";
-            }
-        });
+            })
+            .catch((error) => {
+                console.error("Помилка виходу:", error);
+                alert("Помилка виходу. Спробуйте ще раз.");
+            });
+    });
 
-        // Обробка натискання на "Вийти"
-        logoutLink.addEventListener("click", (e) => {
-            e.preventDefault();
-            signOut(auth)
-                .then(() => {
-                    alert("Ви успішно вийшли з облікового запису.");
-                    userMenu.style.display = "none";
-                })
-                .catch((error) => {
-                    console.error("Помилка виходу:", error);
-                    alert("Помилка виходу. Спробуйте ще раз.");
-                });
-        });
+    // Перевірка стану автентифікації
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // Користувач увійшов
+            loginBtn.style.display = "none";
+            userContainer.style.display = "flex";
+            menuChannelName.textContent = user.displayName || "Вы ещё не создали канал";
+            menuAccountName.textContent = `@${user.email.split('@')[0]}`;
+            userAvatar.style.backgroundImage = user.photoURL ? `url(${user.photoURL})` : `url('https://cdn-icons-png.flaticon.com/128/149/149071.png')`;
+        } else {
+            // Користувач не увійшов
+            loginBtn.style.display = "block";
+            userContainer.style.display = "none";
+            userMenu.style.display = "none";
+        }
+    });
 
-        // Обробка натискання на "Змінити акаунт"
-        switchAccount.addEventListener("click", (e) => {
-            e.preventDefault();
-            signInWithPopup(auth, provider)
-                .then((result) => {
-                    console.log("Акаунт змінено:", result.user);
-                    alert("Акаунт успішно змінено!");
-                })
-                .catch((error) => {
-                    console.error("Помилка зміни акаунта:", error);
-                    alert("Помилка зміни акаунта. Спробуйте ще раз.");
-                });
-        });
+    // Обробка натискання на кнопку "Увійти"
+    loginBtn.addEventListener("click", () => {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                console.log("Успішний вхід:", result.user);
+            })
+            .catch((error) => {
+                console.error("Помилка входу:", error);
+                alert("Помилка входу. Спробуйте ще раз.");
+            });
+    });
+</script>
 
-        // Обробка натискання на "Покупки і платні підписки"
-        purchases.addEventListener("click", (e) => {
-            e.preventDefault();
-            alert("Цей розділ ще в розробці. Перегляньте ваші покупки та підписки пізніше!");
-        });
-
-        // Обробка натискання на "Тема: як на пристрої"
-        theme.addEventListener("click", (e) => {
-            e.preventDefault();
-            alert("Тема змінена на: як на пристрої");
-        });
-
-        // Обробка натискання на "Мова: Русский"
-        language.addEventListener("click", (e) => {
-            e.preventDefault();
-            alert("Мова змінена на: Русский");
-        });
-
-        // Обробка натискання на "Безпечний режим: вимк."
-        safeMode.addEventListener("click", (e) => {
-            e.preventDefault();
-            alert("Безпечний режим: увімкнено/вимкнено");
-        });
-
-        // Обробка натискання на "Країна: Україна"
-        country.addEventListener("click", (e) => {
-            e.preventDefault();
-            alert("Країна змінена на: Україна");
-        });
-
-        // Обробка натискання на "Швидкі клавіші"
-        shortcuts.addEventListener("click", (e) => {
-            e.preventDefault();
-            alert("Список швидких клавіш: \n- Ctrl + S: Зберегти\n- Ctrl + Z: Скасувати");
-        });
-
-        // Обробка натискання на "Налаштування"
-        settings.addEventListener("click", (e) => {
-            e.preventDefault();
-            alert("Відкрито налаштування. Змінити параметри можна тут.");
-        });
-
-        // Обробка натискання на "Довідка"
-        help.addEventListener("click", (e) => {
-            e.preventDefault();
-            alert("Довідка: зверніться до служби підтримки за допомогою!");
-        });
-
-        // Обробка натискання на "Надіслати відгук"
-        feedback.addEventListener("click", (e) => {
-            e.preventDefault();
-            alert("Дякуємо за ваш відгук! Напишіть нам, що ви думаєте.");
-        });
-
-        // Перевірка стану автентифікації
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                // Користувач увійшов
-                loginBtn.style.display = "none";
-                userContainer.style.display = "flex";
-                menuChannelName.textContent = user.displayName || "Вы ещё не создали канал";
-                menuAccountName.textContent = `@${user.email.split('@')[0]}`;
-                userAvatar.style.backgroundImage = user.photoURL ? `url(${user.photoURL})` : `url('https://cdn-icons-png.flaticon.com/128/149/149071.png')`;
-            } else {
-                // Користувач не увійшов
-                loginBtn.style.display = "block";
-                userContainer.style.display = "none";
-                userMenu.style.display = "none";
-            }
-        });
-
-        // Обробка натискання на кнопку "Увійти"
-        loginBtn.addEventListener("click", () => {
-            signInWithPopup(auth, provider)
-                .then((result) => {
-                    console.log("Успішний вхід:", result.user);
-                })
-                .catch((error) => {
-                    console.error("Помилка входу:", error);
-                    alert("Помилка входу. Спробуйте ще раз.");
-                });
-        });
-    </script>
 </body>
 </html>
+
