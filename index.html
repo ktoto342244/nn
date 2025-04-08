@@ -125,81 +125,55 @@
             right: 0;
             width: 300px;
             background-color: #212121;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             z-index: 20;
             display: none;
         }
 
-        .profile {
-            padding: 16px;
-            border-bottom: 1px solid #333;
+        .section {
+            border-bottom: 1px solid #3c3c3c;
+            padding: 10px 0;
         }
 
-        .profile .avatar {
-            background: #555;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: inline-block;
-            vertical-align: middle;
-            background-size: cover;
-            background-position: center;
+        .section:last-child {
+            border-bottom: none;
         }
 
-        .profile .info {
-            display: inline-block;
-            vertical-align: middle;
-            margin-left: 10px;
+        .user-info {
+            padding: 10px 16px;
         }
 
-        .profile .info .name {
-            font-weight: bold;
+        .user-info p {
+            margin: 2px 0;
         }
 
-        .profile .info .handle {
-            color: #aaa;
+        .user-info a {
+            color: #3ea6ff;
+            text-decoration: none;
             font-size: 14px;
         }
 
-        .profile .info a {
-            display: block;
-            font-size: 13px;
-            color: #3ea6ff;
-            margin-top: 4px;
-            text-decoration: none;
-        }
-
-        .menu-item {
+        .item {
+            padding: 10px 16px;
             display: flex;
             align-items: center;
-            padding: 12px 16px;
-            border-bottom: 1px solid #333;
             cursor: pointer;
+            transition: background-color 0.2s;
             color: #fff;
             text-decoration: none;
         }
 
-        .menu-item:hover {
+        .item:hover {
             background-color: #383838;
         }
 
-        .menu-item span {
-            margin-left: 12px;
-        }
-
-        .section {
-            border-top: 1px solid #333;
-        }
-
-        .menu-footer {
-            border-top: 1px solid #333;
-        }
-
         .icon {
-            width: 20px;
-            text-align: center;
+            width: 24px;
+            height: 24px;
+            background-color: #5f5f5f;
+            border-radius: 50%;
+            margin-right: 16px;
         }
 
         /* Бічна панель */
@@ -434,35 +408,32 @@
             <div class="user-container" id="user-container">
                 <div class="user-avatar" id="user-avatar"></div>
                 <div class="user-menu" id="user-menu">
-                    <div class="profile">
-                        <div class="avatar" id="menu-avatar"></div>
-                        <div class="info">
-                            <div class="name" id="menu-channel-name">Вы ещё не создали канал</div>
-                            <div class="handle" id="menu-account-name"></div>
-                            <a href="https://ktoto342244.github.io/nn/profile.html">Переглянути канал</a>
-                        </div>
+                    <div class="section user-info">
+                        <p><strong id="menu-channel-name">Вы ещё не создали канал</strong></p>
+                        <p id="menu-account-name"></p>
+                        <a href="https://ktoto342244.github.io/nn/profile.html">Переглянути канал</a>
                     </div>
-
-                    <a href="https://myaccount.google.com" target="_blank" class="menu-item"><div class="icon">🔤</div><span>Аккаунт Google</span></a>
-                    <div class="menu-item"><div class="icon">🔁</div><span>Змінити акаунт</span></div>
-                    <div class="menu-item" id="logout-link"><div class="icon">🚪</div><span>Вийти</span></div>
-
-                    <a href="https://studio.youtube.com" target="_blank" class="menu-item"><div class="icon">🎬</div><span>Творча студія YouTube</span></a>
-                    <div class="menu-item"><div class="icon">💳</div><span>Покупки і платні підписки</span></div>
-
                     <div class="section">
-                        <a href="https://ktoto342244.github.io/nn/profile.html" class="menu-item"><div class="icon">🔍</div><span>Ваші дані на YouTube</span></a>
-                        <div class="menu-item"><div class="icon">🎨</div><span>Тема: як на пристрої</span></div>
-                        <div class="menu-item"><div class="icon">🌐</div><span>Мова: Русский</span></div>
-                        <div class="menu-item"><div class="icon">🔒</div><span>Безпечний режим: вимк.</span></div>
-                        <div class="menu-item"><div class="icon">🌍</div><span>Країна: Україна</span></div>
-                        <div class="menu-item"><div class="icon">⌨</div><span>Швидкі клавіші</span></div>
+                        <a href="https://myaccount.google.com" target="_blank" class="item"><div class="icon"></div>Аккаунт Google</a>
+                        <div class="item"><div class="icon"></div>Змінити акаунт</div>
+                        <div class="item" id="logout-link"><div class="icon"></div>Вийти</div>
                     </div>
-
-                    <div class="menu-footer">
-                        <div class="menu-item"><div class="icon">⚙</div><span>Налаштування</span></div>
-                        <div class="menu-item"><div class="icon">❓</div><span>Довідка</span></div>
-                        <div class="menu-item"><div class="icon">💬</div><span>Надіслати відгук</span></div>
+                    <div class="section">
+                        <a href="https://studio.youtube.com" target="_blank" class="item"><div class="icon"></div>Творча студія YouTube</a>
+                        <div class="item"><div class="icon"></div>Покупки і платні підписки</div>
+                    </div>
+                    <div class="section">
+                        <a href="https://ktoto342244.github.io/nn/profile.html" class="item"><div class="icon"></div>Ваші дані на YouTube</a>
+                        <div class="item"><div class="icon"></div>Тема: як на пристрої</div>
+                        <div class="item"><div class="icon"></div>Мова: Русский</div>
+                        <div class="item"><div class="icon"></div>Безпечний режим: вимк.</div>
+                        <div class="item"><div class="icon"></div>Країна: Україна</div>
+                        <div class="item"><div class="icon"></div>Швидкі клавіші</div>
+                    </div>
+                    <div class="section">
+                        <div class="item"><div class="icon"></div>Налаштування</div>
+                        <div class="item"><div class="icon"></div>Довідка</div>
+                        <div class="item"><div class="icon"></div>Надіслати відгук</div>
                     </div>
                 </div>
             </div>
@@ -578,7 +549,6 @@
         const logoutLink = document.getElementById("logout-link");
         const menuChannelName = document.getElementById("menu-channel-name");
         const menuAccountName = document.getElementById("menu-account-name");
-        const menuAvatar = document.getElementById("menu-avatar");
 
         // Показ/приховування меню при кліку на аватар
         const toggleMenu = () => {
@@ -617,8 +587,6 @@
                 menuChannelName.textContent = user.displayName || "Вы ещё не создали канал";
                 menuAccountName.textContent = `@${user.email.split('@')[0]}`;
                 userAvatar.style.backgroundImage = user.photoURL ? `url(${user.photoURL})` : `url('https://cdn-icons-png.flaticon.com/128/149/149071.png')`;
-                menuAvatar.style.backgroundImage = user.photoURL ? `url(${user.photoURL})` : `url('https://cdn-icons-png.flaticon.com/128/149/149071.png')`;
-                menuAvatar.textContent = user.photoURL ? "" : user.displayName ? user.displayName.charAt(0) : "К";
             } else {
                 // Користувач не увійшов
                 loginBtn.style.display = "block";
