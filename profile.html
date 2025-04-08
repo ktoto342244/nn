@@ -99,9 +99,44 @@
             font-size: 14px;
         }
 
+        .user-container {
+            position: relative;
+        }
+
         .user-name {
             margin-left: 24px;
             font-size: 14px;
+            cursor: pointer;
+        }
+
+        .user-menu {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: #212121;
+            border: 1px solid #303030;
+            border-radius: 4px;
+            width: 250px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            z-index: 20;
+        }
+
+        .menu-item {
+            padding: 12px 16px;
+            font-size: 14px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            background-color: #303030;
+        }
+
+        .menu-icon {
+            margin-right: 12px;
+            font-size: 16px;
         }
 
         /* Бічна панель */
@@ -316,7 +351,41 @@
             <div class="icon">📹</div>
             <div class="icon">🔔</div>
             <a href="login.html" class="login-btn" id="login-btn">Увійти</a>
-            <span class="user-name" id="user-name" style="display: none;"></span>
+            <div class="user-container">
+                <span class="user-name" id="user-name" style="display: none;"></span>
+                <div class="user-menu" id="user-menu" style="display: none;">
+                    <div class="menu-item">
+                        <span class="menu-icon">👤</span> Ваші дані на YouTube
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-icon">🔍</span> Пошуки і платне підключення
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-icon">📺</span> Ваші дані на YouTube
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-icon">🌙</span> Тема: як на пристрої
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-icon">🌐</span> Мова: Русский
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-icon">🛡️</span> Безопасный режим: откл.
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-icon">🌍</span> Страна: Украина
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-icon">⚙️</span> Настройки
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-icon">❓</span> Справка
+                    </div>
+                    <div class="menu-item" id="logout-btn">
+                        <span class="menu-icon">🚪</span> Выйти
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -369,7 +438,7 @@
     <!-- Firebase SDK -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBJj2RrE1dcvQzCrk-Kgxq6vo-rqf7nCSo",
@@ -389,7 +458,34 @@
         const userDisplayName = document.getElementById("user-display-name");
         const userEmail = document.getElementById("user-email");
         const userAvatar = document.getElementById("user-avatar");
+        const userMenu = document.getElementById("user-menu");
+        const logoutBtn = document.getElementById("logout-btn");
 
+        // Показ/приховування меню при кліку на ім'я користувача
+        userName.addEventListener("click", () => {
+            userMenu.style.display = userMenu.style.display === "block" ? "none" : "block";
+        });
+
+        // Приховувати меню при кліку поза ним
+        document.addEventListener("click", (event) => {
+            if (!userName.contains(event.target) && !userMenu.contains(event.target)) {
+                userMenu.style.display = "none";
+            }
+        });
+
+        // Функція виходу
+        logoutBtn.addEventListener("click", () => {
+            signOut(auth)
+                .then(() => {
+                    console.log("Користувач вийшов");
+                    window.location.href = "login.html";
+                })
+                .catch((error) => {
+                    console.error("Помилка при виході:", error);
+                });
+        });
+
+        // Відстеження стану автентифікації
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 loginBtn.style.display = "none";
