@@ -385,6 +385,50 @@
                 width: 250px;
             }
         }
+
+        /*Менюшка */
+        body {
+            background-color: #181818;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .section {
+            margin: 20px 0;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .item:hover {
+            background-color: #303030;
+        }
+
+        .material-icons {
+            font-size: 20px;
+            color: #aaa;
+        }
+
+        a.item {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        #menu-account-name {
+            padding: 15px;
+            font-weight: bold;
+        }
+
+        #menu-account-name span {
+            font-weight: normal;
+            color: #aaa;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/128/1384/1384060.png">
@@ -411,29 +455,37 @@
                     <div class="section user-info">
                         <p><strong id="menu-channel-name">Вы ещё не создали канал</strong></p>
                         <p id="menu-account-name"></p>
-                        <a href="https://ktoto342244.github.io/nn/profile.html">Переглянути канал</a>
+                    </div>
+                    <a href="https://ktoto342244.github.io/nn/profile.html" class="item">
+                        <span class="material-icons">visibility</span>Переглянути канал
+                    </a>
+                        <div class="section">
+                            <a href="https://myaccount.google.com" target="_blank" class="item">
+                                <span class="material-icons">account_circle</span>Аккаунт Google
+                            </a>
+                            <div class="item"><span class="material-icons">switch_account</span>Змінити акаунт</div>
+                            <div class="item" id="logout-link"><span class="material-icons">logout</span>Вийти</div>
+                        </div>
+                    <div class="section">
+                        <a href="https://studio.youtube.com" target="_blank" class="item">
+                            <span class="material-icons">video_settings</span>Творча студія YouTube
+                        </a>
+                        <div class="item"><span class="material-icons">paid</span>Покупки і платні підписки</div>
                     </div>
                     <div class="section">
-                        <a href="https://myaccount.google.com" target="_blank" class="item"><div class="icon"></div>Аккаунт Google</a>
-                        <div class="item"><div class="icon"></div>Змінити акаунт</div>
-                        <div class="item" id="logout-link"><div class="icon"></div>Вийти</div>
+                        <a href="https://ktoto342244.github.io/nn/profile.html" class="item">
+                            <span class="material-icons">person</span>Ваші дані на YouTube
+                        </a>
+                        <div class="item"><span class="material-icons">brightness_6</span>Тема: як на пристрої</div>
+                        <div class="item"><span class="material-icons">language</span>Мова: Русский</div>
+                        <div class="item"><span class="material-icons">visibility_off</span>Безпечний режим: вимк.</div>
+                        <div class="item"><span class="material-icons">flag</span>Країна: Україна</div>
+                        <div class="item"><span class="material-icons">keyboard</span>Швидкі клавіші</div>
                     </div>
                     <div class="section">
-                        <a href="https://studio.youtube.com" target="_blank" class="item"><div class="icon"></div>Творча студія YouTube</a>
-                        <div class="item"><div class="icon"></div>Покупки і платні підписки</div>
-                    </div>
-                    <div class="section">
-                        <a href="https://ktoto342244.github.io/nn/profile.html" class="item"><div class="icon"></div>Ваші дані на YouTube</a>
-                        <div class="item"><div class="icon"></div>Тема: як на пристрої</div>
-                        <div class="item"><div class="icon"></div>Мова: Русский</div>
-                        <div class="item"><div class="icon"></div>Безпечний режим: вимк.</div>
-                        <div class="item"><div class="icon"></div>Країна: Україна</div>
-                        <div class="item"><div class="icon"></div>Швидкі клавіші</div>
-                    </div>
-                    <div class="section">
-                        <div class="item"><div class="icon"></div>Налаштування</div>
-                        <div class="item"><div class="icon"></div>Довідка</div>
-                        <div class="item"><div class="icon"></div>Надіслати відгук</div>
+                        <div class="item"><span class="material-icons">settings</span>Налаштування</div>
+                        <div class="item"><span class="material-icons">help</span>Довідка</div>
+                        <div class="item"><span class="material-icons">feedback</span>Надіслати відгук</div>
                     </div>
                 </div>
             </div>
