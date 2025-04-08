@@ -387,7 +387,7 @@
             }
         }
 
-        /*Менюшка */
+        /* Менюшка */
         body {
             background-color: #181818;
             color: white;
@@ -456,35 +456,35 @@
                     <div class="section user-info">
                         <p><strong id="menu-channel-name">Вы ещё не создали канал</strong></p>
                         <p id="menu-account-name"></p>
-                        <a href="https://ktoto342244.github.io/nn/profile.html">Переглянути канал</a>
+                        <a href="https://ktoto342244.github.io/nn/profile.html" class="item">Переглянути канал</a>
                     </div>
-                        <div class="section">
-                            <a href="https://myaccount.google.com" target="_blank" class="item">
-                                <span class="material-icons">account_circle</span>Аккаунт Google
-                            </a>
-                            <div class="item"><span class="material-icons">switch_account</span>Змінити акаунт</div>
-                            <div class="item" id="logout-link"><span class="material-icons">logout</span>Вийти</div>
-                        </div>
+                    <div class="section">
+                        <a href="https://myaccount.google.com" target="_blank" class="item">
+                            <span class="material-icons">account_circle</span>Аккаунт Google
+                        </a>
+                        <div class="item" id="switch-account"><span class="material-icons">switch_account</span>Змінити акаунт</div>
+                        <div class="item" id="logout-link"><span class="material-icons">logout</span>Вийти</div>
+                    </div>
                     <div class="section">
                         <a href="https://studio.youtube.com" target="_blank" class="item">
                             <span class="material-icons">video_settings</span>Творча студія YouTube
                         </a>
-                        <div class="item"><span class="material-icons">paid</span>Покупки і платні підписки</div>
+                        <div class="item" id="purchases"><span class="material-icons">paid</span>Покупки і платні підписки</div>
                     </div>
                     <div class="section">
                         <a href="https://ktoto342244.github.io/nn/profile.html" class="item">
                             <span class="material-icons">person</span>Ваші дані на YouTube
                         </a>
-                        <div class="item"><span class="material-icons">brightness_6</span>Тема: як на пристрої</div>
-                        <div class="item"><span class="material-icons">language</span>Мова: Русский</div>
-                        <div class="item"><span class="material-icons">visibility_off</span>Безпечний режим: вимк.</div>
-                        <div class="item"><span class="material-icons">flag</span>Країна: Україна</div>
-                        <div class="item"><span class="material-icons">keyboard</span>Швидкі клавіші</div>
+                        <div class="item" id="theme"><span class="material-icons">brightness_6</span>Тема: як на пристрої</div>
+                        <div class="item" id="language"><span class="material-icons">language</span>Мова: Русский</div>
+                        <div class="item" id="safe-mode"><span class="material-icons">visibility_off</span>Безпечний режим: вимк.</div>
+                        <div class="item" id="country"><span class="material-icons">flag</span>Країна: Україна</div>
+                        <div class="item" id="shortcuts"><span class="material-icons">keyboard</span>Швидкі клавіші</div>
                     </div>
                     <div class="section">
-                        <div class="item"><span class="material-icons">settings</span>Налаштування</div>
-                        <div class="item"><span class="material-icons">help</span>Довідка</div>
-                        <div class="item"><span class="material-icons">feedback</span>Надіслати відгук</div>
+                        <div class="item" id="settings"><span class="material-icons">settings</span>Налаштування</div>
+                        <div class="item" id="help"><span class="material-icons">help</span>Довідка</div>
+                        <div class="item" id="feedback"><span class="material-icons">feedback</span>Надіслати відгук</div>
                     </div>
                 </div>
             </div>
@@ -601,6 +601,18 @@
         const menuChannelName = document.getElementById("menu-channel-name");
         const menuAccountName = document.getElementById("menu-account-name");
 
+        // Додаткові елементи меню
+        const switchAccount = document.getElementById("switch-account");
+        const purchases = document.getElementById("purchases");
+        const theme = document.getElementById("theme");
+        const language = document.getElementById("language");
+        const safeMode = document.getElementById("safe-mode");
+        const country = document.getElementById("country");
+        const shortcuts = document.getElementById("shortcuts");
+        const settings = document.getElementById("settings");
+        const help = document.getElementById("help");
+        const feedback = document.getElementById("feedback");
+
         // Показ/приховування меню при кліку на аватар
         const toggleMenu = () => {
             userMenu.style.display = userMenu.style.display === "block" ? "none" : "block";
@@ -627,6 +639,74 @@
                     console.error("Помилка виходу:", error);
                     alert("Помилка виходу. Спробуйте ще раз.");
                 });
+        });
+
+        // Обробка натискання на "Змінити акаунт"
+        switchAccount.addEventListener("click", (e) => {
+            e.preventDefault();
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    console.log("Акаунт змінено:", result.user);
+                    alert("Акаунт успішно змінено!");
+                })
+                .catch((error) => {
+                    console.error("Помилка зміни акаунта:", error);
+                    alert("Помилка зміни акаунта. Спробуйте ще раз.");
+                });
+        });
+
+        // Обробка натискання на "Покупки і платні підписки"
+        purchases.addEventListener("click", (e) => {
+            e.preventDefault();
+            alert("Цей розділ ще в розробці. Перегляньте ваші покупки та підписки пізніше!");
+        });
+
+        // Обробка натискання на "Тема: як на пристрої"
+        theme.addEventListener("click", (e) => {
+            e.preventDefault();
+            alert("Тема змінена на: як на пристрої");
+        });
+
+        // Обробка натискання на "Мова: Русский"
+        language.addEventListener("click", (e) => {
+            e.preventDefault();
+            alert("Мова змінена на: Русский");
+        });
+
+        // Обробка натискання на "Безпечний режим: вимк."
+        safeMode.addEventListener("click", (e) => {
+            e.preventDefault();
+            alert("Безпечний режим: увімкнено/вимкнено");
+        });
+
+        // Обробка натискання на "Країна: Україна"
+        country.addEventListener("click", (e) => {
+            e.preventDefault();
+            alert("Країна змінена на: Україна");
+        });
+
+        // Обробка натискання на "Швидкі клавіші"
+        shortcuts.addEventListener("click", (e) => {
+            e.preventDefault();
+            alert("Список швидких клавіш: \n- Ctrl + S: Зберегти\n- Ctrl + Z: Скасувати");
+        });
+
+        // Обробка натискання на "Налаштування"
+        settings.addEventListener("click", (e) => {
+            e.preventDefault();
+            alert("Відкрито налаштування. Змінити параметри можна тут.");
+        });
+
+        // Обробка натискання на "Довідка"
+        help.addEventListener("click", (e) => {
+            e.preventDefault();
+            alert("Довідка: зверніться до служби підтримки за допомогою!");
+        });
+
+        // Обробка натискання на "Надіслати відгук"
+        feedback.addEventListener("click", (e) => {
+            e.preventDefault();
+            alert("Дякуємо за ваш відгук! Напишіть нам, що ви думаєте.");
         });
 
         // Перевірка стану автентифікації
