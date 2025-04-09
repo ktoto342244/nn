@@ -356,6 +356,31 @@
                 grid-template-columns: 1fr;
             }
         }
+                .sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .sidebar-item img {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+        }
+
+        .sidebar-item:hover {
+            background-color: #333;
+        }
+
+        .sidebar-item.active {
+            background-color: #3f3f3f;
+            /* або будь-який інший темний колір */
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
