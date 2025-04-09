@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyTube</title>
+    <style>
+        /* Скидання стандартних відступів */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Основний стиль */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #0f0f0f;
+            color: #fff;
+        }
+
+        /* Шапка */
+        header {
+            width: 100%;
+            height: 56px;
+            background-color: #212121;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            margin-right: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .logo img {
+            height: 24px;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            max-width: 600px;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 8px;
+            background-color: #121212;
+            border: 1px solid #303030;
+            border-right: none;
+            border-radius: 2px 0 0 2px;
+            color: #fff;
+        }
+
+        .search-btn {
+            padding: 8px 16px;
+            background-color: #303030;
+            border: 1px solid #303030;
+            border-radius: 0 2px 2px 0;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            font-size: 24px;
+            margin-left: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .login-btn, .logout-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 2px;
+            margin-left: 24px;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .login-btn {
+            background-color: #065fd4;
+            color: #fff;
+        }
+
+        .logout-btn {
+            background-color: #d32f2f;
+            color: #fff;
+        }
+
+        /* Бічна панель */
+        .sidebar {
+            width: 240px;
+            background-color: #212121;
+            position: fixed;
+            top: 56px;
+            left: 0;
+            bottom: 0;
+            padding: 12px;
+            overflow-y: auto;
+        }
+
+        .sidebar-item {
+            padding: 12px 16px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .sidebar-item.active {
+            background-color: #383838;
+        }
+
+        .sidebar-item:hover {
+            background-color: #303030;
+        }
+
+        .sidebar-item::before {
+            content: '';
+            margin-right: 24px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #303030;
+            margin: 8px 0;
+        }
+
+        /* Основний контент */
+        main {
+            margin-left: 240px;
+            margin-top: 56px;
+            padding: 24px;
+        }
+
+        /* Навігаційна панель */
+        .nav-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .nav-item {
+            padding: 8px 16px;
+            background-color: #303030;
+            border-radius: 16px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .nav-item.active {
+            background-color: #fff;
+            color: #0f0f0f;
+        }
+
+        /* Сітка відео */
+        .video-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .video-card {
+            width: calc(25% - 12px);
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            background-color: #ccc;
+            margin-bottom: 8px;
+        }
+
+        .video-info {
+            display: flex;
+        }
+
+        .channel-icon {
+            width: 36px;
+            height: 36px;
+            background-color: #aaa;
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+
+        .video-details h3 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .video-details p {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        /* Секція Shorts */
+        .shorts-section {
+            margin-top: 24px;
+        }
+
+        .shorts-section h2 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .shorts-section h2::before {
+            content: '🎥';
+            margin-right: 8px;
+        }
+
+        .shorts-grid {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+        }
+
+        .shorts-card {
+            width: 150px;
+        }
+
+        .shorts-thumbnail {
+            width: 100%;
+            height: 0;
+            padding-bottom: 177.78%;
+            background-color: #ccc;
+            margin-bottom: 8px;
+        }
+
+        .shorts-card h3 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .shorts-card p {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        /* Адаптивність */
+        @media (max-width: 1024px) {
+            .video-card {
+                width: calc(33.33% - 12px);
+            }
+
+            .shorts-card {
+                width: 120px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .video-card {
+                width: calc(50% - 12px);
+            }
+
+            .sidebar {
+                width: 72px;
+            }
+
+            .sidebar-item {
+                justify-content: center;
+                font-size: 0;
+            }
+
+            .sidebar-item::before {
+                margin-right: 0;
+            }
+
+            main {
+                margin-left: 72px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-card {
+                width: 100%;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            main {
+                margin-left: 0;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/128/1384/1384060.png">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div class="menu-icon">☰</div>
+            <div class="logo">
+                <img src="https://www.youtube.com/img/desktop/yt_120x120.png" alt="MyTube Logo">
+            </div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Пошук">
+            <button class="search-btn">🔍</button>
+        </div>
+        <div class="header-right">
+            <div class="icon">📹</div>
+            <div class="icon">🔔</div>
+            <button class="login-btn" id="login-btn">Увійти</button>
+            <button class="logout-btn" id="logout-btn" style="display: none;">Вийти</button>
+        </div>
+    </header>
+
+    <div class="sidebar">
+        <div class="sidebar-item active">🏠 Головна</div>
+        <div class="sidebar-item">🎥 Shorts</div>
+        <div class="sidebar-item">📺 Підписки</div>
+        <div class="sidebar-item">📚 Бібліотека</div>
+        <hr>
+        <div class="sidebar-item">📜 Історія</div>
+        <div class="sidebar-item">🎬 Ваші відео</div>
+        <div class="sidebar-item">⏰ Переглянути пізніше</div>
+        <hr>
+        <div class="sidebar-item">🎵 Музика</div>
+        <div class="sidebar-item">🎮 Ігри</div>
+    </div>
+
+    <main>
+        <div class="nav-bar">
+            <div class="nav-item active">Усе</div>
+            <div class="nav-item">Відео</div>
+            <div class="nav-item">Музика</div>
+            <div class="nav-item">Новини</div>
+            <div class="nav-item">Сейви в шортах</div>
+            <div class="nav-item">Живі трансляції</div>
+        </div>
+
+        <section class="video-grid">
+            <div class="video-card">
+                <div class="thumbnail"></div>
+                <div class="video-info">
+                    <div class="channel-icon"></div>
+                    <div class="video-details">
+                        <h3>СМЕРТЕЛЬНАЯ КАПЕЛЬ в Майнкрафт!</h3>
+                        <p>Машенька [ Lia's bar + Функцыя]</p>
+                        <p>125 тис. переглядів • 11 годин тому</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="thumbnail"></div>
+                <div class="video-info">
+                    <div class="channel-icon"></div>
+                    <div class="video-details">
+                        <h3>ДОКУМЕНТЫ: Кольцевые инструкции...</h3>
+                        <p>SuperCrastan</p>
+                        <p>164 тис. переглядів • 7 годин тому</p>
+                    </div>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="thumbnail"></div>
+                <div class="video-info">
+                    <div class="channel-icon"></div>
+                    <div class="video-details">
+                        <h3>Зарядил ли 1000 человек взрыв...</h3>
+                        <p>эксченджимонстр</p>
+                        <p>1,6 млн переглядів • 4 тижні тому</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="shorts-section">
+            <h2>🎥 Shorts</h2>
+            <div class="shorts-grid">
+                <div class="shorts-card">
+                    <div class="shorts-thumbnail"></div>
+                    <h3>Wang Ling using 0.1% power...</h3>
+                    <p>2 млн переглядів</p>
+                </div>
+                <div class="shorts-card">
+                    <div class="shorts-thumbnail"></div>
+                    <h3>НЕНОРМАЛЬНЫЕ ВЕЩИ В...</h3>
+                    <p>1,1 млн переглядів</p>
+                </div>
+                <div class="shorts-card">
+                    <div class="shorts-thumbnail"></div>
+                    <h3>Дафна достигла Джокера...</h3>
+                    <p>3,1 млн переглядів</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+        // Firebase конфігурація (заміни на ту, яка використовується на https://ktoto342244.github.io/nn/)
+        const firebaseConfig = {
+            apiKey: "AIzaSyBJj2RrE1dcvQzCrk-Kgxq6vo-rqf7nCSo",
+            authDomain: "starting-afd61.firebaseapp.com",
+            projectId: "starting-afd61",
+            storageBucket: "starting-afd61.firebasestorage.app",
+            messagingSenderId: "397305334150",
+            appId: "1:397305334150:web:3bb68c76c229963d538407",
+            measurementId: "G-3J4EJ6M630"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        const loginBtn = document.getElementById("login-btn");
+        const logoutBtn = document.getElementById("logout-btn");
+
+        // Перевірка стану автентифікації
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // Користувач увійшов
+                loginBtn.style.display = "none";
+                logoutBtn.style.display = "block";
+                // Перенаправлення на profile.html
+                window.location.href = "https://ktoto342244.github.io/nn/profile.html";
+            } else {
+                // Користувач не увійшов
+                loginBtn.style.display = "block";
+                logoutBtn.style.display = "none";
+            }
+        });
+
+        // Обробка натискання на кнопку "Увійти"
+        loginBtn.addEventListener("click", () => {
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    // Користувач увійшов, перенаправляємо на profile.html
+                    window.location.href = "https://ktoto342244.github.io/nn/profile.html";
+                })
+                .catch((error) => {
+                    console.error("Помилка входу:", error);
+                    alert("Помилка входу. Спробуйте ще раз.");
+                });
+        });
+
+        // Обробка натискання на кнопку "Вийти"
+        logoutBtn.addEventListener("click", () => {
+            signOut(auth)
+                .then(() => {
+                    // Користувач вийшов
+                    alert("Ви успішно вийшли з облікового запису.");
+                })
+                .catch((error) => {
+                    console.error("Помилка виходу:", error);
+                    alert("Помилка виходу. Спробуйте ще раз.");
+                });
+        });
+    </script>
+</body>
+</html>
