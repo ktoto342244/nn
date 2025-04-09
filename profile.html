@@ -384,6 +384,19 @@
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/128/1384/1384060.png">
+    <script>
+  const currentUrl = window.location.href;
+  const links = document.querySelectorAll('.sidebar-item');
+
+  links.forEach(link => {
+    if (currentUrl.includes(link.href)) {
+      link.classList.add('active');
+    }
+  });
+</script>
+
+</script>
+
 </head>
 <body>
     <header>
