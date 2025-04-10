@@ -1,382 +1,415 @@
-<!DOCTYPE html>
-<html lang="uk">
+<!DOCTYPE html><html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube - Головна</title>
+    <title>YouTube</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/128/1384/1384060.png">
     <style>
+        /* Скидання стандартних відступів */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+    /* Основний стиль */
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        background-color: #0f0f0f;
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
 
-        body {
-            font-family: 'Roboto', Arial, sans-serif;
-            background-color: #0f0f0f;
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+    /* Шапка */
+    header {
+        width: 100%;
+        min-height: 3.5rem; /* 56px у rem */
+        background-color: #212121;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
 
-        header {
-            width: 100%;
-            min-height: 3.5rem;
-            background-color: #212121;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 1rem;
-            position: fixed;
-            top: 0;
-            z-index: 10;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
+    .header-left, .header-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
 
-        .header-left, .header-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
+    .menu-icon {
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
 
-        .menu-icon {
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
+    .logo img {
+        height: 1.5rem;
+        width: auto;
+    }
 
-        .logo img {
-            height: 1.5rem;
-            width: auto;
-        }
+    .search-bar {
+        flex: 1;
+        max-width: 40%;
+        display: flex;
+        align-items: center;
+    }
 
-        .search-bar {
-            flex: 1;
-            max-width: 40%;
-            display: flex;
-            align-items: center;
-        }
+    .search-bar input {
+        width: 100%;
+        padding: 0.5rem;
+        background-color: #121212;
+        border: 1px solid #303030;
+        border-right: none;
+        border-radius: 2px 0 0 2px;
+        color: #fff;
+        font-size: 0.875rem;
+    }
 
-        .search-bar input {
-            width: 100%;
-            padding: 0.5rem;
-            background-color: #121212;
-            border: 1px solid #303030;
-            border-right: none;
-            border-radius: 2px 0 0 2px;
-            color: #fff;
-            font-size: 0.875rem;
-        }
+    .search-btn {
+        padding: 0.5rem 1rem;
+        background-color: #303030;
+        border: 1px solid #303030;
+        border-radius: 0 2px 2px 0;
+        cursor: pointer;
+        color: #fff;
+    }
 
-        .search-btn {
-            padding: 0.5rem 1rem;
-            background-color: #303030;
-            border: 1px solid #303030;
-            border-radius: 0 2px 2px 0;
-            cursor: pointer;
-            color: #fff;
-        }
+    .icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        cursor: pointer;
+    }
 
-        .icon {
-            width: 1.5rem;
-            height: 1.5rem;
-            cursor: pointer;
-        }
+    .login-btn {
+        padding: 0.5rem 1rem;
+        background-color: #065fd4;
+        color: #fff;
+        border: none;
+        border-radius: 2px;
+        font-size: 0.875rem;
+        cursor: pointer;
+        white-space: nowrap;
+    }
 
-        .login-btn {
-            padding: 0.5rem 1rem;
-            background-color: #065fd4;
-            color: #fff;
-            border: none;
-            border-radius: 2px;
-            font-size: 0.875rem;
-            cursor: pointer;
-        }
+    /* Користувацьке меню */
+    .user-container {
+        position: relative;
+        display: none;
+        align-items: center;
+        cursor: pointer;
+    }
 
-        .user-container {
-            position: relative;
-            display: none;
-            align-items: center;
-            cursor: pointer;
-        }
+    .user-avatar {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background-color: #aaa;
+        background-size: cover;
+        background-position: center;
+    }
 
-        .user-avatar {
-            width: 2rem;
-            height: 2rem;
-            border-radius: 50%;
-            background-color: #aaa;
-            background-size: cover;
-            background-position: center;
-        }
+    .user-menu {
+        position: absolute;
+        top: 2.5rem;
+        right: 0;
+        width: clamp(15rem, 90vw, 18.75rem); /* Адаптивна ширина */
+        background-color: #212121;
+        border-radius: 0.625rem;
+        overflow: hidden;
+        z-index: 20;
+        display: none;
+    }
 
-        .user-menu {
-            position: absolute;
-            top: 2.5rem;
-            right: 0;
-            width: clamp(15rem, 90vw, 18.75rem);
-            background-color: #212121;
-            border-radius: 0.625rem;
-            overflow: hidden;
-            z-index: 20;
-            display: none;
-        }
+    .section {
+        border-bottom: 1px solid #3c3c3c;
+        padding: 0.625rem 0;
+    }
 
-        .section {
-            border-bottom: 1px solid #3c3c3c;
-            padding: 0.625rem 0;
-        }
+    .section:last-child {
+        border-bottom: none;
+    }
 
-        .section:last-child {
-            border-bottom: none;
-        }
+    .user-info {
+        padding: 0.625rem 1rem;
+    }
 
-        .user-info {
-            padding: 0.625rem 1rem;
-        }
+    .user-info p {
+        margin: 0.125rem 0;
+    }
 
-        .user-info p {
-            margin: 0.125rem 0;
-        }
+    .user-info a {
+        color: #3ea6ff;
+        text-decoration: none;
+        font-size: 0.875rem;
+    }
 
-        .user-info a {
-            color: #3ea6ff;
-            text-decoration: none;
-            font-size: 0.875rem;
-        }
+    .item {
+        padding: 0.625rem 1rem;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        color: #fff;
+        text-decoration: none;
+    }
 
-        .item {
-            padding: 0.625rem 1rem;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            color: #fff;
-            text-decoration: none;
-        }
+    .item:hover {
+        background-color: #383838;
+    }
 
-        .item:hover {
-            background-color: #383838;
-        }
+    .material-icons {
+        font-size: 1.25rem;
+        color: #aaa;
+        margin-right: 1rem;
+    }
 
-        .material-icons {
-            font-size: 1.25rem;
-            color: #aaa;
-            margin-right: 1rem;
-        }
+    /* Бічна панель */
+    .sidebar {
+        width: clamp(4.5rem, 15vw, 15rem);
+        background-color: #212121;
+        position: fixed;
+        top: 3.5rem;
+        bottom: 0;
+        padding: 0.75rem;
+        overflow-y: auto;
+        transition: width 0.3s;
+    }
 
+    .sidebar-item {
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        cursor: pointer;
+        gap: 1rem;
+    }
+
+    .sidebar-item.active {
+        background-color: #383838;
+    }
+
+    .sidebar-item:hover {
+        background-color: #303030;
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid #303030;
+        margin: 0.5rem 0;
+    }
+
+    /* Основний контент */
+    main {
+        margin-left: clamp(4.5rem, 15vw, 15rem);
+        margin-top: 3.5rem;
+        padding: 1.5rem;
+        flex: 1;
+        transition: margin-left 0.3s;
+    }
+
+    .nav-bar {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .nav-item {
+        padding: 0.5rem 1rem;
+        background-color: #303030;
+        border-radius: 1rem;
+        font-size: 0.875rem;
+        cursor: pointer;
+    }
+
+    .nav-item.active {
+        background-color: #fff;
+        color: #0f0f0f;
+    }
+
+    /* Сітка відео */
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .video-card {
+        width: 100%;
+    }
+
+    .thumbnail {
+        width: 100%;
+        padding-bottom: 56.25%;
+        background-color: #ccc;
+        margin-bottom: 0.5rem;
+    }
+
+    .video-info {
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    .channel-icon {
+        width: 2.25rem;
+        height: 2.25rem;
+        background-color: #aaa;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .video-details h3 {
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+    }
+
+    .video-details p {
+        font-size: 0.75rem;
+        color: #aaa;
+    }
+
+    /* Секція Shorts */
+    .shorts-section h2 {
+        font-size: 1.125rem;
+        margin: 1.5rem 0 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .shorts-grid {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+    }
+
+    .shorts-card {
+        width: clamp(9rem, 20vw, 12.5rem);
+    }
+
+    .shorts-thumbnail {
+        width: 100%;
+        padding-bottom: 177.78%;
+        background-color: #ccc;
+        margin-bottom: 0.5rem;
+    }
+
+    .shorts-card h3 {
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+    }
+
+    .shorts-card p {
+        font-size: 0.75rem;
+        color: #aaa;
+    }
+
+    /* Адаптивність */
+    @media (max-width: 768px) {
         .sidebar {
-            width: clamp(4.5rem, 15vw, 15rem);
-            background-color: #212121;
-            position: fixed;
-            top: 3.5rem;
-            bottom: 0;
-            padding: 0.75rem;
-            overflow-y: auto;
-            transition: width 0.3s;
+            width: 4.5rem;
         }
-
         .sidebar-item {
-            padding: 0.75rem 1rem;
-            font-size: 0.875rem;
+            justify-content: center;
+            font-size: 0;
+        }
+        main {
+            margin-left: 4.5rem;
+        }
+        .search-bar {
+            max-width: 60%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        header {
+            padding: 0.5rem;
+            min-height: auto;
+        }
+        .search-bar {
+            max-width: 100%;
+            order: 3;
+            margin: 0.5rem 0;
+        }
+        .sidebar {
+            display: none;
+        }
+        main {
+            margin-left: 0;
+        }
+        .video-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+        .sidebar-item {
             display: flex;
             align-items: center;
-            color: #fff;
-            cursor: pointer;
-            gap: 1rem;
+            padding: 10px;
+            color: white;
             text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .sidebar-item img {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
         }
 
         .sidebar-item:hover {
-            background-color: #303030;
+            background-color: #333;
         }
 
         .sidebar-item.active {
-            background-color: #383838;
+            background-color: #3f3f3f;
+            /* або будь-який інший темний колір */
+            font-weight: bold;
         }
+</style>
 
-        hr {
-            border: none;
-            border-top: 1px solid #303030;
-            margin: 0.5rem 0;
-        }
-
-        main {
-            margin-left: clamp(4.5rem, 15vw, 15rem);
-            margin-top: 3.5rem;
-            padding: 1.5rem;
-            flex: 1;
-        }
-
-        .nav-bar {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-
-        .nav-item {
-            padding: 0.5rem 1rem;
-            background-color: #303030;
-            border-radius: 1rem;
-            font-size: 0.875rem;
-            cursor: pointer;
-        }
-
-        .nav-item.active {
-            background-color: #fff;
-            color: #0f0f0f;
-        }
-
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .video-card {
-            width: 100%;
-        }
-
-        .thumbnail {
-            width: 100%;
-            padding-bottom: 56.25%;
-            background-color: #ccc;
-            margin-bottom: 0.5rem;
-        }
-
-        .video-info {
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        .channel-icon {
-            width: 2.25rem;
-            height: 2.25rem;
-            background-color: #aaa;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .video-details h3 {
-            font-size: 0.875rem;
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-        }
-
-        .video-details p {
-            font-size: 0.75rem;
-            color: #aaa;
-        }
-
-        .shorts-section h2 {
-            font-size: 1.125rem;
-            margin: 1.5rem 0 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .shorts-grid {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-        }
-
-        .shorts-card {
-            width: clamp(9rem, 20vw, 12.5rem);
-        }
-
-        .shorts-thumbnail {
-            width: 100%;
-            padding-bottom: 177.78%;
-            background-color: #ccc;
-            margin-bottom: 0.5rem;
-        }
-
-        .shorts-card h3 {
-            font-size: 0.875rem;
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-        }
-
-        .shorts-card p {
-            font-size: 0.75rem;
-            color: #aaa;
-        }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 4.5rem;
-            }
-            .sidebar-item {
-                justify-content: center;
-                font-size: 0;
-            }
-            .sidebar-item img {
-                margin-right: 0;
-            }
-            main {
-                margin-left: 4.5rem;
-            }
-            .search-bar {
-                max-width: 60%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header {
-                padding: 0.5rem;
-                min-height: auto;
-            }
-            .search-bar {
-                max-width: 100%;
-                order: 3;
-                margin: 0.5rem 0;
-            }
-            .sidebar {
-                display: none;
-            }
-            main {
-                margin-left: 0;
-            }
-            .video-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
 <body>
     <header>
         <div class="header-left">
             <div class="menu-icon">☰</div>
             <div class="logo">
-                <img src="https://www.youtube.com/s/desktop/6b6b2e8e/img/favicon_144.png" alt="YouTube Logo">
+                <img src="https://www.youtube.com/" style="width: 10px; height: 10px;">
             </div>
         </div>
         <div class="search-bar">
             <input type="text" placeholder="Пошук">
-            <button class="search-btn"><span class="material-icons">search</span></button>
+            <button class="search-btn"></button>
         </div>
         <div class="header-right">
-            <div><img src="https://cdn-icons-png.flaticon.com/128/7322/7322162.png" class="icon" alt="Create"></div>
+            <div>
+                <img src="https://cdn-icons-png.flaticon.com/128/7322/7322162.png" class="icon">
+            </div>
             <button class="login-btn" id="login-btn">Увійти</button>
             <div class="user-container" id="user-container">
                 <div class="user-avatar" id="user-avatar"></div>
                 <div class="user-menu" id="user-menu">
                     <div class="section user-info">
-                        <p><strong id="menu-channel-name">Ви ще не створили канал</strong></p>
+                        <p><strong id="menu-channel-name">Вы ещё не создали канал</strong></p>
                         <p id="menu-account-name"></p>
-                        <a href="#">Переглянути канал</a>
+                        <a href="https://ktoto342244.github.io/nn/profile.html">Переглянути канал</a>
                     </div>
                     <div class="section">
                         <a href="https://myaccount.google.com" target="_blank" class="item">
-                            <span class="material-icons">account_circle</span>Акаунт Google
+                            <span class="material-icons">account_circle</span>Аккаунт Google
                         </a>
                         <div class="item"><span class="material-icons">switch_account</span>Змінити акаунт</div>
                         <div class="item" id="logout-link"><span class="material-icons">logout</span>Вийти</div>
@@ -388,138 +421,211 @@
                         <div class="item"><span class="material-icons">paid</span>Покупки і платні підписки</div>
                     </div>
                     <div class="section">
+                        <a href="https://ktoto342244.github.io/nn/profile.html" class="item">
+                            <span class="material-icons">person</span>Ваші дані на YouTube
+                        </a>
+                        <div class="item"><span class="material-icons">brightness_6</span>Тема: як на пристрої</div>
+                        <div class="item"><span class="material-icons">language</span>Мова: Русский</div>
+                        <div class="item"><span class="material-icons">visibility_off</span>Безпечний режим: вимк.</div>
+                        <div class="item"><span class="material-icons">flag</span>Країна: Україна</div>
+                        <div class="item"><span class="material-icons">keyboard</span>Швидкі клавіші</div>
+                    </div>
+                    <div class="section">
                         <div class="item"><span class="material-icons">settings</span>Налаштування</div>
                         <div class="item"><span class="material-icons">help</span>Довідка</div>
+                        <div class="item"><span class="material-icons">feedback</span>Надіслати відгук</div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+<div class="sidebar">
+    <a href="https://ktoto342244.github.io/nn/" class="sidebar-item" style="text-decoration: none;">
+      <img src="https://img.icons8.com/ios-filled/50/000000/home.png" alt="Головна" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Головна
+    </a>
+    <a href="https://ktoto342244.github.io/nn/film.html" class="sidebar-item" style="text-decoration: none;">
+        <img src="https://img.icons8.com/color/48/youtube-shorts.png" alt="Shorts" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Shorts
+    </a>
+    <a href="#" class="sidebar-item" style="text-decoration: none;">
+        <img src="https://img.icons8.com/ios-filled/50/000000/subscription.png" alt="Підписки" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Підписки
+    </a>
+    <a href="#" class="sidebar-item" style="text-decoration: none;">
+      <img src="https://img.icons8.com/ios-filled/50/000000/library.png" alt="Бібліотека" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Бібліотека
+    </a>
+    <hr>
+    <a href="#" class="sidebar-item" style="text-decoration: none;">
+        <img src="https://img.icons8.com/ios-filled/50/000000/time-machine.png" alt="Історія" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Історія
+    </a>
+    <a href="#" class="sidebar-item" style="text-decoration: none;">
+      <img src="https://img.icons8.com/ios-filled/50/000000/video.png" alt="Ваші відео" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Ваші відео
+    </a>
+    <a href="#" class="sidebar-item" style="text-decoration: none;">
+      <img src="https://img.icons8.com/ios-filled/50/000000/watch-later.png" alt="Переглянути пізніше" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Переглянути пізніше
+    </a>
+    <hr>
+    <a href="#" class="sidebar-item" style="text-decoration: none;">
+      <img src="https://img.icons8.com/ios-filled/50/000000/musical-notes.png" alt="Музика" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Музика
+    </a>
+    <a href="#" class="sidebar-item" style="text-decoration: none;">
+      <img src="https://img.icons8.com/ios-filled/50/000000/controller.png" alt="Ігри" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Ігри
+    </a>
+    <a href="#" class="sidebar-item" style="text-decoration: none;">
+      <img src="https://img.icons8.com/ios-filled/50/000000/controller.png" alt="Фильмы" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Фильмы
+    </a>
+    <a href="https://ktoto342244.github.io/nn/profile.html" class="sidebar-item" id="profile-link">
+      <img src="https://cdn-icons-png.flaticon.com/128/309/309492.png" alt="icon">
+      <span>Вы</span>
+    </a>
 
-    <div class="sidebar">
-        <a href="#" class="sidebar-item"><img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" alt="icon"> Головна</a>
-        <a href="#" class="sidebar-item"><img src="https://img.icons8.com/color/48/youtube-shorts.png" alt="icon"> Shorts</a>
-        <a href="#" class="sidebar-item"><img src="https://img.icons8.com/ios-filled/50/ffffff/subscription.png" alt="icon"> Підписки</a>
-        <a href="#" class="sidebar-item"><img src="https://img.icons8.com/ios-filled/50/ffffff/library.png" alt="icon"> Бібліотека</a>
-        <hr>
-        <a href="#" class="sidebar-item"><img src="https://img.icons8.com/ios-filled/50/ffffff/time-machine.png" alt="icon"> Історія</a>
-        <a href="#" class="sidebar-item"><img src="https://img.icons8.com/ios-filled/50/ffffff/video.png" alt="icon"> Ваші відео</a>
-        <a href="#" class="sidebar-item"><img src="https://img.icons8.com/ios-filled/50/ffffff/watch-later.png" alt="icon"> Переглянути пізніше</a>
+</div>
+
+<main>
+    <div class="nav-bar">
+        <div class="nav-item active">Усе</div>
+        <div class="nav-item">Відео</div>
+        <div class="nav-item">Музика</div>
+        <div class="nav-item">Новини</div>
+        <div class="nav-item">Сейви в шортах</div>
+        <div class="nav-item">Живі трансляції</div>
+        <div class="nav-item"><a href="film.html"></a>Фильмы</div>
     </div>
 
-    <main>
-        <div class="nav-bar">
-            <div class="nav-item active">Усе</div>
-            <div class="nav-item">Відео</div>
-            <div class="nav-item">Музика</div>
-            <div class="nav-item">Новини</div>
+    <section class="video-grid">
+        <div class="video-card">
+            <div class="thumbnail"></div>
+            <div class="video-info">
+                <div class="channel-icon"></div>
+                <div class="video-details">
+                    <h3>СМЕРТЕЛЬНАЯ КАПЕЛЬ в Майнкрафт!</h3>
+                    <p>Машенька [ Lia's bar + Функцыя]</p>
+                    <p>125 тис. переглядів • 11 годин тому</p>
+                </div>
+            </div>
         </div>
-
-        <section class="video-grid">
-            <div class="video-card">
-                <div class="thumbnail"></div>
-                <div class="video-info">
-                    <div class="channel-icon"></div>
-                    <div class="video-details">
-                        <h3>СМЕРТЕЛЬНАЯ КАПЕЛЬ в Майнкрафт!</h3>
-                        <p>Машенька</p>
-                        <p>125 тис. переглядів • 11 годин тому</p>
-                    </div>
+        <div class="video-card">
+            <div class="thumbnail"></div>
+            <div class="video-info">
+                <div class="channel-icon"></div>
+                <div class="video-details">
+                    <h3>ДОКУМЕНТЫ: Кольцевые инструкции...</h3>
+                    <p>SuperCrastan</p>
+                    <p>164 тис. переглядів • 7 годин тому</p>
                 </div>
             </div>
-            <div class="video-card">
-                <div class="thumbnail"></div>
-                <div class="video-info">
-                    <div class="channel-icon"></div>
-                    <div class="video-details">
-                        <h3>ДОКУМЕНТЫ: Кольцевые инструкции...</h3>
-                        <p>SuperCrastan</p>
-                        <p>164 тис. переглядів • 7 годин тому</p>
-                    </div>
+        </div>
+        <div class="video-card">
+            <div class="thumbnail"></div>
+            <div class="video-info">
+                <div class="channel-icon"></div>
+                <div class="video-details">
+                    <h3>Зарядил ли 1000 человек взрыв...</h3>
+                    <p>эксченджимонстр</p>
+                    <p>1,6 млн переглядів • 4 тижні тому</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="shorts-section">
-            <h2><span class="material-icons">play_circle</span> Shorts</h2>
-            <div class="shorts-grid">
-                <div class="shorts-card">
-                    <div class="shorts-thumbnail"></div>
-                    <h3>Wang Ling using 0.1% power...</h3>
-                    <p>2 млн переглядів</p>
-                </div>
-                <div class="shorts-card">
-                    <div class="shorts-thumbnail"></div>
-                    <h3>НЕНОРМАЛЬНЫЕ ВЕЩИ В...</h3>
-                    <p>1,1 млн переглядів</p>
-                </div>
+    <section class="shorts-section">
+        <h2>🎥 Shorts</h2>
+        <div class="shorts-grid">
+            <div class="shorts-card">
+                <div class="shorts-thumbnail"></div>
+                <h3>Wang Ling using 0.1% power...</h3>
+                <p>2 млн переглядів</p>
             </div>
-        </section>
-    </main>
+            <div class="shorts-card">
+                <div class="shorts-thumbnail"></div>
+                <h3>НЕНОРМАЛЬНЫЕ ВЕЩИ В...</h3>
+                <p>1,1 млн переглядів</p>
+            </div>
+            <div class="shorts-card">
+                <div class="shorts-thumbnail"></div>
+                <h3>Дафна достигла Джокера...</h3>
+                <p>3,1 млн переглядів</p>
+            </div>
+        </div>
+    </section>
+</main>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+<!-- Firebase SDK -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyBJj2RrE1dcvQzCrk-Kgxq6vo-rqf7nCSo",
-            authDomain: "starting-afd61.firebaseapp.com",
-            projectId: "starting-afd61",
-            storageBucket: "starting-afd61.firebasestorage.app",
-            messagingSenderId: "397305334150",
-            appId: "1:397305334150:web:3bb68c76c229963d538407",
-            measurementId: "G-3J4EJ6M630"
-        };
+    const firebaseConfig = {
+        apiKey: "AIzaSyBJj2RrE1dcvQzCrk-Kgxq6vo-rqf7nCSo",
+        authDomain: "starting-afd61.firebaseapp.com",
+        projectId: "starting-afd61",
+        storageBucket: "starting-afd61.firebasestorage.app",
+        messagingSenderId: "397305334150",
+        appId: "1:397305334150:web:3bb68c76c229963d538407",
+        measurementId: "G-3J4EJ6M630"
+    };
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const provider = new GoogleAuthProvider();
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
 
-        const loginBtn = document.getElementById("login-btn");
-        const userContainer = document.getElementById("user-container");
-        const userAvatar = document.getElementById("user-avatar");
-        const userMenu = document.getElementById("user-menu");
-        const logoutLink = document.getElementById("logout-link");
-        const menuChannelName = document.getElementById("menu-channel-name");
-        const menuAccountName = document.getElementById("menu-account-name");
+    const loginBtn = document.getElementById("login-btn");
+    const userContainer = document.getElementById("user-container");
+    const userAvatar = document.getElementById("user-avatar");
+    const userMenu = document.getElementById("user-menu");
+    const logoutLink = document.getElementById("logout-link");
+    const menuChannelName = document.getElementById("menu-channel-name");
+    const menuAccountName = document.getElementById("menu-account-name");
 
-        const toggleMenu = () => {
-            userMenu.style.display = userMenu.style.display === "block" ? "none" : "block";
-        };
+    const toggleMenu = () => {
+        userMenu.style.display = userMenu.style.display === "block" ? "none" : "block";
+    };
 
-        userAvatar.addEventListener("click", toggleMenu);
+    userAvatar.addEventListener("click", toggleMenu);
 
-        document.addEventListener("click", (event) => {
-            if (!userAvatar.contains(event.target) && !userMenu.contains(event.target)) {
+    document.addEventListener("click", (event) => {
+        if (!userAvatar.contains(event.target) && !userMenu.contains(event.target)) {
+            userMenu.style.display = "none";
+        }
+    });
+
+    logoutLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        signOut(auth)
+            .then(() => {
+                alert("Ви успішно вийшли з облікового запису.");
                 userMenu.style.display = "none";
-            }
-        });
-
-        logoutLink.addEventListener("click", (e) => {
-            e.preventDefault();
-            signOut(auth).then(() => {
-                alert("Ви успішно вийшли.");
+            })
+            .catch((error) => {
+                console.error("Помилка виходу:", error);
+                alert("Помилка виходу. Спробуйте ще раз.");
             });
-        });
+    });
 
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                loginBtn.style.display = "none";
-                userContainer.style.display = "flex";
-                menuChannelName.textContent = user.displayName || "Ви ще не створили канал";
-                menuAccountName.textContent = `@${user.email.split('@')[0]}`;
-                userAvatar.style.backgroundImage = user.photoURL ? `url(${user.photoURL})` : `url('https://cdn-icons-png.flaticon.com/128/149/149071.png')`;
-            } else {
-                loginBtn.style.display = "block";
-                userContainer.style.display = "none";
-            }
-        });
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            loginBtn.style.display = "none";
+            userContainer.style.display = "flex";
+            menuChannelName.textContent = user.displayName || "Вы ещё не создали канал";
+            menuAccountName.textContent = `@${user.email.split('@')[0]}`;
+            userAvatar.style.backgroundImage = user.photoURL ? `url(${user.photoURL})` : `url('https://cdn-icons-png.flaticon.com/128/149/149071.png')`;
+        } else {
+            loginBtn.style.display = "block";
+            userContainer.style.display = "none";
+            userMenu.style.display = "none";
+        }
+    });
 
-        loginBtn.addEventListener("click", () => {
-            signInWithPopup(auth, provider)
-                .then((result) => console.log("Успішний вхід:", result.user))
-                .catch((error) => alert("Помилка входу:", error));
-        });
-    </script>
+    loginBtn.addEventListener("click", () => {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                console.log("Успішний вхід:", result.user);
+            })
+            .catch((error) => {
+                console.error("Помилка входу:", error);
+                alert("Помилка входу. Спробуйте ще раз.");
+            });
+    });
+</script>
+
 </body>
 </html>
+
