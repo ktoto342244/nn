@@ -609,16 +609,81 @@
         </div>
     </main>
 
-    <script>
-        const scrollButtons = document.querySelectorAll('.scroll-btn');
-        scrollButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const row = btn.parentElement.querySelector('.movie-row');
-                const scrollAmount = btn.classList.contains('left') ? -300 : 300;
-                row.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBJj2RrE1dcvQzCrk-Kgxq6vo-rqf7nCSo",
+        authDomain: "starting-afd61.firebaseapp.com",
+        projectId: "starting-afd61",
+        storageBucket: "starting-afd61.firebasestorage.app",
+        messagingSenderId: "397305334150",
+        appId: "1:397305334150:web:3bb68c76c229963d538407",
+        measurementId: "G-3J4EJ6M630"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    const loginBtn = document.getElementById("login-btn");
+    const userContainer = document.getElementById("user-container");
+    const userAvatar = document.getElementById("user-avatar");
+    const userMenu = document.getElementById("user-menu");
+    const logoutLink = document.getElementById("logout-link");
+    const menuChannelName = document.getElementById("menu-channel-name");
+    const menuAccountName = document.getElementById("menu-account-name");
+
+    const toggleMenu = () => {
+        userMenu.style.display = userMenu.style.display === "block" ? "none" : "block";
+    };
+
+    userAvatar.addEventListener("click", toggleMenu);
+
+    document.addEventListener("click", (event) => {
+        if (!userAvatar.contains(event.target) && !userMenu.contains(event.target)) {
+            userMenu.style.display = "none";
+        }
+    });
+
+    logoutLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        signOut(auth)
+            .then(() => {
+                alert("Ви успішно вийшли з облікового запису.");
+                userMenu.style.display = "none";
+            })
+            .catch((error) => {
+                console.error("Помилка виходу:", error);
+                alert("Помилка виходу. Спробуйте ще раз.");
             });
-        });
-    </script>
+    });
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            loginBtn.style.display = "none";
+            userContainer.style.display = "flex";
+            menuChannelName.textContent = user.displayName || "Вы ещё не создали канал";
+            menuAccountName.textContent = `@${user.email.split('@')[0]}`;
+            userAvatar.style.backgroundImage = user.photoURL ? `url(${user.photoURL})` : `url('https://cdn-icons-png.flaticon.com/128/149/149071.png')`;
+        } else {
+            loginBtn.style.display = "block";
+            userContainer.style.display = "none";
+            userMenu.style.display = "none";
+        }
+    });
+
+    loginBtn.addEventListener("click", () => {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                console.log("Успішний вхід:", result.user);
+            })
+            .catch((error) => {
+                console.error("Помилка входу:", error);
+                alert("Помилка входу. Спробуйте ще раз.");
+            });
+    });
 
 
 </body>
