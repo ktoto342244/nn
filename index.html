@@ -494,85 +494,85 @@
             font-weight: bold;
         }
         /* Секція відео */
-.video-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
 
-.video-card {
-    background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.2s;
-}
+        .video-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
 
-.video-card:hover {
-    transform: translateY(-5px);
-}
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
 
-.thumbnail {
-    display: block;
-    width: 100%;
-    height: 150px;
-}
+        .thumbnail {
+            display: block;
+            width: 100%;
+            height: 150px;
+        }
 
-.thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-.video-info {
-    display: flex;
-    gap: 10px;
-    padding: 10px;
-}
+        .video-info {
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+        }
 
-.channel-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    object-fit: cover;
-}
+        .channel-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
 
-.video-details h3 {
-    font-size: 16px;
-    margin-bottom: 5px;
-}
+        .video-details h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
 
-.video-details h3 a {
-    color: #333;
-    text-decoration: none;
-}
+        .video-details h3 a {
+            color: #333;
+            text-decoration: none;
+        }
 
-.video-details h3 a:hover {
-    text-decoration: underline;
-}
+        .video-details h3 a:hover {
+            text-decoration: underline;
+        }
 
-.video-details p {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.4;
-}
+        .video-details p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.4;
+        }
 
-/* Адаптивність */
-@media (max-width: 768px) {
-    .video-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-}
+        /* Адаптивність */
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
 
-@media (max-width: 480px) {
-    .video-grid {
-        grid-template-columns: 1fr;
-    }
+        @media (max-width: 480px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
 
-    .thumbnail {
-        height: 200px;
-    }
-}
+            .thumbnail {
+                height: 200px;
+            }
+        }
     </style>
 
 </head>
