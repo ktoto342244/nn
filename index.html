@@ -46,9 +46,11 @@
     }
 
     .menu-icon {
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+            text-decoration: none;
+        }
 
     .logo img {
         height: 1.5rem;
@@ -74,29 +76,34 @@
     }
 
     .search-btn {
-        padding: 0.5rem 1rem;
+        padding: 8px 16px;
         background-color: #303030;
         border: 1px solid #303030;
+        border-left: none;
         border-radius: 0 2px 2px 0;
         cursor: pointer;
+        font-size: 20px;
         color: #fff;
+        text-decoration: none; /* Прибираємо підкреслення */
     }
 
     .icon {
-        width: 1.5rem;
-        height: 1.5rem;
+        font-size: 24px;
         cursor: pointer;
+        color: #fff;
+        text-decoration: none; /* Прибираємо підкреслення */
     }
 
     .login-btn {
-        padding: 0.5rem 1rem;
+        padding: 8px 16px;
         background-color: #065fd4;
         color: #fff;
         border: none;
         border-radius: 2px;
-        font-size: 0.875rem;
         cursor: pointer;
-        white-space: nowrap;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none; /* Прибираємо підкреслення */
     }
 
     /* Користувацьке меню */
@@ -147,28 +154,29 @@
 
     .user-info a {
         color: #3ea6ff;
-        text-decoration: none;
-        font-size: 0.875rem;
+        text-decoration: none; /* Прибираємо підкреслення */
+        font-size: 14px;
     }
 
-    .item {
-        padding: 0.625rem 1rem;
+    .user-menu .item {
         display: flex;
         align-items: center;
+        padding: 12px 16px;
+        font-size: 14px;
         cursor: pointer;
-        transition: background-color 0.2s;
         color: #fff;
-        text-decoration: none;
+        text-decoration: none; /* Прибираємо підкреслення */
     }
 
     .item:hover {
         background-color: #383838;
     }
 
-    .material-icons {
-        font-size: 1.25rem;
+    .user-menu .item .material-icons {
+        margin-right: 12px;
+        font-size: 20px;
         color: #aaa;
-        margin-right: 1rem;
+        text-decoration: none; /* Прибираємо підкреслення */
     }
 
     /* Бічна панель */
@@ -316,6 +324,16 @@
         font-size: 0.75rem;
         color: #aaa;
     }
+        .customize-btn, .manage-videos-btn {
+        padding: 8px 16px;
+        background-color: #303030;
+        color: #fff;
+        border: 1px solid #606060;
+        border-radius: 2px;
+        cursor: pointer;
+        font-size: 14px;
+        text-decoration: none; /* Прибираємо підкреслення */
+    }
 
     /* Адаптивність */
     @media (max-width: 768px) {
@@ -379,6 +397,25 @@
             /* або будь-який інший темний колір */
             font-weight: bold;
         }
+        .tab {
+        padding: 12px 24px;
+        font-size: 14px;
+        color: #aaa;
+        cursor: pointer;
+        text-transform: uppercase;
+        text-decoration: none; /* Прибираємо підкреслення */
+    }
+        .publish-btn {
+        padding: 8px 16px;
+        background-color: #3ea6ff;
+        color: #fff;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+        font-size: 14px;
+        text-decoration: none; /* Прибираємо підкреслення */
+    }
+
 </style>
 
 </head>
