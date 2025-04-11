@@ -493,6 +493,7 @@
             /* або будь-який інший темний колір */
             font-weight: bold;
         }
+
         /* Секція відео */
         .video-grid {
             display: grid;
@@ -521,7 +522,7 @@
         .thumbnail img {
             width: 265px;
             height: 165px;
-            
+
         }
 
         .video-info {
@@ -537,13 +538,69 @@
             object-fit: cover;
         }
 
+        /* Секція відео */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .video-card {
+            background-color: transparent;
+            /* Прибираємо білий фон, щоб відповідати темі YouTube */
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .thumbnail {
+            display: block;
+            width: 100%;
+            padding-bottom: 56.25%;
+            /* Пропорція 16:9 (9/16 = 56.25%) */
+            position: relative;
+            background-color: #ccc;
+            /* Запасний фон, якщо зображення не завантажиться */
+        }
+
+        .thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Зображення заповнює контейнер без спотворення */
+            border-radius: 8px;
+        }
+
+        .video-info {
+            display: flex;
+            gap: 10px;
+            padding: 10px 0;
+        }
+
+        .channel-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
         .video-details h3 {
             font-size: 16px;
             margin-bottom: 5px;
+            color: #fff;
+            /* Білий текст для темної теми */
         }
 
         .video-details h3 a {
-            color: #333;
+            color: #fff;
             text-decoration: none;
         }
 
@@ -553,7 +610,8 @@
 
         .video-details p {
             font-size: 14px;
-            color: #666;
+            color: #aaa;
+            /* Сірий колір для метаданих */
             line-height: 1.4;
         }
 
@@ -567,10 +625,6 @@
         @media (max-width: 480px) {
             .video-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .thumbnail {
-                height: 200px;
             }
         }
     </style>
@@ -740,33 +794,6 @@
                         <p>эксченджимонстр</p>
                         <p>1,6 млн переглядів • 4 тижні тому</p>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="shorts-section">
-            <h2>🎥 Shorts</h2>
-            <div class="shorts-grid">
-                <div class="shorts-card">
-                    <a href="https://www.youtube.com/shorts/example4" class="shorts-thumbnail">
-                        <img src="path/to/shorts-thumbnail1.jpg" alt="Thumbnail for shorts 1">
-                    </a>
-                    <h3><a href="https://www.youtube.com/shorts/example4">Wang Ling using 0.1% power...</a></h3>
-                    <p>2 млн переглядів</p>
-                </div>
-                <div class="shorts-card">
-                    <a href="https://www.youtube.com/shorts/example5" class="shorts-thumbnail">
-                        <img src="path/to/shorts-thumbnail2.jpg" alt="Thumbnail for shorts 2">
-                    </a>
-                    <h3><a href="https://www.youtube.com/shorts/example5">НЕНОРМАЛЬНЫЕ ВЕЩИ В...</a></h3>
-                    <p>1,1 млн переглядів</p>
-                </div>
-                <div class="shorts-card">
-                    <a href="https://www.youtube.com/shorts/example6" class="shorts-thumbnail">
-                        <img src="path/to/shorts-thumbnail3.jpg" alt="Thumbnail for shorts 3">
-                    </a>
-                    <h3><a href="https://www.youtube.com/shorts/example6">Дафна достигла Джокера...</a></h3>
-                    <p>3,1 млн переглядів</p>
                 </div>
             </div>
         </section>
