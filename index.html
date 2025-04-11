@@ -8,11 +8,12 @@
     <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/128/1384/1384060.png">
     <style>
         /* Скидання стандартних відступів */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
     /* Основний стиль */
     body {
         font-family: 'Roboto', Arial, sans-serif;
@@ -25,54 +26,51 @@
 
     /* Шапка */
     header {
-        width: 100%;
-        min-height: 3.5rem; /* 56px у rem */
-        background-color: #212121;
         display: flex;
-        align-items: center;
         justify-content: space-between;
-        padding: 0 1rem;
-        position: sticky;
+        align-items: center;
+        padding: 8px 16px;
+        background-color: #212121;
+        position: fixed;
         top: 0;
-        z-index: 10;
-        flex-wrap: wrap;
-        gap: 0.5rem;
+        width: 100%;
+        z-index: 1000;
     }
 
-    .header-left, .header-right {
+    .header-left {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 16px;
     }
 
     .menu-icon {
-            font-size: 24px;
-            cursor: pointer;
-            color: #fff;
-            text-decoration: none;
-        }
+        font-size: 24px;
+        cursor: pointer;
+        color: #fff;
+        text-decoration: none;
+    }
 
     .logo img {
-        height: 1.5rem;
-        width: auto;
+        height: 36px;
     }
 
     .search-bar {
-        flex: 1;
-        max-width: 40%;
         display: flex;
         align-items: center;
+        flex: 1;
+        max-width: 600px;
+        margin: 0 24px;
     }
 
     .search-bar input {
-        width: 100%;
-        padding: 0.5rem;
-        background-color: #121212;
+        flex: 1;
+        padding: 8px 12px;
+        font-size: 16px;
         border: 1px solid #303030;
-        border-right: none;
-        border-radius: 2px 0 0 2px;
+        background-color: #121212;
         color: #fff;
-        font-size: 0.875rem;
+        border-radius: 2px 0 0 2px;
+        outline: none;
     }
 
     .search-btn {
@@ -84,14 +82,24 @@
         cursor: pointer;
         font-size: 20px;
         color: #fff;
-        text-decoration: none; /* Прибираємо підкреслення */
+        text-decoration: none;
+    }
+
+    .search-btn:hover {
+        background-color: #404040;
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
     }
 
     .icon {
         font-size: 24px;
         cursor: pointer;
         color: #fff;
-        text-decoration: none; /* Прибираємо підкреслення */
+        text-decoration: none;
     }
 
     .login-btn {
@@ -103,58 +111,62 @@
         cursor: pointer;
         font-size: 14px;
         font-weight: 500;
-        text-decoration: none; /* Прибираємо підкреслення */
+        text-decoration: none;
     }
 
-    /* Користувацьке меню */
+    .login-btn:hover {
+        background-color: #054bb4;
+    }
+
     .user-container {
         position: relative;
-        display: none;
-        align-items: center;
-        cursor: pointer;
     }
 
     .user-avatar {
-        width: 2rem;
-        height: 2rem;
+        width: 32px;
+        height: 32px;
         border-radius: 50%;
-        background-color: #aaa;
+        background-color: #ccc;
+        cursor: pointer;
         background-size: cover;
-        background-position: center;
     }
 
     .user-menu {
-        position: absolute;
-        top: 2.5rem;
-        right: 0;
-        width: clamp(15rem, 90vw, 18.75rem); /* Адаптивна ширина */
-        background-color: #212121;
-        border-radius: 0.625rem;
-        overflow: hidden;
-        z-index: 20;
         display: none;
+        position: absolute;
+        top: 40px;
+        right: 0;
+        background-color: #282828;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+        width: 280px;
+        max-height: 80vh;
+        overflow-y: auto;
+        z-index: 1001;
     }
 
-    .section {
-        border-bottom: 1px solid #3c3c3c;
-        padding: 0.625rem 0;
+    .user-menu .section {
+        padding: 8px 0;
+        border-bottom: 1px solid #383838;
     }
 
-    .section:last-child {
+    .user-menu .section:last-child {
         border-bottom: none;
     }
 
     .user-info {
-        padding: 0.625rem 1rem;
+        padding: 12px 16px;
     }
 
     .user-info p {
-        margin: 0.125rem 0;
+        margin: 4px 0;
+        font-size: 14px;
+        color: #aaa;
     }
 
     .user-info a {
         color: #3ea6ff;
-        text-decoration: none; /* Прибираємо підкреслення */
+        text-decoration: none;
         font-size: 14px;
     }
 
@@ -165,10 +177,10 @@
         font-size: 14px;
         cursor: pointer;
         color: #fff;
-        text-decoration: none; /* Прибираємо підкреслення */
+        text-decoration: none;
     }
 
-    .item:hover {
+    .user-menu .item:hover {
         background-color: #383838;
     }
 
@@ -176,7 +188,7 @@
         margin-right: 12px;
         font-size: 20px;
         color: #aaa;
-        text-decoration: none; /* Прибираємо підкреслення */
+        text-decoration: none;
     }
 
     /* Бічна панель */
@@ -199,14 +211,24 @@
         color: #fff;
         cursor: pointer;
         gap: 1rem;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background 0.3s;
+    }
+
+    .sidebar-item img {
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
     }
 
     .sidebar-item.active {
-        background-color: #383838;
+        background-color: #3f3f3f;
+        font-weight: bold;
     }
 
     .sidebar-item:hover {
-        background-color: #303030;
+        background-color: #333;
     }
 
     hr {
@@ -324,16 +346,6 @@
         font-size: 0.75rem;
         color: #aaa;
     }
-        .customize-btn, .manage-videos-btn {
-        padding: 8px 16px;
-        background-color: #303030;
-        color: #fff;
-        border: 1px solid #606060;
-        border-radius: 2px;
-        cursor: pointer;
-        font-size: 14px;
-        text-decoration: none; /* Прибираємо підкреслення */
-    }
 
     /* Адаптивність */
     @media (max-width: 768px) {
@@ -372,110 +384,66 @@
             grid-template-columns: 1fr;
         }
     }
-        .sidebar-item {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: background 0.3s;
-        }
-
-        .sidebar-item img {
-            width: 16px;
-            height: 16px;
-            margin-right: 8px;
-        }
-
-        .sidebar-item:hover {
-            background-color: #333;
-        }
-
-        .sidebar-item.active {
-            background-color: #3f3f3f;
-            /* або будь-який інший темний колір */
-            font-weight: bold;
-        }
-        .tab {
-        padding: 12px 24px;
-        font-size: 14px;
-        color: #aaa;
-        cursor: pointer;
-        text-transform: uppercase;
-        text-decoration: none; /* Прибираємо підкреслення */
-    }
-        .publish-btn {
-        padding: 8px 16px;
-        background-color: #3ea6ff;
-        color: #fff;
-        border: none;
-        border-radius: 2px;
-        cursor: pointer;
-        font-size: 14px;
-        text-decoration: none; /* Прибираємо підкреслення */
-    }
 
 </style>
 
 </head>
 <body>
     <header>
-        <div class="header-left">
-            <div class="menu-icon">☰</div>
-            <div class="logo">
-                <img src="https://www.youtube.com/" style="width: 10px; height: 10px;">
-            </div>
+    <div class="header-left">
+        <div class="menu-icon">☰</div>
+        <div class="logo">
+            <img src="https://www.youtube.com/img/desktop/yt_120x120.png" alt="MyTube Logo">
         </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Пошук">
-            <button class="search-btn"></button>
-        </div>
-        <div class="header-right">
-            <div>
-                <img src="https://cdn-icons-png.flaticon.com/128/7322/7322162.png" class="icon">
-            </div>
-            <button class="login-btn" id="login-btn">Увійти</button>
-            <div class="user-container" id="user-container">
-                <div class="user-avatar" id="user-avatar"></div>
-                <div class="user-menu" id="user-menu">
-                    <div class="section user-info">
-                        <p><strong id="menu-channel-name">Вы ещё не создали канал</strong></p>
-                        <p id="menu-account-name"></p>
-                        <a href="https://ktoto342244.github.io/nn/profile.html">Переглянути канал</a>
-                    </div>
-                    <div class="section">
-                        <a href="https://myaccount.google.com" target="_blank" class="item">
-                            <span class="material-icons" style="text-decoration: none;">account_circle</span>Аккаунт Google
-                        </a>
-                        <div class="item"><span class="material-icons">switch_account</span>Змінити акаунт</div>
-                        <div class="item" id="logout-link"><span class="material-icons">logout</span>Вийти</div>
-                    </div>
-                    <div class="section">
-                        <a href="https://studio.youtube.com" target="_blank" class="item">
-                            <span class="material-icons" style="text-decoration: none;">video_settings</span>Творча студія YouTube
-                        </a>
-                        <div class="item"><span class="material-icons">paid</span>Покупки і платні підписки</div>
-                    </div>
-                    <div class="section">
-                        <a href="https://ktoto342244.github.io/nn/profile.html" class="item">
-                            <span class="material-icons" style="text-decoration: none;">person</span>Ваші дані на YouTube
-                        </a>
-                        <div class="item"><span class="material-icons">brightness_6</span>Тема: Темна</div>
-                        <div class="item"><span class="material-icons">language</span>Мова: Русский</div>
-                        <div class="item"><span class="material-icons">visibility_off</span>Безпечний режим: вимк.</div>
-                        <div class="item"><span class="material-icons">flag</span>Країна: Україна</div>
-                        <div class="item"><span class="material-icons">keyboard</span>Швидкі клавіші</div>
-                    </div>
-                    <div class="section">
-                        <div class="item"><span class="material-icons">settings</span>Налаштування</div>
-                        <div class="item"><span class="material-icons">help</span>Довідка</div>
-                        <div class="item"><span class="material-icons">feedback</span>Надіслати відгук</div>
-                    </div>
+    </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Пошук">
+        <button class="search-btn">🔍</button>
+    </div>
+    <div class="header-right">
+        <div class="icon">📹</div>
+        <div class="icon">🔔</div>
+        <button class="login-btn" id="login-btn">Увійти</button>
+        <div class="user-container" id="user-container">
+            <div class="user-avatar" id="user-avatar"></div>
+            <div class="user-menu" id="user-menu">
+                <div class="section user-info">
+                    <p><strong id="menu-channel-name">Вы ещё не создали канал</strong></p>
+                    <p id="menu-account-name"></p>
+                    <a href="https://ktoto342244.github.io/nn/profile.html">Переглянути канал</a>
+                </div>
+                <div class="section">
+                    <a href="https://myaccount.google.com" target="_blank" class="item">
+                        <span class="material-icons">account_circle</span>Аккаунт Google
+                    </a>
+                    <div class="item"><span class="material-icons">switch_account</span>Змінити акаунт</div>
+                    <div class="item" id="logout-link"><span class="material-icons">logout</span>Вийти</div>
+                </div>
+                <div class="section">
+                    <a href="https://studio.youtube.com" target="_blank" class="item">
+                        <span class="material-icons">video_settings</span>Творча студія YouTube
+                    </a>
+                    <div class="item"><span class="material-icons">paid</span>Покупки і платні підписки</div>
+                </div>
+                <div class="section">
+                    <a href="https://ktoto342244.github.io/nn/profile.html" class="item">
+                        <span class="material-icons">person</span>Ваші дані на YouTube
+                    </a>
+                    <div class="item"><span class="material-icons">brightness_6</span>Тема: Темна</div>
+                    <div class="item"><span class="material-icons">language</span>Мова: Русский</div>
+                    <div class="item"><span class="material-icons">visibility_off</span>Безпечний режим: вимк.</div>
+                    <div class="item"><span class="material-icons">flag</span>Країна: Україна</div>
+                    <div class="item"><span class="material-icons">keyboard</span>Швидкі клавіші</div>
+                </div>
+                <div class="section">
+                    <div class="item"><span class="material-icons">settings</span>Налаштування</div>
+                    <div class="item"><span class="material-icons">help</span>Довідка</div>
+                    <div class="item"><span class="material-icons">feedback</span>Надіслати відгук</div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 <div class="sidebar">
     <a href="https://ktoto342244.github.io/nn/" class="sidebar-item" style="text-decoration: none;">
       <img src="https://img.icons8.com/ios-filled/50/000000/home.png" alt="Головна" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Головна
