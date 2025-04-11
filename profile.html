@@ -18,8 +18,6 @@ body {
   background-color: #f9f9f9;
   color: #030303;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
 /* Header */
@@ -45,6 +43,7 @@ header {
 .menu-icon {
   font-size: 24px;
   cursor: pointer;
+  color: #030303;
 }
 
 .logo img {
@@ -66,6 +65,7 @@ header {
   border: 1px solid #ccc;
   border-right: none;
   border-radius: 2px 0 0 2px;
+  outline: none;
 }
 
 .search-btn {
@@ -73,8 +73,13 @@ header {
   background-color: #f8f8f8;
   border: 1px solid #ccc;
   border-left: none;
-  cursor: pointer;
   border-radius: 0 2px 2px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.search-btn:hover {
+  background-color: #f0f0f0;
 }
 
 .header-right {
@@ -86,6 +91,7 @@ header {
 .icon {
   font-size: 24px;
   cursor: pointer;
+  color: #030303;
 }
 
 .login-btn {
@@ -113,6 +119,7 @@ header {
   border-radius: 50%;
   background-color: #ccc;
   cursor: pointer;
+  background-size: cover;
 }
 
 .user-menu {
@@ -144,6 +151,7 @@ header {
 
 .user-info p {
   margin: 4px 0;
+  font-size: 14px;
 }
 
 .user-info a {
@@ -190,6 +198,7 @@ header {
   font-size: 14px;
   color: #030303;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .sidebar-item img {
@@ -247,6 +256,7 @@ main {
   border-radius: 50%;
   background-color: #ccc;
   margin-right: 16px;
+  background-size: cover;
 }
 
 .profile-info h1 {
@@ -303,13 +313,13 @@ main {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .sidebar {
     width: 72px;
   }
 
   .sidebar-item span {
-    visibility: hidden;
+    display: none;
   }
 
   .sidebar-item img {
@@ -325,11 +335,11 @@ main {
   }
 
   .video-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .sidebar {
     display: none;
   }
@@ -338,12 +348,16 @@ main {
     margin-left: 0;
   }
 
-  .header-left .menu-icon {
-    display: block;
+  .search-bar input {
+    width: 120px;
   }
 
-  .search-bar input {
-    width: 100px;
+  .header-right .icon {
+    display: none;
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
   }
 }
     </style>
