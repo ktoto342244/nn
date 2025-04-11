@@ -1,391 +1,426 @@
-<!DOCTYPE html>
-<html lang="uk">
+<!DOCTYPE html><html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube</title>
+    <title>Профіль - MyTube</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/128/1384/1384060.png">
     <style>
-        /* Скидання стандартних відступів */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #181818;
+        color: #fff;
+        min-height: 100vh;
+    }
 
-        /* Основний стиль */
-        body {
-            font-family: 'Roboto', Arial, sans-serif;
-            background-color: #0f0f0f;
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+    /* Header */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 16px;
+        background-color: #212121;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
 
-        /* Шапка */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 16px;
-            background-color: #212121;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
 
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
+    .menu-icon {
+        font-size: 24px;
+        cursor: pointer;
+        color: #fff;
+        text-decoration: none;
+    }
 
-        .menu-icon {
-            font-size: 24px;
-            cursor: pointer;
-            color: #fff;
-            text-decoration: none;
-        }
+    .logo img {
+        height: 36px;
+    }
 
-        .logo img {
-            height: 36px;
-        }
+    .search-bar {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        max-width: 600px;
+        margin: 0 24px;
+    }
 
-        .search-bar {
-            display: flex;
-            align-items: center;
-            flex: 1;
-            max-width: 600px;
-            margin: 0 24px;
-        }
+    .search-bar input {
+        flex: 1;
+        padding: 8px 12px;
+        font-size: 16px;
+        border: 1px solid #303030;
+        background-color: #121212;
+        color: #fff;
+        border-radius: 2px 0 0 2px;
+        outline: none;
+    }
 
-        .search-bar input {
-            flex: 1;
-            padding: 8px 12px;
-            font-size: 16px;
-            border: 1px solid #303030;
-            background-color: #121212;
-            color: #fff;
-            border-radius: 2px 0 0 2px;
-            outline: none;
-        }
+    .search-btn {
+        padding: 8px 16px;
+        background-color: #303030;
+        border: 1px solid #303030;
+        border-left: none;
+        border-radius: 0 2px 2px 0;
+        cursor: pointer;
+        font-size: 20px;
+        color: #fff;
+        text-decoration: none;
+    }
 
-        .search-btn {
-            padding: 8px 16px;
-            background-color: #303030;
-            border: 1px solid #303030;
-            border-left: none;
-            border-radius: 0 2px 2px 0;
-            cursor: pointer;
-            font-size: 20px;
-            color: #fff;
-            text-decoration: none;
-        }
+    .search-btn:hover {
+        background-color: #404040;
+    }
 
-        .search-btn:hover {
-            background-color: #404040;
-        }
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
 
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
+    .icon {
+        font-size: 24px;
+        cursor: pointer;
+        color: #fff;
+        text-decoration: none;
+    }
 
-        .icon {
-            font-size: 24px;
-            cursor: pointer;
-            color: #fff;
-            text-decoration: none;
-        }
+    .login-btn {
+        padding: 8px 16px;
+        background-color: #065fd4;
+        color: #fff;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+    }
 
-        .login-btn {
-            padding: 8px 16px;
-            background-color: #065fd4;
-            color: #fff;
-            border: none;
-            border-radius: 2px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            text-decoration: none;
-        }
+    .login-btn:hover {
+        background-color: #054bb4;
+    }
 
-        .login-btn:hover {
-            background-color: #054bb4;
-        }
+    .user-container {
+        position: relative;
+    }
 
-        .user-container {
-            position: relative;
-        }
+    .user-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: #ccc;
+        cursor: pointer;
+        background-size: cover;
+    }
 
-        .user-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background-color: #ccc;
-            cursor: pointer;
-            background-size: cover;
-        }
+    .user-menu {
+        display: none;
+        position: absolute;
+        top: 40px;
+        right: 0;
+        background-color: #282828;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+        width: 280px;
+        max-height: 80vh;
+        overflow-y: auto;
+        z-index: 1001;
+    }
 
-        .user-menu {
-            display: none;
-            position: absolute;
-            top: 40px;
-            right: 0;
-            background-color: #282828;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            border-radius: 4px;
-            width: 280px;
-            max-height: 80vh;
-            overflow-y: auto;
-            z-index: 1001;
-        }
+    .user-menu .section {
+        padding: 8px 0;
+        border-bottom: 1px solid #383838;
+    }
 
-        .user-menu .section {
-            padding: 8px 0;
-            border-bottom: 1px solid #383838;
-        }
+    .user-menu .section:last-child {
+        border-bottom: none;
+    }
 
-        .user-menu .section:last-child {
-            border-bottom: none;
-        }
+    .user-info {
+        padding: 12px 16px;
+    }
 
-        .user-info {
-            padding: 12px 16px;
-        }
+    .user-info p {
+        margin: 4px 0;
+        font-size: 14px;
+        color: #aaa;
+    }
 
-        .user-info p {
-            margin: 4px 0;
-            font-size: 14px;
-            color: #aaa;
-        }
+    .user-info a {
+        color: #3ea6ff;
+        text-decoration: none;
+        font-size: 14px;
+        text-decoration: none;
+    }
 
-        .user-info a {
-            color: #3ea6ff;
-            text-decoration: none;
-            font-size: 14px;
-        }
+    .user-menu .item {
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        font-size: 14px;
+        cursor: pointer;
+        color: #fff;
+        text-decoration: none;
+    }
 
-        .user-menu .item {
-            display: flex;
-            align-items: center;
-            padding: 12px 16px;
-            font-size: 14px;
-            cursor: pointer;
-            color: #fff;
-            text-decoration: none;
-        }
+    .user-menu .item:hover {
+        background-color: #383838;
+    }
 
-        .user-menu .item:hover {
-            background-color: #383838;
-        }
+    .user-menu .item .material-icons {
+        margin-right: 12px;
+        font-size: 20px;
+        color: #aaa;
+        text-decoration: none;
+    }
 
-        .user-menu .item .material-icons {
-            margin-right: 12px;
-            font-size: 20px;
-            color: #aaa;
-            text-decoration: none;
-        }
+    /* Sidebar */
+    .sidebar {
+        width: 240px;
+        background-color: #212121;
+        padding-top: 56px;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+    }
 
-        /* Бічна панель */
+    .sidebar-item {
+        display: flex;
+        align-items: center;
+        padding: 8px 24px;
+        font-size: 14px;
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .sidebar-item img {
+        width: 24px;
+        height: 24px;
+        margin-right: 24px;
+        filter: invert(1);
+    }
+
+    .sidebar-item:hover {
+        background-color: #383838;
+    }
+
+    .sidebar-item.active {
+        background-color: #383838;
+        font-weight: 500;
+    }
+
+    .sidebar hr {
+        border: none;
+        border-top: 1px solid #383838;
+        margin: 8px 0;
+    }
+
+    /* Main */
+    main {
+        margin-left: 240px;
+        margin-top: 56px;
+        padding: 24px;
+        flex: 1;
+    }
+
+    /* Profile */
+    .profile {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    .profile-header {
+        display: flex;
+        align-items: center;
+        padding: 16px 0;
+    }
+
+    .channel-icon-large {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: #ccc;
+        margin-right: 16px;
+        background-size: cover;
+    }
+
+    .profile-info h1 {
+        font-size: 24px;
+        font-weight: 500;
+        margin-bottom: 4px;
+    }
+
+    .profile-info p {
+        font-size: 14px;
+        color: #aaa;
+        margin-bottom: 4px;
+    }
+
+    .profile-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+    }
+
+    .customize-btn, .manage-videos-btn {
+        padding: 8px 16px;
+        background-color: #303030;
+        color: #fff;
+        border: 1px solid #606060;
+        border-radius: 2px;
+        cursor: pointer;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+    .customize-btn:hover, .manage-videos-btn:hover {
+        background-color: #404040;
+    }
+
+    .profile-tabs {
+        display: flex;
+        border-bottom: 1px solid #383838;
+        margin-top: 16px;
+    }
+
+    .tab {
+        padding: 12px 24px;
+        font-size: 14px;
+        color: #aaa;
+        cursor: pointer;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    .tab:hover {
+        background-color: #383838;
+    }
+
+    .tab.active {
+        color: #fff;
+        border-bottom: 2px solid #fff;
+    }
+
+    .profile-content {
+        margin-top: 24px;
+        text-align: center;
+    }
+
+    .no-content {
+        padding: 40px 0;
+    }
+
+    .no-content .material-icons {
+        font-size: 48px;
+        color: #606060;
+        margin-bottom: 16px;
+        text-decoration: none;
+    }
+
+    .no-content h2 {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+
+    .no-content p {
+        font-size: 14px;
+        color: #aaa;
+        margin-bottom: 16px;
+    }
+
+    .publish-btn {
+        padding: 8px 16px;
+        background-color: #3ea6ff;
+        color: #fff;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+        font-size: 14px;
+        text-decoration: none;
+    }
+
+    .publish-btn:hover {
+        background-color: #2b8bff;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
         .sidebar {
-            width: clamp(4.5rem, 15vw, 15rem);
-            background-color: #212121;
-            position: fixed;
-            top: 3.5rem;
-            bottom: 0;
-            padding: 0.75rem;
-            overflow-y: auto;
-            transition: width 0.3s;
+            width: 72px;
         }
 
-        .sidebar-item {
-            padding: 0.75rem 1rem;
-            font-size: 0.875rem;
-            display: flex;
-            align-items: center;
-            color: #fff;
-            cursor: pointer;
-            gap: 1rem;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: background 0.3s;
+        .sidebar-item span {
+            display: none;
         }
 
         .sidebar-item img {
-            width: 16px;
-            height: 16px;
-            margin-right: 8px;
+            margin-right: 0;
         }
 
-        .sidebar-item.active {
-            background-color: #3f3f3f;
-            font-weight: bold;
-        }
-
-        .sidebar-item:hover {
-            background-color: #333;
-        }
-
-        hr {
-            border: none;
-            border-top: 1px solid #303030;
-            margin: 0.5rem 0;
-        }
-
-        /* Основний контент */
         main {
-            margin-left: clamp(4.5rem, 15vw, 15rem);
-            margin-top: 3.5rem;
-            padding: 1.5rem;
-            flex: 1;
-            transition: margin-left 0.3s;
+            margin-left: 72px;
         }
 
-        .nav-bar {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            overflow-x: auto;
-            white-space: nowrap;
+        .search-bar {
+            margin: 0 8px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .sidebar {
+            display: none;
         }
 
-        .nav-item {
-            padding: 0.5rem 1rem;
-            background-color: #303030;
-            border-radius: 1rem;
-            font-size: 0.875rem;
-            cursor: pointer;
+        main {
+            margin-left: 0;
         }
 
-        .nav-item.active {
-            background-color: #fff;
-            color: #0f0f0f;
+        .search-bar input {
+            width: 120px;
         }
 
-        /* Сітка відео */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+        .header-right .icon {
+            display: none;
         }
 
-        .video-card {
+        .profile-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .channel-icon-large {
+            margin-bottom: 16px;
+        }
+
+        .profile-actions {
+            flex-direction: column;
             width: 100%;
         }
 
-        .thumbnail {
+        .customize-btn, .manage-videos-btn {
             width: 100%;
-            padding-bottom: 56.25%;
-            background-color: #ccc;
-            margin-bottom: 0.5rem;
+            text-align: center;
         }
+    }
+</style>
 
-        .video-info {
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        .channel-icon {
-            width: 2.25rem;
-            height: 2.25rem;
-            background-color: #aaa;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .video-details h3 {
-            font-size: 0.875rem;
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-        }
-
-        .video-details p {
-            font-size: 0.75rem;
-            color: #aaa;
-        }
-
-        /* Секція Shorts */
-        .shorts-section h2 {
-            font-size: 1.125rem;
-            margin: 1.5rem 0 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .shorts-grid {
-            display: flex;
-            gap: 1rem;
-            overflow-x: auto;
-        }
-
-        .shorts-card {
-            width: clamp(9rem, 20vw, 12.5rem);
-        }
-
-        .shorts-thumbnail {
-            width: 100%;
-            padding-bottom: 177.78%;
-            background-color: #ccc;
-            margin-bottom: 0.5rem;
-        }
-
-        .shorts-card h3 {
-            font-size: 0.875rem;
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-        }
-
-        .shorts-card p {
-            font-size: 0.75rem;
-            color: #aaa;
-        }
-
-        /* Адаптивність */
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 4.5rem;
-            }
-            .sidebar-item {
-                justify-content: center;
-                font-size: 0;
-            }
-            main {
-                margin-left: 4.5rem;
-            }
-            .search-bar {
-                max-width: 60%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header {
-                padding: 0.5rem;
-                min-height: auto;
-            }
-            .search-bar {
-                max-width: 100%;
-                order: 3;
-                margin: 0.5rem 0;
-            }
-            .sidebar {
-                display: none;
-            }
-            main {
-                margin-left: 0;
-            }
-            .video-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -397,11 +432,11 @@
         </div>
         <div class="search-bar">
             <input type="text" placeholder="Пошук">
-            <button class="search-btn">🔍</button>
+            <button class="search-btn"></button>
         </div>
         <div class="header-right">
-            <div class="icon">📹</div>
-            <div class="icon">🔔</div>
+            <div class="icon"></div>
+            <div class="icon"></div>
             <button class="login-btn" id="login-btn">Увійти</button>
             <div class="user-container" id="user-container">
                 <div class="user-avatar" id="user-avatar"></div>
@@ -413,20 +448,20 @@
                     </div>
                     <div class="section">
                         <a href="https://myaccount.google.com" target="_blank" class="item">
-                            <span class="material-icons">account_circle</span>Аккаунт Google
+                            <span class="material-icons" style="text-decoration: none;">account_circle</span>Аккаунт Google
                         </a>
                         <div class="item"><span class="material-icons">switch_account</span>Змінити акаунт</div>
                         <div class="item" id="logout-link"><span class="material-icons">logout</span>Вийти</div>
                     </div>
                     <div class="section">
                         <a href="https://studio.youtube.com" target="_blank" class="item">
-                            <span class="material-icons">video_settings</span>Творча студія YouTube
+                            <span class="material-icons" style="text-decoration: none;">video_settings</span>Творча студія YouTube
                         </a>
                         <div class="item"><span class="material-icons">paid</span>Покупки і платні підписки</div>
                     </div>
                     <div class="section">
                         <a href="https://ktoto342244.github.io/nn/profile.html" class="item">
-                            <span class="material-icons">person</span>Ваші дані на YouTube
+                            <span class="material-icons" style="text-decoration: none;">person</span>Ваші дані на YouTube
                         </a>
                         <div class="item"><span class="material-icons">brightness_6</span>Тема: Темна</div>
                         <div class="item"><span class="material-icons">language</span>Мова: Русский</div>
@@ -443,194 +478,141 @@
             </div>
         </div>
     </header>
+<div class="sidebar">
+    <a href="https://ktoto342244.github.io/nn/" class="sidebar-item" style="text-decoration: none;">🏠 Головна</a>
+    <div class="sidebar-item">🎥 Shorts</div>
+    <div class="sidebar-item">📺 Підписки</div>
+    <div class="sidebar-item">📚 Бібліотека</div>
+    <hr>
+    <div class="sidebar-item">📜 Історія</div>
+    <div class="sidebar-item">🎬 Ваші відео</div>
+    <div class="sidebar-item">⏰ Переглянути пізніше</div>
+    <hr>
+    <div class="sidebar-item">🎵 Музика</div>
+    <div class="sidebar-item">🎮 Відіо Ігри</div>
+    <a href="https://ktoto342244.github.io/nn/profile.html" class="sidebar-item" id="profile-link">
+        <img src="https://cdn-icons-png.flaticon.com/128/309/309492.png" alt="icon">
+        <span>Вы</span>
+    </a>
+</div>
 
-    <div class="sidebar">
-        <a href="https://ktoto342244.github.io/nn/" class="sidebar-item" style="text-decoration: none;">
-            <img src="https://img.icons8.com/ios-filled/50/000000/home.png" alt="Головна" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Головна
-        </a>
-        <a href="https://ktoto342244.github.io/nn/film.html" class="sidebar-item" style="text-decoration: none;">
-            <img src="https://img.icons8.com/color/48/youtube-shorts.png" alt="Shorts" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Shorts
-        </a>
-        <a href="#" class="sidebar-item" style="text-decoration: none;">
-            <img src="https://img.icons8.com/ios-filled/50/000000/subscription.png" alt="Підписки" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Підписки
-        </a>
-        <a href="#" class="sidebar-item" style="text-decoration: none;">
-            <img src="https://img.icons8.com/ios-filled/50/000000/library.png" alt="Бібліотека" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Бібліотека
-        </a>
-        <hr>
-        <a href="#" class="sidebar-item" style="text-decoration: none;">
-            <img src="https://img.icons8.com/ios-filled/50/000000/time-machine.png" alt="Історія" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Історія
-        </a>
-        <a href="#" class="sidebar-item" style="text-decoration: none;">
-            <img src="https://img.icons8.com/ios-filled/50/000000/video.png" alt="Ваші відео" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Ваші відео
-        </a>
-        <a href="#" class="sidebar-item" style="text-decoration: none;">
-            <img src="https://img.icons8.com/ios-filled/50/000000/watch-later.png" alt="Переглянути пізніше" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Переглянути пізніше
-        </a>
-        <hr>
-        <a href="#" class="sidebar-item" style="text-decoration: none;">
-            <img src="https://img.icons8.com/ios-filled/50/000000/musical-notes.png" alt="Музика" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Музика
-        </a>
-        <a href="#" class="sidebar-item" style="text-decoration: none;">
-            <img src="https://img.icons8.com/ios-filled/50/000000/controller.png" alt="Ігри" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Ігри
-        </a>
-        <a href="#" class="sidebar-item" style="text-decoration: none;">
-            <img src="https://img.icons8.com/ios-filled/50/000000/controller.png" alt="Фильмы" style="width:16px; height:16px; vertical-align:middle; margin-right:5px;">Фильмы
-        </a>
-        <a href="https://ktoto342244.github.io/nn/profile.html" class="sidebar-item" id="profile-link">
-            <img src="https://cdn-icons-png.flaticon.com/128/309/309492.png" alt="icon">
-            <span>Вы</span>
-        </a>
-    </div>
-
-    <main>
-        <div class="nav-bar">
-            <div class="nav-item active">Усе</div>
-            <div class="nav-item">Відео</div>
-            <div class="nav-item">Музика</div>
-            <div class="nav-item">Новини</div>
-            <div class="nav-item">Сейви в шортах</div>
-            <div class="nav-item">Живі трансляції</div>
-            <div class="nav-item"><a href="film.html"></a>Фильмы</div>
+<main>
+    <section class="profile">
+        <div class="profile-header">
+            <div class="channel-icon-large" id="user-avatar-large"></div>
+            <div class="profile-info">
+                <h1 id="user-display-name">Користувач</h1>
+                <p id="user-email">@користувач</p>
+                <p>Долучення: Відсутнє долучення</p>
+                <div class="profile-actions">
+                    <button class="customize-btn">Налаштувати ваш канал</button>
+                    <button class="manage-videos-btn">Управління відео</button>
+                </div>
+            </div>
         </div>
-
-        <section class="video-grid">
-            <div class="video-card">
-                <div class="thumbnail"></div>
-                <div class="video-info">
-                    <div class="channel-icon"></div>
-                    <div class="video-details">
-                        <h3>СМЕРТЕЛЬНАЯ КАПЕЛЬ в Майнкрафт!</h3>
-                        <p>Машенька [ Lia's bar + Функцыя]</p>
-                        <p>125 тис. переглядів • 11 годин тому</p>
-                    </div>
-                </div>
+        <div class="profile-tabs">
+            <div class="tab active">Опубліковане</div>
+            <div class="tab">Збережене</div>
+            <div class="tab">Архів</div>
+        </div>
+        <div class="profile-content">
+            <div class="no-content">
+                <span class="material-icons">edit</span>
+                <h2>Опублікуйте запис</h2>
+                <p>Зробіть перший опублікований запис. Це буде видно вашому співтовариству.</p>
+                <button class="publish-btn">Опублікувати</button>
             </div>
-            <div class="video-card">
-                <div class="thumbnail"></div>
-                <div class="video-info">
-                    <div class="channel-icon"></div>
-                    <div class="video-details">
-                        <h3>ДОКУМЕНТЫ: Кольцевые инструкции...</h3>
-                        <p>SuperCrastan</p>
-                        <p>164 тис. переглядів • 7 годин тому</p>
-                    </div>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="thumbnail"></div>
-                <div class="video-info">
-                    <div class="channel-icon"></div>
-                    <div class="video-details">
-                        <h3>Зарядил ли 1000 человек взрыв...</h3>
-                        <p>эксченджимонстр</p>
-                        <p>1,6 млн переглядів • 4 тижні тому</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
+    </section>
+</main>
 
-        <section class="shorts-section">
-            <h2>🎥 Shorts</h2>
-            <div class="shorts-grid">
-                <div class="shorts-card">
-                    <div class="shorts-thumbnail"></div>
-                    <h3>Wang Ling using 0.1% power...</h3>
-                    <p>2 млн переглядів</p>
-                </div>
-                <div class="shorts-card">
-                    <div class="shorts-thumbnail"></div>
-                    <h3>НЕНОРМАЛЬНЫЕ ВЕЩИ В...</h3>
-                    <p>1,1 млн переглядів</p>
-                </div>
-                <div class="shorts-card">
-                    <div class="shorts-thumbnail"></div>
-                    <h3>Дафна достигла Джокера...</h3>
-                    <p>3,1 млн переглядів</p>
-                </div>
-            </div>
-        </section>
-    </main>
+<!-- Firebase SDK -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
-    <!-- Firebase SDK -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+    const firebaseConfig = {
+        apiKey: "AIzaSyBJj2RrE1dcvQzCrk-Kgxq6vo-rqf7nCSo",
+        authDomain: "starting-afd61.firebaseapp.com",
+        projectId: "starting-afd61",
+        storageBucket: "starting-afd61.firebasestorage.app",
+        messagingSenderId: "397305334150",
+        appId: "1:397305334150:web:3bb68c76c229963d538407",
+        measurementId: "G-3J4EJ6M630"
+    };
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyBJj2RrE1dcvQzCrk-Kgxq6vo-rqf7nCSo",
-            authDomain: "starting-afd61.firebaseapp.com",
-            projectId: "starting-afd61",
-            storageBucket: "starting-afd61.firebasestorage.app",
-            messagingSenderId: "397305334150",
-            appId: "1:397305334150:web:3bb68c76c229963d538407",
-            measurementId: "G-3J4EJ6M630"
-        };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const provider = new GoogleAuthProvider();
+    const loginBtn = document.getElementById("login-btn");
+    const userContainer = document.getElementById("user-container");
+    const userAvatar = document.getElementById("user-avatar");
+    const userAvatarLarge = document.getElementById("user-avatar-large");
+    const userDisplayName = document.getElementById("user-display-name");
+    const userEmail = document.getElementById("user-email");
+    const userMenu = document.getElementById("user-menu");
+    const logoutLink = document.getElementById("logout-link");
+    const menuChannelName = document.getElementById("menu-channel-name");
+    const menuAccountName = document.getElementById("menu-account-name");
 
-        const loginBtn = document.getElementById("login-btn");
-        const userContainer = document.getElementById("user-container");
-        const userAvatar = document.getElementById("user-avatar");
-        const userMenu = document.getElementById("user-menu");
-        const logoutLink = document.getElementById("logout-link");
-        const menuChannelName = document.getElementById("menu-channel-name");
-        const menuAccountName = document.getElementById("menu-account-name");
+    // Показ/приховування меню при кліку на аватар
+    userAvatar.addEventListener("click", () => {
+        userMenu.style.display = userMenu.style.display === "block" ? "none" : "block";
+    });
 
-        // Показ/приховування меню при кліку на аватар
-        userAvatar.addEventListener("click", () => {
-            userMenu.style.display = userMenu.style.display === "block" ? "none" : "block";
-        });
+    // Приховувати меню при кліку поза ним
+    document.addEventListener("click", (event) => {
+        if (!userAvatar.contains(event.target) && !userMenu.contains(event.target)) {
+            userMenu.style.display = "none";
+        }
+    });
 
-        // Приховувати меню при кліку поза ним
-        document.addEventListener("click", (event) => {
-            if (!userAvatar.contains(event.target) && !userMenu.contains(event.target)) {
-                userMenu.style.display = "none";
+    // Функція виходу
+    logoutLink.addEventListener("click", () => {
+        signOut(auth)
+            .then(() => {
+                console.log("Користувач вийшов");
+                window.location.href = "login.html";
+            })
+            .catch((error) => {
+                console.error("Помилка при виході:", error);
+            });
+    });
+
+    // Відстеження стану автентифікації
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            loginBtn.style.display = "none";
+            userContainer.style.display = "block";
+            userDisplayName.textContent = user.displayName || "Користувач";
+            userEmail.textContent = `@${user.email.split('@')[0]}`;
+
+            // Назва канала в меню
+            menuChannelName.textContent = user.displayName || "Вы ещё не создали канал";
+            // Ім'я акаунта в меню
+            menuAccountName.textContent = user.email;
+
+            if (user.photoURL) {
+                userAvatar.style.backgroundImage = `url(${user.photoURL})`;
+                userAvatarLarge.style.backgroundImage = `url(${user.photoURL})`;
             }
-        });
+        } else {
+            loginBtn.style.display = "block";
+            userContainer.style.display = "none";
+            window.location.href = "login.html";
+        }
+    });
 
-        // Функція виходу
-        logoutLink.addEventListener("click", (e) => {
-            e.preventDefault();
-            signOut(auth)
-                .then(() => {
-                    console.log("Користувач вийшов");
-                    userMenu.style.display = "none";
-                })
-                .catch((error) => {
-                    console.error("Помилка при виході:", error);
-                    alert("Помилка при виході. Спробуйте ще раз.");
-                });
+    // Активна вкладка
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
         });
+    });
+</script>
 
-        // Відстеження стану автентифікації
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                loginBtn.style.display = "none";
-                userContainer.style.display = "block";
-                menuChannelName.textContent = user.displayName || "Вы ещё не создали канал";
-                menuAccountName.textContent = user.email;
-                userAvatar.style.backgroundImage = user.photoURL ? `url(${user.photoURL})` : `url('https://cdn-icons-png.flaticon.com/128/149/149071.png')`;
-            } else {
-                loginBtn.style.display = "block";
-                userContainer.style.display = "none";
-                userMenu.style.display = "none";
-            }
-        });
-
-        // Вхід через Google
-        loginBtn.addEventListener("click", () => {
-            signInWithPopup(auth, provider)
-                .then((result) => {
-                    console.log("Успішний вхід:", result.user);
-                })
-                .catch((error) => {
-                    console.error("Помилка входу:", error);
-                    alert("Помилка входу. Спробуйте ще раз.");
-                });
-        });
-    </script>
 </body>
 </html>
+
