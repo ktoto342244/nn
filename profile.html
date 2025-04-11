@@ -8,419 +8,383 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/128/1384/1384060.png">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+          /* Скидання стандартних відступів */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #181818;
-            color: #fff;
-            min-height: 100vh;
-        }
+    /* Основний стиль */
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        background-color: #0f0f0f;
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
 
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 16px;
-            background-color: #212121;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
+    /* Шапка */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 16px;
+        background-color: #212121;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
 
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
 
-        .menu-icon {
-            font-size: 24px;
-            cursor: pointer;
-            color: #fff;
-            text-decoration: none;
-        }
+    .menu-icon {
+        font-size: 24px;
+        cursor: pointer;
+        color: #fff;
+        text-decoration: none;
+    }
 
-        .logo img {
-            height: 36px;
-        }
+    .logo img {
+        height: 36px;
+    }
 
-        .search-bar {
-            display: flex;
-            align-items: center;
-            flex: 1;
-            max-width: 600px;
-            margin: 0 24px;
-        }
+    .search-bar {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        max-width: 600px;
+        margin: 0 24px;
+    }
 
-        .search-bar input {
-            flex: 1;
-            padding: 8px 12px;
-            font-size: 16px;
-            border: 1px solid #303030;
-            background-color: #121212;
-            color: #fff;
-            border-radius: 2px 0 0 2px;
-            outline: none;
-        }
+    .search-bar input {
+        flex: 1;
+        padding: 8px 12px;
+        font-size: 16px;
+        border: 1px solid #303030;
+        background-color: #121212;
+        color: #fff;
+        border-radius: 2px 0 0 2px;
+        outline: none;
+    }
 
-        .search-btn {
-            padding: 8px 16px;
-            background-color: #303030;
-            border: 1px solid #303030;
-            border-left: none;
-            border-radius: 0 2px 2px 0;
-            cursor: pointer;
-            font-size: 20px;
-            color: #fff;
-            text-decoration: none;
-        }
+    .search-btn {
+        padding: 8px 16px;
+        background-color: #303030;
+        border: 1px solid #303030;
+        border-left: none;
+        border-radius: 0 2px 2px 0;
+        cursor: pointer;
+        font-size: 20px;
+        color: #fff;
+        text-decoration: none;
+    }
 
-        .search-btn:hover {
-            background-color: #404040;
-        }
+    .search-btn:hover {
+        background-color: #404040;
+    }
 
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
 
-        .icon {
-            font-size: 24px;
-            cursor: pointer;
-            color: #fff;
-            text-decoration: none;
-        }
+    .icon {
+        font-size: 24px;
+        cursor: pointer;
+        color: #fff;
+        text-decoration: none;
+    }
 
-        .login-btn {
-            padding: 8px 16px;
-            background-color: #065fd4;
-            color: #fff;
-            border: none;
-            border-radius: 2px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            text-decoration: none;
-        }
+    .login-btn {
+        padding: 8px 16px;
+        background-color: #065fd4;
+        color: #fff;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+    }
 
-        .login-btn:hover {
-            background-color: #054bb4;
-        }
+    .login-btn:hover {
+        background-color: #054bb4;
+    }
 
-        .user-container {
-            position: relative;
-        }
+    .user-container {
+        position: relative;
+    }
 
-        .user-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background-color: #ccc;
-            cursor: pointer;
-            background-size: cover;
-        }
+    .user-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: #ccc;
+        cursor: pointer;
+        background-size: cover;
+    }
 
-        .user-menu {
-            display: none;
-            position: absolute;
-            top: 40px;
-            right: 0;
-            background-color: #282828;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            border-radius: 4px;
-            width: 280px;
-            max-height: 80vh;
-            overflow-y: auto;
-            z-index: 1001;
-        }
+    .user-menu {
+        display: none;
+        position: absolute;
+        top: 40px;
+        right: 0;
+        background-color: #282828;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+        width: 280px;
+        max-height: 80vh;
+        overflow-y: auto;
+        z-index: 1001;
+    }
 
-        .user-menu .section {
-            padding: 8px 0;
-            border-bottom: 1px solid #383838;
-        }
+    .user-menu .section {
+        padding: 8px 0;
+        border-bottom: 1px solid #383838;
+    }
 
-        .user-menu .section:last-child {
-            border-bottom: none;
-        }
+    .user-menu .section:last-child {
+        border-bottom: none;
+    }
 
-        .user-info {
-            padding: 12px 16px;
-        }
+    .user-info {
+        padding: 12px 16px;
+    }
 
-        .user-info p {
-            margin: 4px 0;
-            font-size: 14px;
-            color: #aaa;
-        }
+    .user-info p {
+        margin: 4px 0;
+        font-size: 14px;
+        color: #aaa;
+    }
 
-        .user-info a {
-            color: #3ea6ff;
-            text-decoration: none;
-            font-size: 14px;
-            text-decoration: none;
-        }
+    .user-info a {
+        color: #3ea6ff;
+        text-decoration: none;
+        font-size: 14px;
+    }
 
-        .user-menu .item {
-            display: flex;
-            align-items: center;
-            padding: 12px 16px;
-            font-size: 14px;
-            cursor: pointer;
-            color: #fff;
-            text-decoration: none;
-        }
+    .user-menu .item {
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        font-size: 14px;
+        cursor: pointer;
+        color: #fff;
+        text-decoration: none;
+    }
 
-        .user-menu .item:hover {
-            background-color: #383838;
-        }
+    .user-menu .item:hover {
+        background-color: #383838;
+    }
 
-        .user-menu .item .material-icons {
-            margin-right: 12px;
-            font-size: 20px;
-            color: #aaa;
-            text-decoration: none;
-        }
+    .user-menu .item .material-icons {
+        margin-right: 12px;
+        font-size: 20px;
+        color: #aaa;
+        text-decoration: none;
+    }
 
-        /* Sidebar */
+    /* Бічна панель */
+    .sidebar {
+        width: clamp(4.5rem, 15vw, 15rem);
+        background-color: #212121;
+        position: fixed;
+        top: 3.5rem;
+        bottom: 0;
+        padding: 0.75rem;
+        overflow-y: auto;
+        transition: width 0.3s;
+    }
+
+    .sidebar-item {
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        cursor: pointer;
+        gap: 1rem;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: background 0.3s;
+    }
+
+    .sidebar-item img {
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+    }
+
+    .sidebar-item.active {
+        background-color: #3f3f3f;
+        font-weight: bold;
+    }
+
+    .sidebar-item:hover {
+        background-color: #333;
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid #303030;
+        margin: 0.5rem 0;
+    }
+
+    /* Основний контент */
+    main {
+        margin-left: clamp(4.5rem, 15vw, 15rem);
+        margin-top: 3.5rem;
+        padding: 1.5rem;
+        flex: 1;
+        transition: margin-left 0.3s;
+    }
+
+    .nav-bar {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .nav-item {
+        padding: 0.5rem 1rem;
+        background-color: #303030;
+        border-radius: 1rem;
+        font-size: 0.875rem;
+        cursor: pointer;
+    }
+
+    .nav-item.active {
+        background-color: #fff;
+        color: #0f0f0f;
+    }
+
+    /* Сітка відео */
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .video-card {
+        width: 100%;
+    }
+
+    .thumbnail {
+        width: 100%;
+        padding-bottom: 56.25%;
+        background-color: #ccc;
+        margin-bottom: 0.5rem;
+    }
+
+    .video-info {
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    .channel-icon {
+        width: 2.25rem;
+        height: 2.25rem;
+        background-color: #aaa;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+
+    .video-details h3 {
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+    }
+
+    .video-details p {
+        font-size: 0.75rem;
+        color: #aaa;
+    }
+
+    /* Секція Shorts */
+    .shorts-section h2 {
+        font-size: 1.125rem;
+        margin: 1.5rem 0 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .shorts-grid {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+    }
+
+    .shorts-card {
+        width: clamp(9rem, 20vw, 12.5rem);
+    }
+
+    .shorts-thumbnail {
+        width: 100%;
+        padding-bottom: 177.78%;
+        background-color: #ccc;
+        margin-bottom: 0.5rem;
+    }
+
+    .shorts-card h3 {
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+    }
+
+    .shorts-card p {
+        font-size: 0.75rem;
+        color: #aaa;
+    }
+
+    /* Адаптивність */
+    @media (max-width: 768px) {
         .sidebar {
-            width: 240px;
-            background-color: #212121;
-            padding-top: 56px;
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            overflow-y: auto;
+            width: 4.5rem;
         }
-
         .sidebar-item {
-            display: flex;
-            align-items: center;
-            padding: 8px 24px;
-            font-size: 14px;
-            color: #fff;
-            cursor: pointer;
-            text-decoration: none;
+            justify-content: center;
+            font-size: 0;
         }
-
-        .sidebar-item img {
-            width: 24px;
-            height: 24px;
-            margin-right: 24px;
-            filter: invert(1);
-        }
-
-        .sidebar-item:hover {
-            background-color: #383838;
-        }
-
-        .sidebar-item.active {
-            background-color: #383838;
-            font-weight: 500;
-        }
-
-        .sidebar hr {
-            border: none;
-            border-top: 1px solid #383838;
-            margin: 8px 0;
-        }
-
-        /* Main */
         main {
-            margin-left: 240px;
-            margin-top: 56px;
-            padding: 24px;
-            flex: 1;
+            margin-left: 4.5rem;
         }
-
-        /* Profile */
-        .profile {
-            max-width: 1280px;
-            margin: 0 auto;
+        .search-bar {
+            max-width: 60%;
         }
+    }
 
-        .profile-header {
-            display: flex;
-            align-items: center;
-            padding: 16px 0;
+    @media (max-width: 480px) {
+        header {
+            padding: 0.5rem;
+            min-height: auto;
         }
-
-        .channel-icon-large {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background-color: #ccc;
-            margin-right: 16px;
-            background-size: cover;
+        .search-bar {
+            max-width: 100%;
+            order: 3;
+            margin: 0.5rem 0;
         }
-
-        .profile-info h1 {
-            font-size: 24px;
-            font-weight: 500;
-            margin-bottom: 4px;
+        .sidebar {
+            display: none;
         }
-
-        .profile-info p {
-            font-size: 14px;
-            color: #aaa;
-            margin-bottom: 4px;
+        main {
+            margin-left: 0;
         }
-
-        .profile-actions {
-            display: flex;
-            gap: 8px;
-            margin-top: 8px;
+        .video-grid {
+            grid-template-columns: 1fr;
         }
-
-        .customize-btn, .manage-videos-btn {
-            padding: 8px 16px;
-            background-color: #303030;
-            color: #fff;
-            border: 1px solid #606060;
-            border-radius: 2px;
-            cursor: pointer;
-            font-size: 14px;
-            text-decoration: none;
-        }
-
-        .customize-btn:hover, .manage-videos-btn:hover {
-            background-color: #404040;
-        }
-
-        .profile-tabs {
-            display: flex;
-            border-bottom: 1px solid #383838;
-            margin-top: 16px;
-        }
-
-        .tab {
-            padding: 12px 24px;
-            font-size: 14px;
-            color: #aaa;
-            cursor: pointer;
-            text-transform: uppercase;
-            text-decoration: none;
-        }
-
-        .tab:hover {
-            background-color: #383838;
-        }
-
-        .tab.active {
-            color: #fff;
-            border-bottom: 2px solid #fff;
-        }
-
-        .profile-content {
-            margin-top: 24px;
-            text-align: center;
-        }
-
-        .no-content {
-            padding: 40px 0;
-        }
-
-        .no-content .material-icons {
-            font-size: 48px;
-            color: #606060;
-            margin-bottom: 16px;
-            text-decoration: none;
-        }
-
-        .no-content h2 {
-            font-size: 18px;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-
-        .no-content p {
-            font-size: 14px;
-            color: #aaa;
-            margin-bottom: 16px;
-        }
-
-        .publish-btn {
-            padding: 8px 16px;
-            background-color: #3ea6ff;
-            color: #fff;
-            border: none;
-            border-radius: 2px;
-            cursor: pointer;
-            font-size: 14px;
-            text-decoration: none;
-        }
-
-        .publish-btn:hover {
-            background-color: #2b8bff;
-        }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .sidebar {
-                width: 72px;
-            }
-
-            .sidebar-item span {
-                display: none;
-            }
-
-            .sidebar-item img {
-                margin-right: 0;
-            }
-
-            main {
-                margin-left: 72px;
-            }
-
-            .search-bar {
-                margin: 0 8px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .sidebar {
-                display: none;
-            }
-
-            main {
-                margin-left: 0;
-            }
-
-            .search-bar input {
-                width: 120px;
-            }
-
-            .header-right .icon {
-                display: none;
-            }
-
-            .profile-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .channel-icon-large {
-                margin-bottom: 16px;
-            }
-
-            .profile-actions {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .customize-btn, .manage-videos-btn {
-                width: 100%;
-                text-align: center;
-            }
-        }
+    }
     </style>
 </head>
 <body>
