@@ -413,41 +413,42 @@
         <div class="header-right">
             <div class="icon">📹</div>
             <div class="icon">🔔</div>
-            <a href="login.html" class="login-btn" id="login-btn">Увійти</a>
-            <div class="user-container">
-                <div class="user-avatar" id="header-avatar" style="display: none;"></div>
-                <div class="user-menu" id="user-menu" style="display: none;">
-                    <div class="menu-channel-name" id="menu-channel-name">Вы ещё не создали канал</div>
-                    <div class="menu-account-name" id="menu-account-name"></div>
-                    <div class="menu-item">
-                        <span class="menu-icon">👤</span> Ваші дані на YouTube
+            <button class="login-btn" id="login-btn">Увійти</button>
+            <div class="user-container" id="user-container">
+                <div class="user-avatar" id="user-avatar"></div>
+                <div class="user-menu" id="user-menu">
+                    <div class="section user-info">
+                        <p><strong id="menu-channel-name">Вы ещё не создали канал</strong></p>
+                        <p id="menu-account-name"></p>
+                        <a href="https://ktoto342244.github.io/nn/profile.html">Переглянути канал</a>
                     </div>
-                    <div class="menu-item">
-                        <span class="menu-icon">🔍</span> Пошуки і платне підключення
+                    <div class="section">
+                        <a href="https://myaccount.google.com" target="_blank" class="item">
+                            <span class="material-icons">account_circle</span>Аккаунт Google
+                        </a>
+                        <div class="item"><span class="material-icons">switch_account</span>Змінити акаунт</div>
+                        <div class="item" id="logout-link"><span class="material-icons">logout</span>Вийти</div>
                     </div>
-                    <div class="menu-item">
-                        <span class="menu-icon">📺</span> Ваші дані на YouTube
+                    <div class="section">
+                        <a href="https://studio.youtube.com" target="_blank" class="item">
+                            <span class="material-icons">video_settings</span>Творча студія YouTube
+                        </a>
+                        <div class="item"><span class="material-icons">paid</span>Покупки і платні підписки</div>
                     </div>
-                    <div class="menu-item">
-                        <span class="menu-icon">🌙</span> Тема: як на пристрої
+                    <div class="section">
+                        <a href="https://ktoto342244.github.io/nn/profile.html" class="item">
+                            <span class="material-icons">person</span>Ваші дані на YouTube
+                        </a>
+                        <div class="item"><span class="material-icons">brightness_6</span>Тема: як на пристрої</div>
+                        <div class="item"><span class="material-icons">language</span>Мова: Русский</div>
+                        <div class="item"><span class="material-icons">visibility_off</span>Безпечний режим: вимк.</div>
+                        <div class="item"><span class="material-icons">flag</span>Країна: Україна</div>
+                        <div class="item"><span class="material-icons">keyboard</span>Швидкі клавіші</div>
                     </div>
-                    <div class="menu-item">
-                        <span class="menu-icon">🌐</span> Мова: Русский
-                    </div>
-                    <div class="menu-item">
-                        <span class="menu-icon">🛡️</span> Безопасный режим: откл.
-                    </div>
-                    <div class="menu-item">
-                        <span class="menu-icon">🌍</span> Страна: Украина
-                    </div>
-                    <div class="menu-item">
-                        <span class="menu-icon">⚙️</span> Настройки
-                    </div>
-                    <div class="menu-item">
-                        <span class="menu-icon">❓</span> Справка
-                    </div>
-                    <div class="menu-item" id="logout-btn">
-                        <span href="https://ktoto342244.github.io/nn/index.html" class="menu-icon">🚪</span> Выйти
+                    <div class="section">
+                        <div class="item"><span class="material-icons">settings</span>Налаштування</div>
+                        <div class="item"><span class="material-icons">help</span>Довідка</div>
+                        <div class="item"><span class="material-icons">feedback</span>Надіслати відгук</div>
                     </div>
                 </div>
             </div>
